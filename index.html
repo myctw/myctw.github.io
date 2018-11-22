@@ -388,7 +388,7 @@
 </ul>
 <p>細節會在日後的文章陸續揭露或探討，而安裝方法非常簡單，網路上也有很多範例就不在這邊贅述了。<br>本文所使用的程式語言是 .NET Framework C#</p>
 <h1 id="Hello-RabbitMQ"><a href="#Hello-RabbitMQ" class="headerlink" title="Hello RabbitMQ"></a>Hello RabbitMQ</h1><p>須先從nuget下載 RabbitMQ.Client</p>
-<h2 id="撰寫Publisher-範例我是命名為Sender"><a href="#撰寫Publisher-範例我是命名為Sender" class="headerlink" title="撰寫Publisher (範例我是命名為Sender)"></a>撰寫Publisher (範例我是命名為Sender)</h2><ol>
+<h2 id="撰寫Publisher-範例命名為Sender"><a href="#撰寫Publisher-範例命名為Sender" class="headerlink" title="撰寫Publisher (範例命名為Sender)"></a>撰寫Publisher (範例命名為Sender)</h2><ol>
 <li><p>建立連線的物件，hostname目前都是在本機所以localhost即，ＵserName與Ｐassword則需要另外建立。<br>若是剛安裝好，預設是guest/guest為唯一且admin帳號。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var factory = new ConnectionFactory() </span><br><span class="line">&#123; HostName = &quot;localhost&quot;, UserName = &quot;admin&quot;, Password = &quot;pass123&quot; &#125;;</span><br></pre></td></tr></table></figure>
 </li>
@@ -413,7 +413,7 @@
 </ol>
 <p>依序是將收到的內容先做UTF8編碼，接著印出訊息內容<br>最後的BasicConsume則是回覆給哪個訊息佇列、自動回覆、由那個接收者所回覆的。</p>
 <p>Hello RabbitMQ 程式基本上就完成了。</p>
-<h1 id="程式範例檔"><a href="#程式範例檔" class="headerlink" title="程式範例檔"></a>程式範例檔</h1><p>完整的範例檔放在這 <a href="https://github.com/myctw/SampleCodeSeries/tree/master/RabbitMQ_1.Helloworld" target="_blank" rel="noopener">範例</a>，有興趣的可以自行下載。<br>裡面是一個方案，接收者與發佈者分別為兩個Console專案，編譯後可分別執行.exe檔案來查看結果，只要receiver沒有關閉，都能夠收到發布者的訊息。</p>
+<h1 id="程式範例檔"><a href="#程式範例檔" class="headerlink" title="程式範例檔"></a>程式範例檔</h1><p>完整的範例檔放在這 <a href="https://github.com/myctw/SampleCodes/tree/master/RabbitMQ/1.Helloworld" target="_blank" rel="noopener">範例</a>，有興趣的可以自行下載。<br>裡面是一個方案，接收者與發佈者分別為兩個Console專案，編譯後可分別執行.exe檔案來查看結果，只要receiver沒有關閉，都能夠收到發布者的訊息。</p>
 
           
         
