@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="rabbitmq,c#,">
+  <meta name="keywords" content="rabbitmq,c#,exchange,">
 
 
 
@@ -79,18 +79,20 @@
 
 
 
-<meta name="description" content="什麼是RabbitMQRabbitMQ是訊息的中介層，可以想像是一個幫你保管、處理的佇列，只要發布者(Publisher)將訊息寫入後，該訊息會被放入指定的佇列，等待接收者(Consumer)的拿取。特性大概有以下幾種：    由Erlang開發 符合進階訊息佇列協定(AMQP) 支援非常多種語言與平台 訊息接收、處理的可靠性 高度靈活的路由功能 高可用性(Availability) 內建監控與管">
-<meta name="keywords" content="rabbitmq,c#">
+<meta name="description" content="交換器(Exchange)是什麼？當訊息寫入RabbitMQ時，並非直接將訊息寫入佇列中，而是透過交換器(Exchange)將訊息正確分派到佇列中，而依據就是訊息自帶的RouteKey是否與BindKey相符合；若完全沒有符合的佇列，則會自動遺棄該訊息。 交換器有哪幾種？常用的交換器有四種 Direct, Fanout, Topic and Headers.  Direct: 預設的模式，即直接將">
+<meta name="keywords" content="rabbitmq,c#,exchange">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello RabbitMQ">
-<meta property="og:url" content="http://yoursite.com/2018/11/22/RabbitMQ_1.HelloWorld/index.html">
+<meta property="og:title" content="RabbitMQ 的交換器(Exchange)">
+<meta property="og:url" content="http://yoursite.com/2018/11/27/RabbitMQ_3.Exchange/index.html">
 <meta property="og:site_name" content="Forgotten Notes">
-<meta property="og:description" content="什麼是RabbitMQRabbitMQ是訊息的中介層，可以想像是一個幫你保管、處理的佇列，只要發布者(Publisher)將訊息寫入後，該訊息會被放入指定的佇列，等待接收者(Consumer)的拿取。特性大概有以下幾種：    由Erlang開發 符合進階訊息佇列協定(AMQP) 支援非常多種語言與平台 訊息接收、處理的可靠性 高度靈活的路由功能 高可用性(Availability) 內建監控與管">
+<meta property="og:description" content="交換器(Exchange)是什麼？當訊息寫入RabbitMQ時，並非直接將訊息寫入佇列中，而是透過交換器(Exchange)將訊息正確分派到佇列中，而依據就是訊息自帶的RouteKey是否與BindKey相符合；若完全沒有符合的佇列，則會自動遺棄該訊息。 交換器有哪幾種？常用的交換器有四種 Direct, Fanout, Topic and Headers.  Direct: 預設的模式，即直接將">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-22T17:39:27.524Z">
+<meta property="og:image" content="http://yoursite.com/2018/11/27/images/rbq3exg.gif">
+<meta property="og:updated_time" content="2018-11-27T16:44:59.485Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello RabbitMQ">
-<meta name="twitter:description" content="什麼是RabbitMQRabbitMQ是訊息的中介層，可以想像是一個幫你保管、處理的佇列，只要發布者(Publisher)將訊息寫入後，該訊息會被放入指定的佇列，等待接收者(Consumer)的拿取。特性大概有以下幾種：    由Erlang開發 符合進階訊息佇列協定(AMQP) 支援非常多種語言與平台 訊息接收、處理的可靠性 高度靈活的路由功能 高可用性(Availability) 內建監控與管">
+<meta name="twitter:title" content="RabbitMQ 的交換器(Exchange)">
+<meta name="twitter:description" content="交換器(Exchange)是什麼？當訊息寫入RabbitMQ時，並非直接將訊息寫入佇列中，而是透過交換器(Exchange)將訊息正確分派到佇列中，而依據就是訊息自帶的RouteKey是否與BindKey相符合；若完全沒有符合的佇列，則會自動遺棄該訊息。 交換器有哪幾種？常用的交換器有四種 Direct, Fanout, Topic and Headers.  Direct: 預設的模式，即直接將">
+<meta name="twitter:image" content="http://yoursite.com/2018/11/27/images/rbq3exg.gif">
 
 
 
@@ -120,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/11/22/RabbitMQ_1.HelloWorld/">
+  <link rel="canonical" href="http://yoursite.com/2018/11/27/RabbitMQ_3.Exchange/">
 
 
 
 
 
-  <title>Hello RabbitMQ | Forgotten Notes</title>
+  <title>RabbitMQ 的交換器(Exchange) | Forgotten Notes</title>
   
 
 
@@ -272,7 +274,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/22/RabbitMQ_1.HelloWorld/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/27/RabbitMQ_3.Exchange/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Pattri Chou">
@@ -289,7 +291,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello RabbitMQ</h1>
+          <h1 class="post-title" itemprop="name headline">RabbitMQ 的交換器(Exchange)</h1>
         
 
         <div class="post-meta">
@@ -301,8 +303,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-22T00:47:11+08:00">
-                2018-11-22
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-27T23:50:11+08:00">
+                2018-11-27
               </time>
             
 
@@ -342,8 +344,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/11/22/RabbitMQ_1.HelloWorld/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/11/22/RabbitMQ_1.HelloWorld/" itemprop="commentCount"></span>
+                <a href="/2018/11/27/RabbitMQ_3.Exchange/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/11/27/RabbitMQ_3.Exchange/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -371,46 +373,24 @@
       
 
       
-        <h1 id="什麼是RabbitMQ"><a href="#什麼是RabbitMQ" class="headerlink" title="什麼是RabbitMQ"></a>什麼是RabbitMQ</h1><p>RabbitMQ是訊息的中介層，可以想像是一個幫你保管、處理的佇列，只要發布者(Publisher)將訊息寫入後，該訊息會被放入指定的佇列，等待接收者(Consumer)的拿取。<br>特性大概有以下幾種：  </p>
+        <h3 id="交換器-Exchange-是什麼？"><a href="#交換器-Exchange-是什麼？" class="headerlink" title="交換器(Exchange)是什麼？"></a>交換器(Exchange)是什麼？</h3><p>當訊息寫入RabbitMQ時，並非直接將訊息寫入佇列中，而是透過交換器(Exchange)將訊息正確分派到佇列中，而依據就是訊息自帶的RouteKey是否與BindKey相符合；若完全沒有符合的佇列，則會自動遺棄該訊息。</p>
+<h3 id="交換器有哪幾種？"><a href="#交換器有哪幾種？" class="headerlink" title="交換器有哪幾種？"></a>交換器有哪幾種？</h3><p>常用的交換器有四種 Direct, Fanout, Topic and Headers.</p>
 <ul>
-<li>由Erlang開發</li>
-<li>符合進階訊息佇列協定(AMQP)</li>
-<li>支援非常多種語言與平台</li>
-<li>訊息接收、處理的可靠性</li>
-<li>高度靈活的路由功能</li>
-<li>高可用性(Availability)</li>
-<li>內建監控與管理介面</li>
-<li>可建立集群，提昇資料安全與服務不中斷</li>
-<li>提供各種插件(plugin)靈活運用</li>
+<li><strong>Direct</strong>: 預設的模式，即直接將訊息分配到 RouteKey 與 BindKey <strong>完全</strong>相同的佇列上。<br>Case1: BindKey: “<strong>log.info</strong>“<br>log.debug -&gt; 不符合<br>log.info -&gt; 符合<br>log.infomation -&gt; 不符合</li>
+<li><strong>Fanout</strong>: 顧名思義就是將此訊息分配到每一個佇列上，等於是複製了n次。若設定fanout的話會自動忽略 BindKey與RouteKey。</li>
+<li><p><strong>Topic</strong>: Topic是較常用也是靈活度最高的模式，有點像是.net的routing概念，只要符合規格的RouteKey就會被傳遞到正確的queue。<br>特殊符號分別是: * (<strong>一個</strong>任意字)與 # (<strong>零以上</strong>個任意字)。  </p>
+<p>Case1: </p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">BindKey: &quot;*I.am.*&quot;  </span><br><span class="line">I.am.boy -&gt; 符合  </span><br><span class="line">I.am.girl -&gt; 符合  </span><br><span class="line">I.amNot.girl -&gt; 不符合  </span><br><span class="line">I.am.boy.too -&gt;不符合</span><br></pre></td></tr></table></figure>
+<p>Case2:  </p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">BindKey &quot;#.strong&quot;  </span><br><span class="line">He.is.strong -&gt; 符合  </span><br><span class="line">Not.strong -&gt; 符合  </span><br><span class="line">I.am.not.strong.neither -&gt; 不符合</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Headers</strong>: 從訊息中的header與BindKey做批配比較，並寫入queue中。這部分我也很少用，之後有特別研究再來補上怎麼使用。</p>
+<p>使用上的效能當然還是 fanout &gt; direct &gt; topic，但我認為除非在很極端的狀況下，否則比較這個的意義並不大，畢竟工具的使用還是以符合需求為主。<br>另一點要注意的是RouteKey長度限制為255 bytes。</p>
+</li>
 </ul>
-<p>細節會在日後的文章陸續揭露或探討，而安裝方法非常簡單，網路上也有很多範例就不在這邊贅述了。<br>本文所使用的程式語言是 .NET Framework C#</p>
-<h1 id="Hello-RabbitMQ"><a href="#Hello-RabbitMQ" class="headerlink" title="Hello RabbitMQ"></a>Hello RabbitMQ</h1><p>須先從nuget下載 RabbitMQ.Client</p>
-<h2 id="撰寫Publisher-範例命名為Sender"><a href="#撰寫Publisher-範例命名為Sender" class="headerlink" title="撰寫Publisher (範例命名為Sender)"></a>撰寫Publisher (範例命名為Sender)</h2><ol>
-<li><p>建立連線的物件，hostname目前都是在本機所以localhost即，ＵserName與Ｐassword則需要另外建立。<br>若是剛安裝好，預設是guest/guest為唯一且admin帳號。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var factory = new ConnectionFactory() </span><br><span class="line">&#123; HostName = &quot;localhost&quot;, UserName = &quot;admin&quot;, Password = &quot;pass123&quot; &#125;;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>建立連線作用域</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">using (var connection = factory.CreateConnection())</span><br><span class="line">&#123;</span><br><span class="line">    using (var channel = connection.CreateModel())</span><br><span class="line">    &#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>宣告名稱為 <strong>hello</strong> 的佇列以存放訊息</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">channel.QueueDeclare(queue: &quot;hello&quot;,</span><br><span class="line">    durable: false,</span><br><span class="line">    exclusive: false,</span><br><span class="line">    autoDelete: false,</span><br><span class="line">    arguments: null</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>建立訊息</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var message = $&quot;Hello RabbitMQ. &#123;DateTime.Now.ToString(&quot;yyyy/MM/dd HH:mm:ss.fff&quot;)&#125;&quot;;</span><br><span class="line">var body = Encoding.UTF8.GetBytes(message);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>發布訊息到 hello 訊息佇列</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">channel.BasicPublish(exchange: &quot;&quot;,</span><br><span class="line">    routingKey: &quot;hello&quot;,</span><br><span class="line">    basicProperties: null,</span><br><span class="line">    body: body</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>到這邊就完成發布者發布訊息的功能了。</p>
-<h2 id="撰寫接收者程式-範例命名為Receiver"><a href="#撰寫接收者程式-範例命名為Receiver" class="headerlink" title="撰寫接收者程式 (範例命名為Receiver)"></a>撰寫接收者程式 (範例命名為Receiver)</h2><ol>
-<li>步驟 1,2,3 與發布者相同，都是建立連線物件與宣告佇列名稱</li>
-<li>建立委派接收到訊息的事件<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var consumer = new EventingBasicConsumer(channel);</span><br><span class="line">consumer.Received += (model, ea) =&gt;</span><br><span class="line">&#123;</span><br><span class="line">    var body = ea.Body;</span><br><span class="line">    var message = Encoding.UTF8.GetString(body);</span><br><span class="line">    Console.WriteLine(&quot;Received &#123;0&#125;&quot;, message);</span><br><span class="line">&#125;;</span><br><span class="line">channel.BasicConsume(queue: &quot;hello&quot;,</span><br><span class="line">                        autoAck: true,</span><br><span class="line">                        consumer: consumer);</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>依序是將收到的內容先做UTF8編碼，接著印出訊息內容<br>最後的BasicConsume則是回覆給哪個訊息佇列、自動回覆、由那個接收者所回覆的。</p>
-<p>Hello RabbitMQ 程式基本上就完成了。</p>
-<h1 id="程式範例檔"><a href="#程式範例檔" class="headerlink" title="程式範例檔"></a>程式範例檔</h1><p>完整的範例檔放在這 <a href="https://github.com/myctw/SampleCodes/tree/master/RabbitMQ/1.Helloworld" target="_blank" rel="noopener">範例</a>，有興趣的可以自行下載。<br>裡面是一個方案，接收者與發佈者分別為兩個Console專案，編譯後可分別執行.exe檔案來查看結果，只要receiver沒有關閉，都能夠收到發布者的訊息。</p>
+<h3 id="Fanout模式的演示"><a href="#Fanout模式的演示" class="headerlink" title="Fanout模式的演示"></a>Fanout模式的演示</h3><p>首先我們在宣告Exchange時將type指定為 “fanout”，當然在訂閱端也是需要的，程式碼一樣就不再貼上。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">channel.ExchangeDeclare(exchange: &quot;logs&quot;, type:&quot;fanout&quot;);</span><br></pre></td></tr></table></figure></p>
+<p>其他部分沒有改變，將專案建置好後，開啟兩個訂閱者程式，然後執行Sender.exe以fanout模式送出一個訊息，就可以看到兩個視窗幾乎同時收到該訊息，且進行處理。<br><img src="../images/rbq3exg.gif" alt=""></p>
+<h3 id="程式範例檔"><a href="#程式範例檔" class="headerlink" title="程式範例檔"></a>程式範例檔</h3><p>完整的範例檔放在這 <a href="https://github.com/myctw/SampleCodes/tree/master/RabbitMQ/3.Publish%2CSubscribe" target="_blank" rel="noopener">範例</a>，有興趣的可以自行下載。</p>
 
       
     </div>
@@ -432,6 +412,8 @@
           
             <a href="/tags/c/" rel="tag"># c#</a>
           
+            <a href="/tags/exchange/" rel="tag"># exchange</a>
+          
         </div>
       
 
@@ -443,15 +425,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/11/24/RabbitMQ_4.Routing/" rel="next" title="RabbitMQ Routing功能">
+                <i class="fa fa-chevron-left"></i> RabbitMQ Routing功能
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/11/23/RabbitMQ_2.HelloWorld/" rel="prev" title="RabbitMQ queue">
-                RabbitMQ queue <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -617,7 +599,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#什麼是RabbitMQ"><span class="nav-number">1.</span> <span class="nav-text">什麼是RabbitMQ</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hello-RabbitMQ"><span class="nav-number">2.</span> <span class="nav-text">Hello RabbitMQ</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#撰寫Publisher-範例命名為Sender"><span class="nav-number">2.1.</span> <span class="nav-text">撰寫Publisher (範例命名為Sender)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#撰寫接收者程式-範例命名為Receiver"><span class="nav-number">2.2.</span> <span class="nav-text">撰寫接收者程式 (範例命名為Receiver)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#程式範例檔"><span class="nav-number">3.</span> <span class="nav-text">程式範例檔</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#交換器-Exchange-是什麼？"><span class="nav-number">1.</span> <span class="nav-text">交換器(Exchange)是什麼？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#交換器有哪幾種？"><span class="nav-number">2.</span> <span class="nav-text">交換器有哪幾種？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Fanout模式的演示"><span class="nav-number">3.</span> <span class="nav-text">Fanout模式的演示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#程式範例檔"><span class="nav-number">4.</span> <span class="nav-text">程式範例檔</span></a></li></ol></div>
             
 
           </div>
@@ -787,9 +769,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2018/11/22/RabbitMQ_1.HelloWorld/';
-          this.page.identifier = '2018/11/22/RabbitMQ_1.HelloWorld/';
-          this.page.title = 'Hello RabbitMQ';
+          this.page.url = 'http://yoursite.com/2018/11/27/RabbitMQ_3.Exchange/';
+          this.page.identifier = '2018/11/27/RabbitMQ_3.Exchange/';
+          this.page.title = 'RabbitMQ 的交換器(Exchange)';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://myctw.disqus.com/embed.js';
