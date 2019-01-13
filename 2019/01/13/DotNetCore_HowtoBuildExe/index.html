@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="rabbitmq,c#,exchange,">
+  <meta name="keywords" content=".net core,exe,">
 
 
 
@@ -79,20 +79,21 @@
 
 
 
-<meta name="description" content="交換器(Exchange)是什麼？當訊息寫入RabbitMQ時，並非直接將訊息寫入佇列中，而是透過交換器(Exchange)將訊息正確分派到佇列中，而依據就是訊息自帶的RouteKey是否與BindKey相符合；若完全沒有符合的佇列，則會自動遺棄該訊息。 交換器有哪幾種？常用的交換器有四種 Direct, Fanout, Topic and Headers.  Direct: 預設的模式，即直接將">
-<meta name="keywords" content="rabbitmq,c#,exchange">
+<meta name="description" content=".Net Core 2.0 之前在 .Net core 專案底下編譯出來的只有 dll 與 json 的設定檔，有時候一些情況下還是使用 .exe 來執行 console 專案會比較方便。 .Net core 2.0 以前必須要在 csproj 裡面設定這個屬性，並且指定相對應的 os123&amp;lt;PropertyGroup&amp;gt;    &amp;lt;RuntimeIdentifiers&amp;gt;win">
+<meta name="keywords" content=".net core,exe">
 <meta property="og:type" content="article">
-<meta property="og:title" content="RabbitMQ 的交換器(Exchange)">
-<meta property="og:url" content="http://yoursite.com/2018/11/27/RabbitMQ_3.Exchange/index.html">
+<meta property="og:title" content=".Net Core 如何建置出.exe檔案">
+<meta property="og:url" content="http://yoursite.com/2019/01/13/DotNetCore_HowtoBuildExe/index.html">
 <meta property="og:site_name" content="Forgotten Notes">
-<meta property="og:description" content="交換器(Exchange)是什麼？當訊息寫入RabbitMQ時，並非直接將訊息寫入佇列中，而是透過交換器(Exchange)將訊息正確分派到佇列中，而依據就是訊息自帶的RouteKey是否與BindKey相符合；若完全沒有符合的佇列，則會自動遺棄該訊息。 交換器有哪幾種？常用的交換器有四種 Direct, Fanout, Topic and Headers.  Direct: 預設的模式，即直接將">
+<meta property="og:description" content=".Net Core 2.0 之前在 .Net core 專案底下編譯出來的只有 dll 與 json 的設定檔，有時候一些情況下還是使用 .exe 來執行 console 專案會比較方便。 .Net core 2.0 以前必須要在 csproj 裡面設定這個屬性，並且指定相對應的 os123&amp;lt;PropertyGroup&amp;gt;    &amp;lt;RuntimeIdentifiers&amp;gt;win">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/2018/11/27/images/rbq3exg.gif">
-<meta property="og:updated_time" content="2018-11-27T16:44:59.485Z">
+<meta property="og:image" content="http://yoursite.com/2019/01/13/images/2019-01-13_1.png">
+<meta property="og:image" content="http://yoursite.com/2019/01/13/images/2019-01-13_2.png">
+<meta property="og:updated_time" content="2019-01-13T09:14:12.955Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="RabbitMQ 的交換器(Exchange)">
-<meta name="twitter:description" content="交換器(Exchange)是什麼？當訊息寫入RabbitMQ時，並非直接將訊息寫入佇列中，而是透過交換器(Exchange)將訊息正確分派到佇列中，而依據就是訊息自帶的RouteKey是否與BindKey相符合；若完全沒有符合的佇列，則會自動遺棄該訊息。 交換器有哪幾種？常用的交換器有四種 Direct, Fanout, Topic and Headers.  Direct: 預設的模式，即直接將">
-<meta name="twitter:image" content="http://yoursite.com/2018/11/27/images/rbq3exg.gif">
+<meta name="twitter:title" content=".Net Core 如何建置出.exe檔案">
+<meta name="twitter:description" content=".Net Core 2.0 之前在 .Net core 專案底下編譯出來的只有 dll 與 json 的設定檔，有時候一些情況下還是使用 .exe 來執行 console 專案會比較方便。 .Net core 2.0 以前必須要在 csproj 裡面設定這個屬性，並且指定相對應的 os123&amp;lt;PropertyGroup&amp;gt;    &amp;lt;RuntimeIdentifiers&amp;gt;win">
+<meta name="twitter:image" content="http://yoursite.com/2019/01/13/images/2019-01-13_1.png">
 
 
 
@@ -122,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/11/27/RabbitMQ_3.Exchange/">
+  <link rel="canonical" href="http://yoursite.com/2019/01/13/DotNetCore_HowtoBuildExe/">
 
 
 
 
 
-  <title>RabbitMQ 的交換器(Exchange) | Forgotten Notes</title>
+  <title>.Net Core 如何建置出.exe檔案 | Forgotten Notes</title>
   
 
 
@@ -274,7 +275,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/27/RabbitMQ_3.Exchange/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/13/DotNetCore_HowtoBuildExe/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Pattri Chou">
@@ -291,7 +292,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">RabbitMQ 的交換器(Exchange)</h1>
+          <h1 class="post-title" itemprop="name headline">.Net Core 如何建置出.exe檔案</h1>
         
 
         <div class="post-meta">
@@ -303,8 +304,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-27T23:50:11+08:00">
-                2018-11-27
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-13T16:47:11+08:00">
+                2019-01-13
               </time>
             
 
@@ -326,8 +327,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/RabbitMQ/" itemprop="url" rel="index">
-                    <span itemprop="name">RabbitMQ</span>
+                  <a href="/categories/NetCore/" itemprop="url" rel="index">
+                    <span itemprop="name">.NetCore</span>
                   </a>
                 </span>
 
@@ -344,8 +345,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/11/27/RabbitMQ_3.Exchange/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/11/27/RabbitMQ_3.Exchange/" itemprop="commentCount"></span>
+                <a href="/2019/01/13/DotNetCore_HowtoBuildExe/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/01/13/DotNetCore_HowtoBuildExe/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -373,24 +374,14 @@
       
 
       
-        <h3 id="交換器-Exchange-是什麼？"><a href="#交換器-Exchange-是什麼？" class="headerlink" title="交換器(Exchange)是什麼？"></a>交換器(Exchange)是什麼？</h3><p>當訊息寫入RabbitMQ時，並非直接將訊息寫入佇列中，而是透過交換器(Exchange)將訊息正確分派到佇列中，而依據就是訊息自帶的RouteKey是否與BindKey相符合；若完全沒有符合的佇列，則會自動遺棄該訊息。</p>
-<h3 id="交換器有哪幾種？"><a href="#交換器有哪幾種？" class="headerlink" title="交換器有哪幾種？"></a>交換器有哪幾種？</h3><p>常用的交換器有四種 Direct, Fanout, Topic and Headers.</p>
-<ul>
-<li><strong>Direct</strong>: 預設的模式，即直接將訊息分配到 RouteKey 與 BindKey <strong>完全</strong>相同的佇列上。<br>Case1: BindKey: “<strong>log.info</strong>“<br>log.debug -&gt; 不符合<br>log.info -&gt; 符合<br>log.infomation -&gt; 不符合</li>
-<li><strong>Fanout</strong>: 顧名思義就是將此訊息分配到每一個佇列上，等於是複製了n次。若設定fanout的話會自動忽略 BindKey與RouteKey。</li>
-<li><p><strong>Topic</strong>: Topic是較常用也是靈活度最高的模式，有點像是.net的routing概念，只要符合規格的RouteKey就會被傳遞到正確的queue。<br>特殊符號分別是: * (<strong>一個</strong>任意字)與 # (<strong>零以上</strong>個任意字)。  </p>
-<p>Case1: </p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">BindKey: &quot;*I.am.*&quot;  </span><br><span class="line">I.am.boy -&gt; 符合  </span><br><span class="line">I.am.girl -&gt; 符合  </span><br><span class="line">I.amNot.girl -&gt; 不符合  </span><br><span class="line">I.am.boy.too -&gt;不符合</span><br></pre></td></tr></table></figure>
-<p>Case2:  </p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">BindKey &quot;#.strong&quot;  </span><br><span class="line">He.is.strong -&gt; 符合  </span><br><span class="line">Not.strong -&gt; 符合  </span><br><span class="line">I.am.not.strong.neither -&gt; 不符合</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>Headers</strong>: 從訊息中的header與BindKey做批配比較，並寫入queue中。這部分我也很少用，之後有特別研究再來補上怎麼使用。</p>
-<p>使用上的效能當然還是 fanout &gt; direct &gt; topic，但我認為除非在很極端的狀況下，否則比較這個的意義並不大，畢竟工具的使用還是以符合需求為主。<br>另一點要注意的是RouteKey長度限制為255 bytes。</p>
-</li>
-</ul>
-<h3 id="Fanout模式的演示"><a href="#Fanout模式的演示" class="headerlink" title="Fanout模式的演示"></a>Fanout模式的演示</h3><p>首先我們在宣告Exchange時將type指定為 “fanout”，當然在訂閱端也是需要的，程式碼一樣就不再貼上。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">channel.ExchangeDeclare(exchange: &quot;logs&quot;, type:&quot;fanout&quot;);</span><br></pre></td></tr></table></figure></p>
-<p>其他部分沒有改變，將專案建置好後，開啟兩個訂閱者程式，然後執行Sender.exe以fanout模式送出一個訊息，就可以看到兩個視窗幾乎同時收到該訊息，且進行處理。<br><img src="../images/rbq3exg.gif" alt=""></p>
-<h3 id="程式範例檔"><a href="#程式範例檔" class="headerlink" title="程式範例檔"></a>程式範例檔</h3><p>完整的範例檔放在這 <a href="https://github.com/myctw/SampleCodes/tree/master/RabbitMQ/3.Publish%2CSubscribe" target="_blank" rel="noopener">範例</a>，有興趣的可以自行下載。</p>
+        <h4 id="Net-Core-2-0-之前"><a href="#Net-Core-2-0-之前" class="headerlink" title=".Net Core 2.0 之前"></a>.Net Core 2.0 之前</h4><p>在 .Net core 專案底下編譯出來的只有 dll 與 json 的設定檔，有時候一些情況下還是使用 .exe 來執行 console 專案會比較方便。</p>
+<p>.Net core 2.0 以前必須要在 csproj 裡面設定這個屬性，並且指定相對應的 os<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;PropertyGroup&gt;</span><br><span class="line">    &lt;RuntimeIdentifiers&gt;win10-x64&lt;/RuntimeIdentifiers&gt;</span><br><span class="line">&lt;/PropertyGroup&gt;</span><br></pre></td></tr></table></figure></p>
+<p>上述就是建置出可在 win10 x64執行的 exe檔案。</p>
+<h4 id="Net-Core-2-0-之後-Terminal-Command"><a href="#Net-Core-2-0-之後-Terminal-Command" class="headerlink" title=".Net Core 2.0 之後 (Terminal Command)"></a>.Net Core 2.0 之後 (Terminal Command)</h4><p>當然也可以執行在terminal 執行輸入指令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dotnet publish -c Release -r win10-x64</span><br></pre></td></tr></table></figure></p>
+<p>-c 是建置的configuration，預設資料夾是 Debug<br>-r 是建置目標的 framework，就是本篇文章的目的</p>
+<h4 id="Platform-清單"><a href="#Platform-清單" class="headerlink" title="Platform 清單"></a>Platform 清單</h4><p>在官方教學文件中有所有 platform 的清單，有需要的可以到那邊查找。<br><a href="https://docs.microsoft.com/en-us/dotnet/core/rid-catalog" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/dotnet/core/rid-catalog</a></p>
+<h4 id="Net-Core-2-0-之後-Configuration"><a href="#Net-Core-2-0-之後-Configuration" class="headerlink" title=".Net Core 2.0 之後 (Configuration)"></a>.Net Core 2.0 之後 (Configuration)</h4><p>總不能要求我每次都下指令去產生吧！<br>所以2.0之後還是可以加在 csproj 內，會一並產生出兩種類型的編譯檔。<br>加上這段就可以了！（沒錯！一模一樣）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;RuntimeIdentifiers&gt;win10-x64&lt;/RuntimeIdentifiers&gt;</span><br></pre></td></tr></table></figure></p>
+<p><img src="../images/2019-01-13_1.png" alt=""><br><img src="../images/2019-01-13_2.png" alt=""></p>
 
       
     </div>
@@ -408,11 +399,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/rabbitmq/" rel="tag"># rabbitmq</a>
+            <a href="/tags/net-core/" rel="tag"># .net core</a>
           
-            <a href="/tags/c/" rel="tag"># c#</a>
-          
-            <a href="/tags/exchange/" rel="tag"># exchange</a>
+            <a href="/tags/exe/" rel="tag"># exe</a>
           
         </div>
       
@@ -425,8 +414,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/24/RabbitMQ_4.Routing/" rel="next" title="RabbitMQ Routing功能">
-                <i class="fa fa-chevron-left"></i> RabbitMQ Routing功能
+              <a href="/2018/11/27/RabbitMQ_3.Exchange/" rel="next" title="RabbitMQ 的交換器(Exchange)">
+                <i class="fa fa-chevron-left"></i> RabbitMQ 的交換器(Exchange)
               </a>
             
           </div>
@@ -434,10 +423,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/01/13/DotNetCore_HowtoBuildExe/" rel="prev" title=".Net Core 如何建置出.exe檔案">
-                .Net Core 如何建置出.exe檔案 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -603,7 +588,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#交換器-Exchange-是什麼？"><span class="nav-number">1.</span> <span class="nav-text">交換器(Exchange)是什麼？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#交換器有哪幾種？"><span class="nav-number">2.</span> <span class="nav-text">交換器有哪幾種？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Fanout模式的演示"><span class="nav-number">3.</span> <span class="nav-text">Fanout模式的演示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#程式範例檔"><span class="nav-number">4.</span> <span class="nav-text">程式範例檔</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Net-Core-2-0-之前"><span class="nav-number">1.</span> <span class="nav-text">.Net Core 2.0 之前</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Net-Core-2-0-之後-Terminal-Command"><span class="nav-number">2.</span> <span class="nav-text">.Net Core 2.0 之後 (Terminal Command)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Platform-清單"><span class="nav-number">3.</span> <span class="nav-text">Platform 清單</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Net-Core-2-0-之後-Configuration"><span class="nav-number">4.</span> <span class="nav-text">.Net Core 2.0 之後 (Configuration)</span></a></li></ol></div>
             
 
           </div>
@@ -773,9 +758,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2018/11/27/RabbitMQ_3.Exchange/';
-          this.page.identifier = '2018/11/27/RabbitMQ_3.Exchange/';
-          this.page.title = 'RabbitMQ 的交換器(Exchange)';
+          this.page.url = 'http://yoursite.com/2019/01/13/DotNetCore_HowtoBuildExe/';
+          this.page.identifier = '2019/01/13/DotNetCore_HowtoBuildExe/';
+          this.page.title = '.Net Core 如何建置出.exe檔案';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://myctw.disqus.com/embed.js';
