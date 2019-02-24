@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="c#,rabbitmq,exchange,">
+  <meta name="keywords" content=".net core,c#,mysql,dotnet core,database,connection,">
 
 
 
@@ -79,20 +79,27 @@
 
 
 
-<meta name="description" content="交換器(Exchange)是什麼？當訊息寫入RabbitMQ時，並非直接將訊息寫入佇列中，而是透過交換器(Exchange)將訊息正確分派到佇列中，而依據就是訊息自帶的RouteKey是否與BindKey相符合；若完全沒有符合的佇列，則會自動遺棄該訊息。 交換器有哪幾種？常用的交換器有四種 Direct, Fanout, Topic and Headers.  Direct: 預設的模式，即直接將">
-<meta name="keywords" content="c#,rabbitmq,exchange">
+<meta name="description" content="環境準備這篇主要是講在mac os下，.Net core 的程式如何連線至MySql資料庫。需要具備的工具如下  MySql  .Net core 2.1 or later MySql workbench (option)這套軟體是Mysql的管理GUI，如果習慣使用terminal的就不需要  安裝Mysql這個基本上毫無難度，除非不熟mac的使用者可能會需要學習如何安裝程式。特別要注意的是安裝">
+<meta name="keywords" content=".net core,c#,mysql,dotnet core,database,connection">
 <meta property="og:type" content="article">
-<meta property="og:title" content="RabbitMQ 的交換器(Exchange)">
-<meta property="og:url" content="http://yoursite.com/2018/11/27/RabbitMQ_3.Exchange/index.html">
+<meta property="og:title" content=".Net Core 如何連線至MySql">
+<meta property="og:url" content="http://yoursite.com/2019/02/17/DotNetCore_MysqlConn/index.html">
 <meta property="og:site_name" content="Forgotten Notes">
-<meta property="og:description" content="交換器(Exchange)是什麼？當訊息寫入RabbitMQ時，並非直接將訊息寫入佇列中，而是透過交換器(Exchange)將訊息正確分派到佇列中，而依據就是訊息自帶的RouteKey是否與BindKey相符合；若完全沒有符合的佇列，則會自動遺棄該訊息。 交換器有哪幾種？常用的交換器有四種 Direct, Fanout, Topic and Headers.  Direct: 預設的模式，即直接將">
+<meta property="og:description" content="環境準備這篇主要是講在mac os下，.Net core 的程式如何連線至MySql資料庫。需要具備的工具如下  MySql  .Net core 2.1 or later MySql workbench (option)這套軟體是Mysql的管理GUI，如果習慣使用terminal的就不需要  安裝Mysql這個基本上毫無難度，除非不熟mac的使用者可能會需要學習如何安裝程式。特別要注意的是安裝">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/2018/11/27/images/rbq3exg.gif">
-<meta property="og:updated_time" content="2018-11-27T16:44:59.485Z">
+<meta property="og:image" content="http://yoursite.com/2019/02/17/images/DotNetCore_MysqlConn_1.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/17/images/DotNetCore_MysqlConn_2.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/17/images/DotNetCore_MysqlConn_3.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/17/images/DotNetCore_MysqlConn_4.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/17/images/DotNetCore_MysqlConn_5.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/17/images/DotNetCore_MysqlConn_6.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/17/images/DotNetCore_MysqlConn_7.png">
+<meta property="og:image" content="http://yoursite.com/2019/02/17/images/DotNetCore_MysqlConn_8.png">
+<meta property="og:updated_time" content="2019-02-24T18:07:53.688Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="RabbitMQ 的交換器(Exchange)">
-<meta name="twitter:description" content="交換器(Exchange)是什麼？當訊息寫入RabbitMQ時，並非直接將訊息寫入佇列中，而是透過交換器(Exchange)將訊息正確分派到佇列中，而依據就是訊息自帶的RouteKey是否與BindKey相符合；若完全沒有符合的佇列，則會自動遺棄該訊息。 交換器有哪幾種？常用的交換器有四種 Direct, Fanout, Topic and Headers.  Direct: 預設的模式，即直接將">
-<meta name="twitter:image" content="http://yoursite.com/2018/11/27/images/rbq3exg.gif">
+<meta name="twitter:title" content=".Net Core 如何連線至MySql">
+<meta name="twitter:description" content="環境準備這篇主要是講在mac os下，.Net core 的程式如何連線至MySql資料庫。需要具備的工具如下  MySql  .Net core 2.1 or later MySql workbench (option)這套軟體是Mysql的管理GUI，如果習慣使用terminal的就不需要  安裝Mysql這個基本上毫無難度，除非不熟mac的使用者可能會需要學習如何安裝程式。特別要注意的是安裝">
+<meta name="twitter:image" content="http://yoursite.com/2019/02/17/images/DotNetCore_MysqlConn_1.png">
 
 
 
@@ -122,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/11/27/RabbitMQ_3.Exchange/">
+  <link rel="canonical" href="http://yoursite.com/2019/02/17/DotNetCore_MysqlConn/">
 
 
 
 
 
-  <title>RabbitMQ 的交換器(Exchange) | Forgotten Notes</title>
+  <title>.Net Core 如何連線至MySql | Forgotten Notes</title>
   
 
 
@@ -274,7 +281,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/27/RabbitMQ_3.Exchange/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/17/DotNetCore_MysqlConn/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Pattri Chou">
@@ -291,7 +298,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">RabbitMQ 的交換器(Exchange)</h1>
+          <h1 class="post-title" itemprop="name headline">.Net Core 如何連線至MySql</h1>
         
 
         <div class="post-meta">
@@ -303,8 +310,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-27T23:50:11+08:00">
-                2018-11-27
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-17T16:47:11+08:00">
+                2019-02-17
               </time>
             
 
@@ -326,8 +333,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/RabbitMQ/" itemprop="url" rel="index">
-                    <span itemprop="name">RabbitMQ</span>
+                  <a href="/categories/NetCore/" itemprop="url" rel="index">
+                    <span itemprop="name">.NetCore</span>
                   </a>
                 </span>
 
@@ -344,8 +351,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/11/27/RabbitMQ_3.Exchange/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/11/27/RabbitMQ_3.Exchange/" itemprop="commentCount"></span>
+                <a href="/2019/02/17/DotNetCore_MysqlConn/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/02/17/DotNetCore_MysqlConn/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -373,25 +380,19 @@
       
 
       
-        <h3 id="交換器-Exchange-是什麼？"><a href="#交換器-Exchange-是什麼？" class="headerlink" title="交換器(Exchange)是什麼？"></a>交換器(Exchange)是什麼？</h3><p>當訊息寫入RabbitMQ時，並非直接將訊息寫入佇列中，而是透過交換器(Exchange)將訊息正確分派到佇列中，而依據就是訊息自帶的RouteKey是否與BindKey相符合；若完全沒有符合的佇列，則會自動遺棄該訊息。</p>
-<h3 id="交換器有哪幾種？"><a href="#交換器有哪幾種？" class="headerlink" title="交換器有哪幾種？"></a>交換器有哪幾種？</h3><p>常用的交換器有四種 Direct, Fanout, Topic and Headers.</p>
+        <h2 id="環境準備"><a href="#環境準備" class="headerlink" title="環境準備"></a>環境準備</h2><p>這篇主要是講在mac os下，.Net core 的程式如何連線至MySql資料庫。需要具備的工具如下</p>
 <ul>
-<li><strong>Direct</strong>: 預設的模式，即直接將訊息分配到 RouteKey 與 BindKey <strong>完全</strong>相同的佇列上。<br>Case1: BindKey: “<strong>log.info</strong>“<br>log.debug -&gt; 不符合<br>log.info -&gt; 符合<br>log.infomation -&gt; 不符合</li>
-<li><strong>Fanout</strong>: 顧名思義就是將此訊息分配到每一個佇列上，等於是複製了n次。若設定fanout的話會自動忽略 BindKey與RouteKey。</li>
-<li><p><strong>Topic</strong>: Topic是較常用也是靈活度最高的模式，有點像是.net的routing概念，只要符合規格的RouteKey就會被傳遞到正確的queue。<br>特殊符號分別是: * (<strong>一個</strong>任意字)與 # (<strong>零以上</strong>個任意字)。  </p>
-<p>Case1: </p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">BindKey: &quot;*I.am.*&quot;  </span><br><span class="line">I.am.boy -&gt; 符合  </span><br><span class="line">I.am.girl -&gt; 符合  </span><br><span class="line">I.amNot.girl -&gt; 不符合  </span><br><span class="line">I.am.boy.too -&gt;不符合</span><br></pre></td></tr></table></figure>
-<p>Case2:  </p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">BindKey &quot;#.strong&quot;  </span><br><span class="line">He.is.strong -&gt; 符合  </span><br><span class="line">Not.strong -&gt; 符合  </span><br><span class="line">I.am.not.strong.neither -&gt; 不符合</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>Headers</strong>: 從訊息中的header與BindKey做批配比較，並寫入queue中。這部分我也很少用，之後有特別研究再來補上怎麼使用。</p>
-<p>使用上的效能當然還是 fanout &gt; direct &gt; topic，但我認為除非在很極端的狀況下，否則比較這個的意義並不大，畢竟工具的使用還是以符合需求為主。<br>另一點要注意的是RouteKey長度限制為255 bytes。</p>
-</li>
+<li>MySql </li>
+<li>.Net core 2.1 or later</li>
+<li>MySql workbench (option)<br>這套軟體是Mysql的管理GUI，如果習慣使用terminal的就不需要</li>
 </ul>
-<h3 id="Fanout模式的演示"><a href="#Fanout模式的演示" class="headerlink" title="Fanout模式的演示"></a>Fanout模式的演示</h3><p>首先我們在宣告Exchange時將type指定為 “fanout”，當然在訂閱端也是需要的，程式碼一樣就不再貼上。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">channel.ExchangeDeclare(exchange: &quot;logs&quot;, type:&quot;fanout&quot;);</span><br></pre></td></tr></table></figure></p>
-<p>其他部分沒有改變，將專案建置好後，開啟兩個訂閱者程式，然後執行Sender.exe以fanout模式送出一個訊息，就可以看到兩個視窗幾乎同時收到該訊息，且進行處理。<br><img src="../images/rbq3exg.gif" alt=""></p>
-<h3 id="程式範例檔"><a href="#程式範例檔" class="headerlink" title="程式範例檔"></a>程式範例檔</h3><p>完整的範例檔放在這 <a href="https://github.com/myctw/SampleCodes/tree/master/RabbitMQ/3.Publish%2CSubscribe" target="_blank" rel="noopener">範例</a>，有興趣的可以自行下載。</p>
-
+<h3 id="安裝Mysql"><a href="#安裝Mysql" class="headerlink" title="安裝Mysql"></a>安裝Mysql</h3><p>這個基本上毫無難度，除非不熟mac的使用者可能會需要學習如何安裝程式。<br>特別要注意的是安裝後要從“系統偏好設定”裡面開MySql的服務，如果沒看到的話，就重啟OS即可。</p>
+<p><img src="../images/DotNetCore_MysqlConn_1.png" alt=""><br><img src="../images/DotNetCore_MysqlConn_2.png" alt=""></p>
+<p>習慣使用指令的人也可以直接到安裝目錄開啟<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># cd /usr/local/mysql/bin</span><br><span class="line"># sudo ./mysql -u root -p</span><br></pre></td></tr></table></figure></p>
+<h3 id="建立資料庫-資料表與資料"><a href="#建立資料庫-資料表與資料" class="headerlink" title="建立資料庫/資料表與資料"></a>建立資料庫/資料表與資料</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">create database TestConn;</span><br><span class="line">use TestConn;</span><br><span class="line">create table Connection(ConnStr varchar(100), Remark varchar(100));</span><br><span class="line"></span><br><span class="line">insert Connection(Connstr, remark) values(&apos;conn1&apos;, &apos;remark1&apos;);</span><br><span class="line">insert Connection(Connstr, remark) values(&apos;conn2&apos;, &apos;remark2&apos;);</span><br></pre></td></tr></table></figure>
+<p><img src="../images/DotNetCore_MysqlConn_3.png" alt=""><br><img src="../images/DotNetCore_MysqlConn_4.png" alt=""><br><img src="../images/DotNetCore_MysqlConn_5.png" alt=""><br><img src="../images/DotNetCore_MysqlConn_6.png" alt=""></p>
+<h3 id="C-連線至DB取資料"><a href="#C-連線至DB取資料" class="headerlink" title="C# 連線至DB取資料"></a>C# 連線至DB取資料</h3><p>首先在專案的設定檔建立連線字串<br>建好就可以執行以下程式碼連線到ＤＢ取資料囉！<br><img src="../images/DotNetCore_MysqlConn_7.png" alt=""><br><img src="../images/DotNetCore_MysqlConn_8.png" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">var configuration = new ConfigurationBuilder()</span><br><span class="line">                .SetBasePath(Directory.GetCurrentDirectory())</span><br><span class="line">                .AddJsonFile(&quot;appsettings.json&quot;)</span><br><span class="line">                .Build();</span><br><span class="line">            </span><br><span class="line">            //Create Connection </span><br><span class="line">            using (var connection = new MySqlConnection</span><br><span class="line">            &#123;</span><br><span class="line">                ConnectionString = configuration.GetConnectionString(&quot;ConnContext&quot;)</span><br><span class="line">            &#125;)</span><br><span class="line">            &#123;</span><br><span class="line">                connection.Open();</span><br><span class="line">                //Prepare query string</span><br><span class="line">                var cmd = new MySqlCommand(&quot;SELECT * FROM Connection;&quot;, connection);</span><br><span class="line">                //Read data</span><br><span class="line">                using (var rdr = cmd.ExecuteReader())</span><br><span class="line">                &#123;</span><br><span class="line">                    while (rdr.Read())</span><br><span class="line">                    &#123;</span><br><span class="line">                        var row = $&quot;&#123;rdr[&quot;ConnStr&quot;]&#125;\t\t&#123;rdr[&quot;Remark&quot;]&#125;&quot;;</span><br><span class="line">                        Console.WriteLine(row);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                connection.Close();</span><br><span class="line">            &#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -408,11 +409,17 @@
       
         <div class="post-tags">
           
+            <a href="/tags/net-core/" rel="tag"># .net core</a>
+          
             <a href="/tags/c/" rel="tag"># c#</a>
           
-            <a href="/tags/rabbitmq/" rel="tag"># rabbitmq</a>
+            <a href="/tags/mysql/" rel="tag"># mysql</a>
           
-            <a href="/tags/exchange/" rel="tag"># exchange</a>
+            <a href="/tags/dotnet-core/" rel="tag"># dotnet core</a>
+          
+            <a href="/tags/database/" rel="tag"># database</a>
+          
+            <a href="/tags/connection/" rel="tag"># connection</a>
           
         </div>
       
@@ -425,8 +432,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/24/RabbitMQ_4.Routing/" rel="next" title="RabbitMQ Routing功能">
-                <i class="fa fa-chevron-left"></i> RabbitMQ Routing功能
+              <a href="/2019/01/13/DotNetCore_HowtoBuildExe/" rel="next" title=".Net Core 如何建置出.exe檔案">
+                <i class="fa fa-chevron-left"></i> .Net Core 如何建置出.exe檔案
               </a>
             
           </div>
@@ -434,10 +441,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/01/13/DotNetCore_HowtoBuildExe/" rel="prev" title=".Net Core 如何建置出.exe檔案">
-                .Net Core 如何建置出.exe檔案 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -603,7 +606,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#交換器-Exchange-是什麼？"><span class="nav-number">1.</span> <span class="nav-text">交換器(Exchange)是什麼？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#交換器有哪幾種？"><span class="nav-number">2.</span> <span class="nav-text">交換器有哪幾種？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Fanout模式的演示"><span class="nav-number">3.</span> <span class="nav-text">Fanout模式的演示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#程式範例檔"><span class="nav-number">4.</span> <span class="nav-text">程式範例檔</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#環境準備"><span class="nav-number">1.</span> <span class="nav-text">環境準備</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安裝Mysql"><span class="nav-number">1.1.</span> <span class="nav-text">安裝Mysql</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#建立資料庫-資料表與資料"><span class="nav-number">1.2.</span> <span class="nav-text">建立資料庫/資料表與資料</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-連線至DB取資料"><span class="nav-number">1.3.</span> <span class="nav-text">C# 連線至DB取資料</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -773,9 +776,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2018/11/27/RabbitMQ_3.Exchange/';
-          this.page.identifier = '2018/11/27/RabbitMQ_3.Exchange/';
-          this.page.title = 'RabbitMQ 的交換器(Exchange)';
+          this.page.url = 'http://yoursite.com/2019/02/17/DotNetCore_MysqlConn/';
+          this.page.identifier = '2019/02/17/DotNetCore_MysqlConn/';
+          this.page.title = '.Net Core 如何連線至MySql';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://myctw.disqus.com/embed.js';
