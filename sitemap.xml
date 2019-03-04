@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>http://yoursite.com/2019/02/25/DotNetCore_MysqlConn/</loc>
+    
+    <lastmod>2019-02-24T18:11:20.976Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2019/01/13/DotNetCore_HowtoBuildExe/</loc>
+    
+    <lastmod>2019-01-13T09:22:03.891Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/11/22/RabbitMQ_1.HelloWorld/</loc>
+    
+    <lastmod>2018-12-09T17:22:03.427Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/11/27/RabbitMQ_3.Exchange/</loc>
+    
+    <lastmod>2018-11-27T16:44:59.485Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/11/24/RabbitMQ_4.Routing/</loc>
+    
+    <lastmod>2018-11-23T18:09:56.142Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/11/23/RabbitMQ_2.HelloWorld/</loc>
+    
+    <lastmod>2018-11-23T18:08:56.033Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/categories/index.html</loc>
+    
+    <lastmod>2018-11-20T16:55:16.678Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/tags/index.html</loc>
+    
+    <lastmod>2018-11-20T16:54:32.081Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/about/index.html</loc>
+    
+    <lastmod>2018-11-20T16:44:18.955Z</lastmod>
+    
+  </url>
+  
+</urlset>
