@@ -271,6 +271,166 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://myctw.github.io/2019/03/06/CSHARP_Check/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Pattri Chou">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/I.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Forgotten Notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/06/CSHARP_Check/" itemprop="url">C# 中 Checked 語法的功能</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-06T16:47:11+08:00">
+                2019-03-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/c/" itemprop="url" rel="index">
+                    <span itemprop="name">c#</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/03/06/CSHARP_Check/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/03/06/CSHARP_Check/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在這個硬體成本不算高的年代，記憶體的使用通常都略微不那麼謹慎;往往在宣告數字型別時不會太謹慎（還是剛好我遇到的都…），例如只有short 需求卻宣告成 int 這種狀況屢見不鮮。</p>
+<p>若要好好地控制記憶體使用量，避免溢位的需求就要特別注意，尤其這種狀況通常發生在<strong>執行期</strong>，log也可能也無法完整紀錄當時狀況，因此 <strong>Checked</strong> 語法就派上用場了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">short shortNumber = 32767;</span><br><span class="line">Console.WriteLine($&quot;Org short number: &#123;shortNumber&#125;&quot;);</span><br><span class="line">shortNumber += 1;</span><br><span class="line">Console.WriteLine($&quot;Plus 1 to short number:&#123;shortNumber&#125;&quot;);</span><br></pre></td></tr></table></figure>
+<p>顯示結果如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Org short number: 32767</span><br><span class="line">Plus 1 to short number:-32768</span><br></pre></td></tr></table></figure></p>
+<p>明明只有加1卻出現了意想不到的數字。為了避免這種情況發生，可以使用Checked語法來做檢查，至少如果有問題會先彈出exception。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Console.WriteLine($&quot;Plus 1 to short number:&#123;checked(shortNumber+=1)&#125;&quot;);</span><br></pre></td></tr></table></figure></p>
+<p>結果是直接跳出exception並告知以下結果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Unhandled Exception: System.OverflowException: Arithmetic operation resulted in an overflow.</span><br></pre></td></tr></table></figure></p>
+<p>當然我們也可以預先使用try catch來攔截相關的錯誤<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">short shortNumber = 32767;</span><br><span class="line">Console.WriteLine($&quot;Org short number: &#123;shortNumber&#125;&quot;);</span><br><span class="line">try</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine($&quot;Plus 1 to short number:&#123;checked(shortNumber += 1)&#125;&quot;);</span><br><span class="line">&#125;</span><br><span class="line">catch (System.OverflowException e)</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine($&quot;Found overflow exception. Msg:\n&#123;e&#125;&quot;);</span><br><span class="line">&#125;</span><br><span class="line">Console.WriteLine($&quot;Done&quot;);</span><br></pre></td></tr></table></figure></p>
+<p>結果就是毫無懸念的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Org short number: 32767</span><br><span class="line">Found overflow exception. Msg:</span><br><span class="line">System.OverflowException: Arithmetic operation resulted in an overflow.</span><br><span class="line">   at ConsoleAll.Program.Main(String[] args) in /Users/mingyi/Documents/vscode/Practice/ConsoleAll/ConsoleAll/Program.cs:line 13</span><br><span class="line">Done</span><br></pre></td></tr></table></figure></p>
+<p>這語法雖然難度不高，但能夠在執行期多了一層保障，以及更快能夠查到問題的所在。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://myctw.github.io/2019/02/25/DotNetCore_MysqlConn/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1308,7 +1468,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1319,7 +1479,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -1330,7 +1490,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>

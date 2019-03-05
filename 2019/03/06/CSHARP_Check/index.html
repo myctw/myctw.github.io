@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="c#,rabbitmq,">
+  <meta name="keywords" content="c#,checked,">
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="什麼是RabbitMQRabbitMQ是訊息的中介層，可以想像是一個幫你保管、處理的佇列，只要發布者(Publisher)將訊息寫入後，該訊息會被放入指定的佇列，等待接收者(Consumer)的拿取。特性大概有以下幾種：    由Erlang開發 符合進階訊息佇列協定(AMQP) 支援非常多種語言與平台 訊息接收、處理的可靠性 高度靈活的路由功能 高可用性(Availability) 內建監控與管">
-<meta name="keywords" content="c#,rabbitmq">
+<meta name="description" content="在這個硬體成本不算高的年代，記憶體的使用通常都略微不那麼謹慎;往往在宣告數字型別時不會太謹慎（還是剛好我遇到的都…），例如只有short 需求卻宣告成 int 這種狀況屢見不鮮。 若要好好地控制記憶體使用量，避免溢位的需求就要特別注意，尤其這種狀況通常發生在執行期，log也可能也無法完整紀錄當時狀況，因此 Checked 語法就派上用場了。 1234short shortNumber = 3">
+<meta name="keywords" content="c#,checked">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello RabbitMQ">
-<meta property="og:url" content="https://myctw.github.io/2018/11/22/RabbitMQ_1.HelloWorld/index.html">
+<meta property="og:title" content="C# 中 Checked 語法的功能">
+<meta property="og:url" content="https://myctw.github.io/2019/03/06/CSHARP_Check/index.html">
 <meta property="og:site_name" content="Forgotten Notes">
-<meta property="og:description" content="什麼是RabbitMQRabbitMQ是訊息的中介層，可以想像是一個幫你保管、處理的佇列，只要發布者(Publisher)將訊息寫入後，該訊息會被放入指定的佇列，等待接收者(Consumer)的拿取。特性大概有以下幾種：    由Erlang開發 符合進階訊息佇列協定(AMQP) 支援非常多種語言與平台 訊息接收、處理的可靠性 高度靈活的路由功能 高可用性(Availability) 內建監控與管">
+<meta property="og:description" content="在這個硬體成本不算高的年代，記憶體的使用通常都略微不那麼謹慎;往往在宣告數字型別時不會太謹慎（還是剛好我遇到的都…），例如只有short 需求卻宣告成 int 這種狀況屢見不鮮。 若要好好地控制記憶體使用量，避免溢位的需求就要特別注意，尤其這種狀況通常發生在執行期，log也可能也無法完整紀錄當時狀況，因此 Checked 語法就派上用場了。 1234short shortNumber = 3">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-12-09T17:22:03.427Z">
+<meta property="og:updated_time" content="2019-03-05T17:42:56.675Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello RabbitMQ">
-<meta name="twitter:description" content="什麼是RabbitMQRabbitMQ是訊息的中介層，可以想像是一個幫你保管、處理的佇列，只要發布者(Publisher)將訊息寫入後，該訊息會被放入指定的佇列，等待接收者(Consumer)的拿取。特性大概有以下幾種：    由Erlang開發 符合進階訊息佇列協定(AMQP) 支援非常多種語言與平台 訊息接收、處理的可靠性 高度靈活的路由功能 高可用性(Availability) 內建監控與管">
+<meta name="twitter:title" content="C# 中 Checked 語法的功能">
+<meta name="twitter:description" content="在這個硬體成本不算高的年代，記憶體的使用通常都略微不那麼謹慎;往往在宣告數字型別時不會太謹慎（還是剛好我遇到的都…），例如只有short 需求卻宣告成 int 這種狀況屢見不鮮。 若要好好地控制記憶體使用量，避免溢位的需求就要特別注意，尤其這種狀況通常發生在執行期，log也可能也無法完整紀錄當時狀況，因此 Checked 語法就派上用場了。 1234short shortNumber = 3">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://myctw.github.io/2018/11/22/RabbitMQ_1.HelloWorld/">
+  <link rel="canonical" href="https://myctw.github.io/2019/03/06/CSHARP_Check/">
 
 
 
 
 
-  <title>Hello RabbitMQ | Forgotten Notes</title>
+  <title>C# 中 Checked 語法的功能 | Forgotten Notes</title>
   
 
 
@@ -272,7 +272,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://myctw.github.io/2018/11/22/RabbitMQ_1.HelloWorld/">
+    <link itemprop="mainEntityOfPage" href="https://myctw.github.io/2019/03/06/CSHARP_Check/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Pattri Chou">
@@ -289,7 +289,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello RabbitMQ</h1>
+          <h1 class="post-title" itemprop="name headline">C# 中 Checked 語法的功能</h1>
         
 
         <div class="post-meta">
@@ -301,8 +301,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-22T00:47:11+08:00">
-                2018-11-22
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-06T16:47:11+08:00">
+                2019-03-06
               </time>
             
 
@@ -324,8 +324,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/RabbitMQ/" itemprop="url" rel="index">
-                    <span itemprop="name">RabbitMQ</span>
+                  <a href="/categories/c/" itemprop="url" rel="index">
+                    <span itemprop="name">c#</span>
                   </a>
                 </span>
 
@@ -342,8 +342,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/11/22/RabbitMQ_1.HelloWorld/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/11/22/RabbitMQ_1.HelloWorld/" itemprop="commentCount"></span>
+                <a href="/2019/03/06/CSHARP_Check/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/03/06/CSHARP_Check/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -371,46 +371,15 @@
       
 
       
-        <h1 id="什麼是RabbitMQ"><a href="#什麼是RabbitMQ" class="headerlink" title="什麼是RabbitMQ"></a>什麼是RabbitMQ</h1><p>RabbitMQ是訊息的中介層，可以想像是一個幫你保管、處理的佇列，只要發布者(Publisher)將訊息寫入後，該訊息會被放入指定的佇列，等待接收者(Consumer)的拿取。<br>特性大概有以下幾種：  </p>
-<ul>
-<li>由Erlang開發</li>
-<li>符合進階訊息佇列協定(AMQP)</li>
-<li>支援非常多種語言與平台</li>
-<li>訊息接收、處理的可靠性</li>
-<li>高度靈活的路由功能</li>
-<li>高可用性(Availability)</li>
-<li>內建監控與管理介面</li>
-<li>可建立集群，提昇資料安全與服務不中斷</li>
-<li>提供各種插件(plugin)靈活運用</li>
-</ul>
-<p>細節會在日後的文章陸續揭露或探討，而安裝方法非常簡單，網路上也有很多範例就不在這邊贅述了。<br>本文所使用的程式語言是 .NET Framework C#</p>
-<h1 id="Hello-RabbitMQ"><a href="#Hello-RabbitMQ" class="headerlink" title="Hello RabbitMQ"></a>Hello RabbitMQ</h1><p>如果是.net core使用者須先建立專案，這邊以console模式當範例，依序建立兩個專案並進入專案加入RabbitMQ.Client package<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">dotnet new console -n Sender</span><br><span class="line">cd Sender/</span><br><span class="line">dotnet add package RabbitMQ.Client</span><br><span class="line">cd ..</span><br><span class="line">dotnet new console -n Receiver</span><br><span class="line">cd Receiver/</span><br><span class="line">dotnet add package RabbitMQ.Client</span><br></pre></td></tr></table></figure></p>
-<h2 id="撰寫Publisher-範例命名為Sender"><a href="#撰寫Publisher-範例命名為Sender" class="headerlink" title="撰寫Publisher (範例命名為Sender)"></a>撰寫Publisher (範例命名為Sender)</h2><ol>
-<li><p>建立連線的物件，hostname目前都是在本機所以localhost即，ＵserName與Ｐassword則需要另外建立。<br>若是剛安裝好，預設是guest/guest為唯一且admin帳號。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var factory = new ConnectionFactory() </span><br><span class="line">&#123; HostName = &quot;localhost&quot;, UserName = &quot;admin&quot;, Password = &quot;pass123&quot; &#125;;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>建立連線作用域</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">using (var connection = factory.CreateConnection())</span><br><span class="line">&#123;</span><br><span class="line">    using (var channel = connection.CreateModel())</span><br><span class="line">    &#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>宣告名稱為 <strong>hello</strong> 的佇列以存放訊息</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">channel.QueueDeclare(queue: &quot;hello&quot;,</span><br><span class="line">    durable: false,</span><br><span class="line">    exclusive: false,</span><br><span class="line">    autoDelete: false,</span><br><span class="line">    arguments: null</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>建立訊息</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var message = $&quot;Hello RabbitMQ. &#123;DateTime.Now.ToString(&quot;yyyy/MM/dd HH:mm:ss.fff&quot;)&#125;&quot;;</span><br><span class="line">var body = Encoding.UTF8.GetBytes(message);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>發布訊息到 hello 訊息佇列</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">channel.BasicPublish(exchange: &quot;&quot;,</span><br><span class="line">    routingKey: &quot;hello&quot;,</span><br><span class="line">    basicProperties: null,</span><br><span class="line">    body: body</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>到這邊就完成發布者發布訊息的功能了。</p>
-<h2 id="撰寫接收者程式-範例命名為Receiver"><a href="#撰寫接收者程式-範例命名為Receiver" class="headerlink" title="撰寫接收者程式 (範例命名為Receiver)"></a>撰寫接收者程式 (範例命名為Receiver)</h2><ol>
-<li>步驟 1,2,3 與發布者相同，都是建立連線物件與宣告佇列名稱</li>
-<li>建立委派接收到訊息的事件<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var consumer = new EventingBasicConsumer(channel);</span><br><span class="line">consumer.Received += (model, ea) =&gt;</span><br><span class="line">&#123;</span><br><span class="line">    var body = ea.Body;</span><br><span class="line">    var message = Encoding.UTF8.GetString(body);</span><br><span class="line">    Console.WriteLine(&quot;Received &#123;0&#125;&quot;, message);</span><br><span class="line">&#125;;</span><br><span class="line">channel.BasicConsume(queue: &quot;hello&quot;,</span><br><span class="line">                        autoAck: true,</span><br><span class="line">                        consumer: consumer);</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>依序是將收到的內容先做UTF8編碼，接著印出訊息內容<br>最後的BasicConsume則是回覆給哪個訊息佇列、自動回覆、由那個接收者所回覆的。</p>
-<p>Hello RabbitMQ 程式基本上就完成了。</p>
-<h1 id="程式範例檔"><a href="#程式範例檔" class="headerlink" title="程式範例檔"></a>程式範例檔</h1><p>完整的範例檔放在這 <a href="https://github.com/myctw/SampleCodes/tree/master/RabbitMQ/1.Helloworld" target="_blank" rel="noopener">範例</a>，有興趣的可以自行下載。<br>裡面是一個方案，接收者與發佈者分別為兩個Console專案，編譯後可分別執行.exe檔案來查看結果，只要receiver沒有關閉，都能夠收到發布者的訊息。</p>
+        <p>在這個硬體成本不算高的年代，記憶體的使用通常都略微不那麼謹慎;往往在宣告數字型別時不會太謹慎（還是剛好我遇到的都…），例如只有short 需求卻宣告成 int 這種狀況屢見不鮮。</p>
+<p>若要好好地控制記憶體使用量，避免溢位的需求就要特別注意，尤其這種狀況通常發生在<strong>執行期</strong>，log也可能也無法完整紀錄當時狀況，因此 <strong>Checked</strong> 語法就派上用場了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">short shortNumber = 32767;</span><br><span class="line">Console.WriteLine($&quot;Org short number: &#123;shortNumber&#125;&quot;);</span><br><span class="line">shortNumber += 1;</span><br><span class="line">Console.WriteLine($&quot;Plus 1 to short number:&#123;shortNumber&#125;&quot;);</span><br></pre></td></tr></table></figure>
+<p>顯示結果如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Org short number: 32767</span><br><span class="line">Plus 1 to short number:-32768</span><br></pre></td></tr></table></figure></p>
+<p>明明只有加1卻出現了意想不到的數字。為了避免這種情況發生，可以使用Checked語法來做檢查，至少如果有問題會先彈出exception。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Console.WriteLine($&quot;Plus 1 to short number:&#123;checked(shortNumber+=1)&#125;&quot;);</span><br></pre></td></tr></table></figure></p>
+<p>結果是直接跳出exception並告知以下結果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Unhandled Exception: System.OverflowException: Arithmetic operation resulted in an overflow.</span><br></pre></td></tr></table></figure></p>
+<p>當然我們也可以預先使用try catch來攔截相關的錯誤<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">short shortNumber = 32767;</span><br><span class="line">Console.WriteLine($&quot;Org short number: &#123;shortNumber&#125;&quot;);</span><br><span class="line">try</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine($&quot;Plus 1 to short number:&#123;checked(shortNumber += 1)&#125;&quot;);</span><br><span class="line">&#125;</span><br><span class="line">catch (System.OverflowException e)</span><br><span class="line">&#123;</span><br><span class="line">    Console.WriteLine($&quot;Found overflow exception. Msg:\n&#123;e&#125;&quot;);</span><br><span class="line">&#125;</span><br><span class="line">Console.WriteLine($&quot;Done&quot;);</span><br></pre></td></tr></table></figure></p>
+<p>結果就是毫無懸念的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Org short number: 32767</span><br><span class="line">Found overflow exception. Msg:</span><br><span class="line">System.OverflowException: Arithmetic operation resulted in an overflow.</span><br><span class="line">   at ConsoleAll.Program.Main(String[] args) in /Users/mingyi/Documents/vscode/Practice/ConsoleAll/ConsoleAll/Program.cs:line 13</span><br><span class="line">Done</span><br></pre></td></tr></table></figure></p>
+<p>這語法雖然難度不高，但能夠在執行期多了一層保障，以及更快能夠查到問題的所在。</p>
 
       
     </div>
@@ -430,7 +399,7 @@
           
             <a href="/tags/c/" rel="tag"># c#</a>
           
-            <a href="/tags/rabbitmq/" rel="tag"># rabbitmq</a>
+            <a href="/tags/checked/" rel="tag"># checked</a>
           
         </div>
       
@@ -443,15 +412,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/02/25/DotNetCore_MysqlConn/" rel="next" title=".Net Core 如何連線至MySql">
+                <i class="fa fa-chevron-left"></i> .Net Core 如何連線至MySql
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/11/23/RabbitMQ_2.HelloWorld/" rel="prev" title="RabbitMQ queue">
-                RabbitMQ queue <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -513,17 +482,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -607,22 +567,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#什麼是RabbitMQ"><span class="nav-number">1.</span> <span class="nav-text">什麼是RabbitMQ</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hello-RabbitMQ"><span class="nav-number">2.</span> <span class="nav-text">Hello RabbitMQ</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#撰寫Publisher-範例命名為Sender"><span class="nav-number">2.1.</span> <span class="nav-text">撰寫Publisher (範例命名為Sender)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#撰寫接收者程式-範例命名為Receiver"><span class="nav-number">2.2.</span> <span class="nav-text">撰寫接收者程式 (範例命名為Receiver)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#程式範例檔"><span class="nav-number">3.</span> <span class="nav-text">程式範例檔</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -787,9 +731,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'https://myctw.github.io/2018/11/22/RabbitMQ_1.HelloWorld/';
-          this.page.identifier = '2018/11/22/RabbitMQ_1.HelloWorld/';
-          this.page.title = 'Hello RabbitMQ';
+          this.page.url = 'https://myctw.github.io/2019/03/06/CSHARP_Check/';
+          this.page.identifier = '2019/03/06/CSHARP_Check/';
+          this.page.title = 'C# 中 Checked 語法的功能';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://myctw.disqus.com/embed.js';
