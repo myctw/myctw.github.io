@@ -87,12 +87,12 @@
 <meta property="og:site_name" content="Forgotten Notes">
 <meta property="og:description" content="交換器(Exchange)是什麼？當訊息寫入RabbitMQ時，並非直接將訊息寫入佇列中，而是透過交換器(Exchange)將訊息正確分派到佇列中，而依據就是訊息自帶的RouteKey是否與BindKey相符合；若完全沒有符合的佇列，則會自動遺棄該訊息。 交換器有哪幾種？常用的交換器有四種 Direct, Fanout, Topic and Headers.  Direct: 預設的模式，即直接將">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://myctw.github.io/2018/11/27/images/rbq3exg.gif">
-<meta property="og:updated_time" content="2018-11-27T16:44:59.485Z">
+<meta property="og:image" content="https://myctw.github.io/images/rbq3exg.gif">
+<meta property="og:updated_time" content="2019-03-05T16:30:38.882Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RabbitMQ 的交換器(Exchange)">
 <meta name="twitter:description" content="交換器(Exchange)是什麼？當訊息寫入RabbitMQ時，並非直接將訊息寫入佇列中，而是透過交換器(Exchange)將訊息正確分派到佇列中，而依據就是訊息自帶的RouteKey是否與BindKey相符合；若完全沒有符合的佇列，則會自動遺棄該訊息。 交換器有哪幾種？常用的交換器有四種 Direct, Fanout, Topic and Headers.  Direct: 預設的模式，即直接將">
-<meta name="twitter:image" content="https://myctw.github.io/2018/11/27/images/rbq3exg.gif">
+<meta name="twitter:image" content="https://myctw.github.io/images/rbq3exg.gif">
 
 
 
@@ -389,7 +389,7 @@
 </li>
 </ul>
 <h3 id="Fanout模式的演示"><a href="#Fanout模式的演示" class="headerlink" title="Fanout模式的演示"></a>Fanout模式的演示</h3><p>首先我們在宣告Exchange時將type指定為 “fanout”，當然在訂閱端也是需要的，程式碼一樣就不再貼上。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">channel.ExchangeDeclare(exchange: &quot;logs&quot;, type:&quot;fanout&quot;);</span><br></pre></td></tr></table></figure></p>
-<p>其他部分沒有改變，將專案建置好後，開啟兩個訂閱者程式，然後執行Sender.exe以fanout模式送出一個訊息，就可以看到兩個視窗幾乎同時收到該訊息，且進行處理。<br><img src="../images/rbq3exg.gif" alt=""></p>
+<p>其他部分沒有改變，將專案建置好後，開啟兩個訂閱者程式，然後執行Sender.exe以fanout模式送出一個訊息，就可以看到兩個視窗幾乎同時收到該訊息，且進行處理。<br><img src="/images/rbq3exg.gif" alt=""></p>
 <h3 id="程式範例檔"><a href="#程式範例檔" class="headerlink" title="程式範例檔"></a>程式範例檔</h3><p>完整的範例檔放在這 <a href="https://github.com/myctw/SampleCodes/tree/master/RabbitMQ/3.Publish%2CSubscribe" target="_blank" rel="noopener">範例</a>，有興趣的可以自行下載。</p>
 
       

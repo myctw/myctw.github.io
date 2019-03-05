@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://myctw.github.io/2018/11/24/RabbitMQ_4.Routing/</loc>
+    
+    <lastmod>2019-03-05T16:31:11.280Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://myctw.github.io/2018/11/27/RabbitMQ_3.Exchange/</loc>
+    
+    <lastmod>2019-03-05T16:30:38.882Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://myctw.github.io/2019/02/25/DotNetCore_MysqlConn/</loc>
     
     <lastmod>2019-03-05T16:29:36.659Z</lastmod>
@@ -19,20 +33,6 @@
     <loc>https://myctw.github.io/2018/11/22/RabbitMQ_1.HelloWorld/</loc>
     
     <lastmod>2018-12-09T17:22:03.427Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://myctw.github.io/2018/11/27/RabbitMQ_3.Exchange/</loc>
-    
-    <lastmod>2018-11-27T16:44:59.485Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://myctw.github.io/2018/11/24/RabbitMQ_4.Routing/</loc>
-    
-    <lastmod>2018-11-23T18:09:56.142Z</lastmod>
     
   </url>
   
