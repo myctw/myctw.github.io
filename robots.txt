@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Allow: /about/
+Allow: /archives/
+Allow: /categories/
+Allow: /tags/ 
+sitemap: https://myctw.github.io/sitemap.xml
