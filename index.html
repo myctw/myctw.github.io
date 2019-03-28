@@ -281,6 +281,175 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://myctw.github.io/2019/03/29/zshrc/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Pattri Chou">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/I.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Forgotten Notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/29/zshrc/" itemprop="url">macOS下編輯自己的快速指令</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-29T01:00:11+08:00">
+                2019-03-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/tool/" itemprop="url" rel="index">
+                    <span itemprop="name">tool</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/03/29/zshrc/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/03/29/zshrc/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="人的進步始終來自惰性"><a href="#人的進步始終來自惰性" class="headerlink" title="人的進步始終來自惰性"></a>人的進步始終來自惰性</h2><p>最近看到同事的一指令同步所有repo覺得很神奇，當時僅有這樣的感覺。後來在工作上一直重複得打一些指令覺得很阿雜，心想為什麼我要一直做這種事情，其實滿腦子根本已經是那個神奇的alias的形狀了，於是我就開始編輯屬於自己的alias囉！</p>
+<h2 id="必備工具"><a href="#必備工具" class="headerlink" title="必備工具"></a>必備工具</h2><p>zsh<br>Oh My Zsh(optional)</p>
+<h2 id="開始編輯alias"><a href="#開始編輯alias" class="headerlink" title="開始編輯alias"></a>開始編輯alias</h2><p>檔案位置在使用者帳號底下，檔名 .zshrc</p>
+<p>###開啟檔案<br>我們使用vi指令開啟，並拉到最下面，按下 i 開始編輯<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># vi ~/.zshrc</span><br></pre></td></tr></table></figure></p>
+<p>這邊其實就已經有給你範例了，把註解#拿掉就是一個別名。<br><img src="/images/zshrc-1.png" alt="">  </p>
+<p>我們這邊用快速取得客製化時間格式來當範例<br>一般的date指令格式不習慣，我只需要年月日的話總不能每次都這樣打<br><img src="/images/zshrc-2.png" alt=""><br>於是設定了以下別名，就叫做getdate好了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># alias getdate=&quot;echo $(date +&quot;%Y/%m/%d&quot;)&quot;</span><br></pre></td></tr></table></figure></p>
+<h3 id="存擋"><a href="#存擋" class="headerlink" title="存擋"></a>存擋</h3><p>編輯完後按 esc，輸入 :wq 再按下enter即可儲存</p>
+<h3 id="重載zshrc檔案"><a href="#重載zshrc檔案" class="headerlink" title="重載zshrc檔案"></a>重載zshrc檔案</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># source ~/.zshrc</span><br></pre></td></tr></table></figure>
+<p>接著就可以享受成果囉！<br>我使用了<strong>refcfg</strong>指令也是設定好的別名，在下面的範例就會看到。<br><img src="/images/zshrc-3.png" alt=""></p>
+<p>每個人的使用習慣與需求都不同，但一定都會有很多冗長的指令需要重複輸入或操作的，使用alias會讓我們在工作上方便很多很多。</p>
+<p>下面分享一些我自己的設定<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"># zshrc</span><br><span class="line"># 使用vscode開啟.zshrc</span><br><span class="line">alias cfgzsh=&quot;code ~/.zshrc&quot;</span><br><span class="line"># 重載.zshrc</span><br><span class="line">alias refzsh=&quot;source ~/.zshrc&quot;</span><br><span class="line"></span><br><span class="line"># docker</span><br><span class="line">alias dk=&quot;docker&quot;</span><br><span class="line">alias dc=&quot;docker-compose&quot;</span><br><span class="line"></span><br><span class="line"># dotnet</span><br><span class="line">alias dn=&quot;dotnet&quot;</span><br><span class="line">alias dnb=&quot;dotnet build&quot;</span><br><span class="line">alias dnr=&quot;dotnet run&quot;</span><br><span class="line"></span><br><span class="line"># Private Github Misc repo</span><br><span class="line"># 一指令push到私有倉庫，並且使用當下的時間作為commis message</span><br><span class="line">alias pushmisc=&quot;cd /Users/pattri.chou/Documents/private/git &amp;&amp; git add . &amp;&amp; git commit -m &quot;$(date +&quot;%Y/%m/%dT%H:%M:%S&quot;)&quot;  &amp;&amp; git push -u origin master&quot; </span><br><span class="line"># 一指令pull</span><br><span class="line">alias synmisc=&quot;cd /Users/pattri.chou/Documents/private/git &amp;&amp; git pull&quot;</span><br><span class="line"></span><br><span class="line"># 未來一個指令同步多個專案用的</span><br><span class="line">alias syncpall=&quot;syncmi&quot;</span><br></pre></td></tr></table></figure></p>
+<h2 id="code-指令"><a href="#code-指令" class="headerlink" title="code 指令"></a>code 指令</h2><p>其實就是使用 visual studio code 來開啟，那要怎麼做呢？雖然有指令，不過我還蠻懶惰的，有GUI點一兩下就好了。</p>
+<ol>
+<li>首先打開 visual studio code</li>
+<li>同時按 command+shift+p  (⌘⇧P)</li>
+<li>輸入 shell</li>
+<li>點擊 “Install ‘code’ command in PATH” 就大功告成啦<br><img src="/images/zshrc-4.png" alt=""></li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://myctw.github.io/2019/03/19/Architecture_C4/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1646,7 +1815,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1657,7 +1826,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -1668,7 +1837,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
