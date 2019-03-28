@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://myctw.github.io/about/index.html</loc>
+    
+    <lastmod>2019-03-28T17:24:30.183Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://myctw.github.io/2019/03/29/zshrc/</loc>
     
     <lastmod>2019-03-28T17:07:12.405Z</lastmod>
@@ -75,13 +82,6 @@
     <loc>https://myctw.github.io/tags/index.html</loc>
     
     <lastmod>2018-11-20T16:54:32.081Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://myctw.github.io/about/index.html</loc>
-    
-    <lastmod>2018-11-20T16:44:18.955Z</lastmod>
     
   </url>
   
