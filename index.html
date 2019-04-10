@@ -281,6 +281,329 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://myctw.github.io/2019/04/11/gRPC_CSharp_bug/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Pattri Chou">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/I.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Forgotten Notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/11/gRPC_CSharp_bug/" itemprop="url">gRPC Tool 產生 .cs 檔案的小bug</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-11T00:13:11+08:00">
+                2019-04-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/gRPC/" itemprop="url" rel="index">
+                    <span itemprop="name">gRPC</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/04/11/gRPC_CSharp_bug/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/04/11/gRPC_CSharp_bug/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>今天在做一個需求時，使用 gRPC/protobuf 工具產生 .cs 檔案發現一個小bug，雖然不是很嚴重，不過還是記錄一下。</p>
+<h2 id="狀況"><a href="#狀況" class="headerlink" title="狀況"></a>狀況</h2><ul>
+<li>條件：.proto 檔案名稱帶有數字、數字後的第一個字母是英文且小寫</li>
+<li>BUG：產生出來的 .cs 檔名，在數字後的第一個英文字母會強制變成大寫</li>
+</ul>
+<p>例如今天建立一個檔案叫做 <strong>Number1test.proto</strong> 的檔案，經過 gRPC Tool 產生出來的 service 檔案預期會是 <strong>Number1test.cs</strong>，但結果卻是 <strong>Number1Test.cs</strong>。</p>
+<p>注意到了嗎？在 1 後面的 t 應該會是小寫的，卻會變成大寫 T。</p>
+<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>強者我同事馬上上github找到這段 <a href="https://github.com/grpc/grpc/blob/master/src/csharp/Grpc.Tools/GeneratorServices.cs#L115" target="_blank" rel="noopener">source code</a> 並且發現 bug 囉！</p>
+<p>在善心人士修復之前就要特別注意這個部分</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://myctw.github.io/2019/04/10/mongodb_1/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Pattri Chou">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/I.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Forgotten Notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/10/mongodb_1/" itemprop="url">macOS 安裝MongoDB</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-10T23:30:11+08:00">
+                2019-04-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Database/" itemprop="url" rel="index">
+                    <span itemprop="name">Database</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/04/10/mongodb_1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/04/10/mongodb_1/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>嗯..這篇文章筆記性質很重，因為工作上需要就順便記錄一下流程以及可能遇到的問題。</p>
+<h2 id="安裝"><a href="#安裝" class="headerlink" title="安裝"></a>安裝</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install mongodb</span><br></pre></td></tr></table></figure>
+<p>真的就這樣！<br>好吧！我有先安裝 <a href="https://brew.sh/" target="_blank" rel="noopener">HomeBrew</a> 這個套件，相信 macOS 使用者應該都知道，這個套件能處理相依性的問題，若有使用linux like 的應該很能體會各種套件相依性的難搞。<br>BTW，不需要特別先 brew update，因為使用 brew 就會先執行 update 指令囉。</p>
+<h2 id="啟動mongodb前準備"><a href="#啟動mongodb前準備" class="headerlink" title="啟動mongodb前準備"></a>啟動mongodb前準備</h2><p>MongoDB預設的DB路徑是 /data/db，所以要先配合建立這個資料夾，並賦予權限。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir -p /data/db</span><br><span class="line">sudo chown pattrichou /data/db  //pattrichou請自行替換成你的使用者名字</span><br><span class="line">mongod  //啟動</span><br></pre></td></tr></table></figure></p>
+<p>小提醒：你可以使用 <strong>whoami</strong> 指令來查詢使用者名稱</p>
+<p>如果你不是想使用預設的路徑，可以透過 –dbpath 參數來指定DB路徑<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongod --dbpath &lt;your own path&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="啟動失敗排除"><a href="#啟動失敗排除" class="headerlink" title="啟動失敗排除"></a>啟動失敗排除</h2><p>這就要仔細看一下terminal怎麼說了。<br>例如遇到port已經被佔用，這時候要查一下PID是多少再把它刪除<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsof -i :27017 //default mongodb port</span><br></pre></td></tr></table></figure></p>
+<p>取得PID後再把它刪除<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kill -9 xxxx //xxxx為PID</span><br></pre></td></tr></table></figure></p>
+<p>之後再次執行mongod即可運行</p>
+<h2 id="每次都要開terminal啟動mongo好累"><a href="#每次都要開terminal啟動mongo好累" class="headerlink" title="每次都要開terminal啟動mongo好累"></a>每次都要開terminal啟動mongo好累</h2><p>這時候 Homebrew 就扮演很重要角色<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew services list  //列出所有可用 service</span><br></pre></td></tr></table></figure></p>
+<p>找到mongodb 啟動他即可<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew services start mongodb</span><br></pre></td></tr></table></figure></p>
+<p>mongodb 安裝差不多就是這樣了，沒有太多困難或要注意的事項</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://myctw.github.io/2019/03/29/zshrc/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -300,7 +623,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/03/29/zshrc/" itemprop="url">macOS下編輯自己的快速指令</a></h1>
+                <a class="post-title-link" href="/2019/03/29/zshrc/" itemprop="url">macOS 編輯自己的快速指令</a></h1>
         
 
         <div class="post-meta">
@@ -672,8 +995,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/c/" itemprop="url" rel="index">
-                    <span itemprop="name">c#</span>
+                  <a href="/categories/DotNet/" itemprop="url" rel="index">
+                    <span itemprop="name">DotNet</span>
                   </a>
                 </span>
 
@@ -832,8 +1155,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/NetCore/" itemprop="url" rel="index">
-                    <span itemprop="name">.NetCore</span>
+                  <a href="/categories/DotNet/" itemprop="url" rel="index">
+                    <span itemprop="name">DotNet</span>
                   </a>
                 </span>
 
@@ -995,8 +1318,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/NetCore/" itemprop="url" rel="index">
-                    <span itemprop="name">.NetCore</span>
+                  <a href="/categories/DotNet/" itemprop="url" rel="index">
+                    <span itemprop="name">DotNet</span>
                   </a>
                 </span>
 
@@ -1576,200 +1899,13 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://myctw.github.io/2018/11/22/RabbitMQ_1.HelloWorld/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Pattri Chou">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/I.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Forgotten Notes">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/22/RabbitMQ_1.HelloWorld/" itemprop="url">Hello RabbitMQ</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-22T00:47:11+08:00">
-                2018-11-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/RabbitMQ/" itemprop="url" rel="index">
-                    <span itemprop="name">RabbitMQ</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/11/22/RabbitMQ_1.HelloWorld/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/11/22/RabbitMQ_1.HelloWorld/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="什麼是RabbitMQ"><a href="#什麼是RabbitMQ" class="headerlink" title="什麼是RabbitMQ"></a>什麼是RabbitMQ</h1><p>RabbitMQ是訊息的中介層，可以想像是一個幫你保管、處理的佇列，只要發布者(Publisher)將訊息寫入後，該訊息會被放入指定的佇列，等待接收者(Consumer)的拿取。<br>特性大概有以下幾種：  </p>
-<ul>
-<li>由Erlang開發</li>
-<li>符合進階訊息佇列協定(AMQP)</li>
-<li>支援非常多種語言與平台</li>
-<li>訊息接收、處理的可靠性</li>
-<li>高度靈活的路由功能</li>
-<li>高可用性(Availability)</li>
-<li>內建監控與管理介面</li>
-<li>可建立集群，提昇資料安全與服務不中斷</li>
-<li>提供各種插件(plugin)靈活運用</li>
-</ul>
-<p>細節會在日後的文章陸續揭露或探討，而安裝方法非常簡單，網路上也有很多範例就不在這邊贅述了。<br>本文所使用的程式語言是 .NET Framework C#</p>
-<h1 id="Hello-RabbitMQ"><a href="#Hello-RabbitMQ" class="headerlink" title="Hello RabbitMQ"></a>Hello RabbitMQ</h1><p>如果是.net core使用者須先建立專案，這邊以console模式當範例，依序建立兩個專案並進入專案加入RabbitMQ.Client package<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">dotnet new console -n Sender</span><br><span class="line">cd Sender/</span><br><span class="line">dotnet add package RabbitMQ.Client</span><br><span class="line">cd ..</span><br><span class="line">dotnet new console -n Receiver</span><br><span class="line">cd Receiver/</span><br><span class="line">dotnet add package RabbitMQ.Client</span><br></pre></td></tr></table></figure></p>
-<h2 id="撰寫Publisher-範例命名為Sender"><a href="#撰寫Publisher-範例命名為Sender" class="headerlink" title="撰寫Publisher (範例命名為Sender)"></a>撰寫Publisher (範例命名為Sender)</h2><ol>
-<li><p>建立連線的物件，hostname目前都是在本機所以localhost即，ＵserName與Ｐassword則需要另外建立。<br>若是剛安裝好，預設是guest/guest為唯一且admin帳號。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var factory = new ConnectionFactory() </span><br><span class="line">&#123; HostName = &quot;localhost&quot;, UserName = &quot;admin&quot;, Password = &quot;pass123&quot; &#125;;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>建立連線作用域</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">using (var connection = factory.CreateConnection())</span><br><span class="line">&#123;</span><br><span class="line">    using (var channel = connection.CreateModel())</span><br><span class="line">    &#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>宣告名稱為 <strong>hello</strong> 的佇列以存放訊息</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">channel.QueueDeclare(queue: &quot;hello&quot;,</span><br><span class="line">    durable: false,</span><br><span class="line">    exclusive: false,</span><br><span class="line">    autoDelete: false,</span><br><span class="line">    arguments: null</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>建立訊息</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var message = $&quot;Hello RabbitMQ. &#123;DateTime.Now.ToString(&quot;yyyy/MM/dd HH:mm:ss.fff&quot;)&#125;&quot;;</span><br><span class="line">var body = Encoding.UTF8.GetBytes(message);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>發布訊息到 hello 訊息佇列</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">channel.BasicPublish(exchange: &quot;&quot;,</span><br><span class="line">    routingKey: &quot;hello&quot;,</span><br><span class="line">    basicProperties: null,</span><br><span class="line">    body: body</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>到這邊就完成發布者發布訊息的功能了。</p>
-<h2 id="撰寫接收者程式-範例命名為Receiver"><a href="#撰寫接收者程式-範例命名為Receiver" class="headerlink" title="撰寫接收者程式 (範例命名為Receiver)"></a>撰寫接收者程式 (範例命名為Receiver)</h2><ol>
-<li>步驟 1,2,3 與發布者相同，都是建立連線物件與宣告佇列名稱</li>
-<li>建立委派接收到訊息的事件<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var consumer = new EventingBasicConsumer(channel);</span><br><span class="line">consumer.Received += (model, ea) =&gt;</span><br><span class="line">&#123;</span><br><span class="line">    var body = ea.Body;</span><br><span class="line">    var message = Encoding.UTF8.GetString(body);</span><br><span class="line">    Console.WriteLine(&quot;Received &#123;0&#125;&quot;, message);</span><br><span class="line">&#125;;</span><br><span class="line">channel.BasicConsume(queue: &quot;hello&quot;,</span><br><span class="line">                        autoAck: true,</span><br><span class="line">                        consumer: consumer);</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>依序是將收到的內容先做UTF8編碼，接著印出訊息內容<br>最後的BasicConsume則是回覆給哪個訊息佇列、自動回覆、由那個接收者所回覆的。</p>
-<p>Hello RabbitMQ 程式基本上就完成了。</p>
-<h1 id="程式範例檔"><a href="#程式範例檔" class="headerlink" title="程式範例檔"></a>程式範例檔</h1><p>完整的範例檔放在這 <a href="https://github.com/myctw/SampleCodes/tree/master/RabbitMQ/1.Helloworld" target="_blank" rel="noopener">範例</a>，有興趣的可以自行下載。<br>裡面是一個方案，接收者與發佈者分別為兩個Console專案，編譯後可分別執行.exe檔案來查看結果，只要receiver沒有關閉，都能夠收到發布者的訊息。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>
@@ -1815,7 +1951,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1826,7 +1962,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -1837,7 +1973,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
