@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://myctw.github.io/2019/04/12/Docker-compose_port_expose/</loc>
+    
+    <lastmod>2019-04-11T17:34:03.695Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://myctw.github.io/2019/04/11/gRPC_CSharp_bug/</loc>
     
     <lastmod>2019-04-10T16:21:57.350Z</lastmod>

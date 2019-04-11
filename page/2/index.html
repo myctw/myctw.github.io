@@ -281,6 +281,167 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://myctw.github.io/2018/11/23/RabbitMQ_2.HelloWorld/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Pattri Chou">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/I.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Forgotten Notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/23/RabbitMQ_2.HelloWorld/" itemprop="url">RabbitMQ queue</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-23T01:50:11+08:00">
+                2018-11-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/RabbitMQ/" itemprop="url" rel="index">
+                    <span itemprop="name">RabbitMQ</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/11/23/RabbitMQ_2.HelloWorld/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/11/23/RabbitMQ_2.HelloWorld/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="佇列的功能"><a href="#佇列的功能" class="headerlink" title="佇列的功能"></a>佇列的功能</h1><p>當系統已經繁忙逐漸無法及時回應需求，或是需求本身需要一段時間處理，以及複雜的HTTP請求這些狀況都很適合搭配訊息佇列來做處理。<br>這邊用sleep來模擬處理很久的訊息。</p>
+<h2 id="Publisher-範例命名為Sender"><a href="#Publisher-範例命名為Sender" class="headerlink" title="Publisher (範例命名為Sender)"></a>Publisher (範例命名為Sender)</h2><p>基本上與<a href="https://github.com/myctw/SampleCodes/tree/master/RabbitMQ/1.Helloworld" target="_blank" rel="noopener">範例一</a>的內容一樣，就不多著墨。</p>
+<h2 id="Consumer-範例命名為Receiver"><a href="#Consumer-範例命名為Receiver" class="headerlink" title="Consumer (範例命名為Receiver)"></a>Consumer (範例命名為Receiver)</h2><p>為了模擬處理很久的訊息，在收到訊息後將內容逐一字元顯示。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">foreach (var i in message.ToCharArray())</span><br><span class="line">&#123;</span><br><span class="line">    Thread.Sleep(150);</span><br><span class="line">    Console.Write(&quot;&#123;0&#125;&quot;, i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>其他內容也與範例一是相同的，如果有不理解的可以回頭看<a href="https://myctw.github.io/2018/11/22/RabbitMQ_1/">第一篇</a>文章。</p>
+<p>為了更幫助理解，建議可以執行兩個 receiver.exe，再分別多次執行 sender.exe 這樣看以看多個訊息進入佇列後，每個 receiver 在繁忙中如何分配處理。</p>
+<h2 id="訊息處理確認機制-Acknowledgement"><a href="#訊息處理確認機制-Acknowledgement" class="headerlink" title="訊息處理確認機制(Acknowledgement)"></a>訊息處理確認機制(Acknowledgement)</h2><p>RabbitMQ提供每個訊息的回覆機制，啟用這個機制的話，會要求每個Consumer處理完訊息後要告知佇列，若沒有的話則佇列會視為訊息未正確被處理，並且立即由下一個Consumer來處理，直到正確收到回覆為止。</p>
+<h3 id="如何啟用"><a href="#如何啟用" class="headerlink" title="如何啟用?"></a>如何啟用?</h3><p>其實在範例中已經是啟用自動回覆機制，若要關閉自動回覆，則在這個地方將 autoack 參數設定為 false<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">channel.BasicConsume(queue: &quot;hello&quot;,</span><br><span class="line">    autoAck: false ,</span><br><span class="line">    consumer: consumer);</span><br></pre></td></tr></table></figure></p>
+<p>這邊一樣可以試試看開啟兩個 consumer 程式，然後僅執行一次 sender.exe。當第一個Consumer收到訊息且處理完畢後，將它關閉，接著可以看到第二個Consumer馬上收到相同訊息且開始處理。這就是設定了不自動回覆，導致佇列認為Consumer沒有正確處理訊息。<br>所以這邊要自己撰寫回覆佇列的程式。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Console.WriteLine(&quot;Msg handle finished, send acknowledgement now&quot;);</span><br><span class="line">channel.BasicAck(ea.DeliveryTag, false);</span><br></pre></td></tr></table></figure></p>
+<p>如此一來同樣訊息就不會一直被視為未正確處理。</p>
+<h1 id="程式範例檔"><a href="#程式範例檔" class="headerlink" title="程式範例檔"></a>程式範例檔</h1><p>完整的範例檔放在這 <a href="https://github.com/myctw/SampleCodes/tree/master/RabbitMQ/2.WorkQueue" target="_blank" rel="noopener">範例</a>，有興趣的可以自行下載。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://myctw.github.io/2018/11/22/RabbitMQ_1.HelloWorld/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -511,7 +672,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -533,7 +694,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
