@@ -281,6 +281,175 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://myctw.github.io/2018/11/27/RabbitMQ_3.Exchange/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Pattri Chou">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/I.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Forgotten Notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/27/RabbitMQ_3.Exchange/" itemprop="url">RabbitMQ 的交換器(Exchange)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-27T23:50:11+08:00">
+                2018-11-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/RabbitMQ/" itemprop="url" rel="index">
+                    <span itemprop="name">RabbitMQ</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/11/27/RabbitMQ_3.Exchange/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/11/27/RabbitMQ_3.Exchange/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="交換器-Exchange-是什麼？"><a href="#交換器-Exchange-是什麼？" class="headerlink" title="交換器(Exchange)是什麼？"></a>交換器(Exchange)是什麼？</h3><p>當訊息寫入RabbitMQ時，並非直接將訊息寫入佇列中，而是透過交換器(Exchange)將訊息正確分派到佇列中，而依據就是訊息自帶的RouteKey是否與BindKey相符合；若完全沒有符合的佇列，則會自動遺棄該訊息。</p>
+<h3 id="交換器有哪幾種？"><a href="#交換器有哪幾種？" class="headerlink" title="交換器有哪幾種？"></a>交換器有哪幾種？</h3><p>常用的交換器有四種 Direct, Fanout, Topic and Headers.</p>
+<ul>
+<li><strong>Direct</strong>: 預設的模式，即直接將訊息分配到 RouteKey 與 BindKey <strong>完全</strong>相同的佇列上。<br>Case1: BindKey: “<strong>log.info</strong>“<br>log.debug -&gt; 不符合<br>log.info -&gt; 符合<br>log.infomation -&gt; 不符合</li>
+<li><strong>Fanout</strong>: 顧名思義就是將此訊息分配到每一個佇列上，等於是複製了n次。若設定fanout的話會自動忽略 BindKey與RouteKey。</li>
+<li><p><strong>Topic</strong>: Topic是較常用也是靈活度最高的模式，有點像是.net的routing概念，只要符合規格的RouteKey就會被傳遞到正確的queue。<br>特殊符號分別是: * (<strong>一個</strong>任意字)與 # (<strong>零以上</strong>個任意字)。  </p>
+<p>Case1: </p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">BindKey: &quot;*I.am.*&quot;  </span><br><span class="line">I.am.boy -&gt; 符合  </span><br><span class="line">I.am.girl -&gt; 符合  </span><br><span class="line">I.amNot.girl -&gt; 不符合  </span><br><span class="line">I.am.boy.too -&gt;不符合</span><br></pre></td></tr></table></figure>
+<p>Case2:  </p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">BindKey &quot;#.strong&quot;  </span><br><span class="line">He.is.strong -&gt; 符合  </span><br><span class="line">Not.strong -&gt; 符合  </span><br><span class="line">I.am.not.strong.neither -&gt; 不符合</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Headers</strong>: 從訊息中的header與BindKey做批配比較，並寫入queue中。這部分我也很少用，之後有特別研究再來補上怎麼使用。</p>
+<p>使用上的效能當然還是 fanout &gt; direct &gt; topic，但我認為除非在很極端的狀況下，否則比較這個的意義並不大，畢竟工具的使用還是以符合需求為主。<br>另一點要注意的是RouteKey長度限制為255 bytes。</p>
+</li>
+</ul>
+<h3 id="Fanout模式的演示"><a href="#Fanout模式的演示" class="headerlink" title="Fanout模式的演示"></a>Fanout模式的演示</h3><p>首先我們在宣告Exchange時將type指定為 “fanout”，當然在訂閱端也是需要的，程式碼一樣就不再貼上。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">channel.ExchangeDeclare(exchange: &quot;logs&quot;, type:&quot;fanout&quot;);</span><br></pre></td></tr></table></figure></p>
+<p>其他部分沒有改變，將專案建置好後，開啟兩個訂閱者程式，然後執行Sender.exe以fanout模式送出一個訊息，就可以看到兩個視窗幾乎同時收到該訊息，且進行處理。<br><img src="/images/rbq3exg.gif" alt=""></p>
+<h3 id="程式範例檔"><a href="#程式範例檔" class="headerlink" title="程式範例檔"></a>程式範例檔</h3><p>完整的範例檔放在這 <a href="https://github.com/myctw/SampleCodes/tree/master/RabbitMQ/3.Publish%2CSubscribe" target="_blank" rel="noopener">範例</a>，有興趣的可以自行下載。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://myctw.github.io/2018/11/24/RabbitMQ_4.Routing/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -831,7 +1000,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -853,7 +1022,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-count">33</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>

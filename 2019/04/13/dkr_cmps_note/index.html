@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="c#,rabbitmq,routing,">
+  <meta name="keywords" content="docker-compose,service,naming,">
 
 
 
@@ -79,20 +79,18 @@
 
 
 
-<meta name="description" content="交換器(Exchange)的路由(Routing)功能現在我們已經更正確的使用交換器功能，而非將訊息直接寫入佇列，為什麼需要這樣做呢？因為RabbitMQ交換器擁有路由功能，當訊息進入交換器時，可以透過種類來分配到不同的佇列裡，以官網的例子就是LOG處理機制。   LOG的重要程度可大致分為 Debug, Info, Warning, Error, Fatal.Warning以上要分配到">
-<meta name="keywords" content="c#,rabbitmq,routing">
+<meta name="description" content="最近在使用 docker-compose 加入 mongodb 時遇到一個地雷。由於近日來的挫折感，不免還是問一下專家，專家馬上說道：「對呀！應該要一樣的！」接著馬上解釋原因。是這樣啦～我真的有看過官方文件以及手上的書，也許我沒看得很仔細所以忽略掉吧！ 當初在debug時很認真搜尋網路，發現沒找到相關問題，有提到的只有一個網頁，我想這問題應該在本機開發或者只做demo都不會遇到，不過">
+<meta name="keywords" content="docker-compose,service,naming">
 <meta property="og:type" content="article">
-<meta property="og:title" content="RabbitMQ Routing功能">
-<meta property="og:url" content="https://myctw.github.io/2018/11/24/RabbitMQ_4.Routing/index.html">
+<meta property="og:title" content="Docker-compose 設定檔注意事項">
+<meta property="og:url" content="https://myctw.github.io/2019/04/13/dkr_cmps_note/index.html">
 <meta property="og:site_name" content="Forgotten Notes">
-<meta property="og:description" content="交換器(Exchange)的路由(Routing)功能現在我們已經更正確的使用交換器功能，而非將訊息直接寫入佇列，為什麼需要這樣做呢？因為RabbitMQ交換器擁有路由功能，當訊息進入交換器時，可以透過種類來分配到不同的佇列裡，以官網的例子就是LOG處理機制。   LOG的重要程度可大致分為 Debug, Info, Warning, Error, Fatal.Warning以上要分配到">
+<meta property="og:description" content="最近在使用 docker-compose 加入 mongodb 時遇到一個地雷。由於近日來的挫折感，不免還是問一下專家，專家馬上說道：「對呀！應該要一樣的！」接著馬上解釋原因。是這樣啦～我真的有看過官方文件以及手上的書，也許我沒看得很仔細所以忽略掉吧！ 當初在debug時很認真搜尋網路，發現沒找到相關問題，有提到的只有一個網頁，我想這問題應該在本機開發或者只做demo都不會遇到，不過">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://myctw.github.io/images/2018-11-23-23-52-01.png">
-<meta property="og:updated_time" content="2019-03-05T16:31:11.280Z">
+<meta property="og:updated_time" content="2019-04-13T13:35:10.883Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="RabbitMQ Routing功能">
-<meta name="twitter:description" content="交換器(Exchange)的路由(Routing)功能現在我們已經更正確的使用交換器功能，而非將訊息直接寫入佇列，為什麼需要這樣做呢？因為RabbitMQ交換器擁有路由功能，當訊息進入交換器時，可以透過種類來分配到不同的佇列裡，以官網的例子就是LOG處理機制。   LOG的重要程度可大致分為 Debug, Info, Warning, Error, Fatal.Warning以上要分配到">
-<meta name="twitter:image" content="https://myctw.github.io/images/2018-11-23-23-52-01.png">
+<meta name="twitter:title" content="Docker-compose 設定檔注意事項">
+<meta name="twitter:description" content="最近在使用 docker-compose 加入 mongodb 時遇到一個地雷。由於近日來的挫折感，不免還是問一下專家，專家馬上說道：「對呀！應該要一樣的！」接著馬上解釋原因。是這樣啦～我真的有看過官方文件以及手上的書，也許我沒看得很仔細所以忽略掉吧！ 當初在debug時很認真搜尋網路，發現沒找到相關問題，有提到的只有一個網頁，我想這問題應該在本機開發或者只做demo都不會遇到，不過">
 
 
 
@@ -122,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://myctw.github.io/2018/11/24/RabbitMQ_4.Routing/">
+  <link rel="canonical" href="https://myctw.github.io/2019/04/13/dkr_cmps_note/">
 
 
 
 
 
-  <title>RabbitMQ Routing功能 | Forgotten Notes</title>
+  <title>Docker-compose 設定檔注意事項 | Forgotten Notes</title>
   
 
 
@@ -284,7 +282,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://myctw.github.io/2018/11/24/RabbitMQ_4.Routing/">
+    <link itemprop="mainEntityOfPage" href="https://myctw.github.io/2019/04/13/dkr_cmps_note/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Pattri Chou">
@@ -301,7 +299,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">RabbitMQ Routing功能</h1>
+          <h1 class="post-title" itemprop="name headline">Docker-compose 設定檔注意事項</h1>
         
 
         <div class="post-meta">
@@ -313,8 +311,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-24T01:50:11+08:00">
-                2018-11-24
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-13T16:47:11+08:00">
+                2019-04-13
               </time>
             
 
@@ -336,8 +334,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/RabbitMQ/" itemprop="url" rel="index">
-                    <span itemprop="name">RabbitMQ</span>
+                  <a href="/categories/Docker/" itemprop="url" rel="index">
+                    <span itemprop="name">Docker</span>
                   </a>
                 </span>
 
@@ -354,8 +352,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/11/24/RabbitMQ_4.Routing/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/11/24/RabbitMQ_4.Routing/" itemprop="commentCount"></span>
+                <a href="/2019/04/13/dkr_cmps_note/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/04/13/dkr_cmps_note/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -383,14 +381,16 @@
       
 
       
-        <h3 id="交換器-Exchange-的路由-Routing-功能"><a href="#交換器-Exchange-的路由-Routing-功能" class="headerlink" title="交換器(Exchange)的路由(Routing)功能"></a>交換器(Exchange)的路由(Routing)功能</h3><p>現在我們已經更正確的使用交換器功能，而非將訊息直接寫入佇列，為什麼需要這樣做呢？因為RabbitMQ交換器擁有路由功能，當訊息進入交換器時，可以透過種類來分配到不同的佇列裡，以官網的例子就是LOG處理機制。  </p>
-<p>LOG的重要程度可大致分為 Debug, Info, Warning, Error, Fatal.<br>Warning以上要分配到 Queue1<br>Debug與Info 等級則要放到 Queue2</p>
-<p>這樣在宣告佇列時就可以綁定到該分配器，但指定不同QueneName, RouteKey. EX:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">channel.QueueBind(queue: queueName, exchange: &quot;direct_logs&quot;, routingKey: &quot;INFO&quot;);</span><br><span class="line">channel.QueueBind(queue: queueName, exchange: &quot;direct_logs&quot;, routingKey: &quot;WARNING&quot;);</span><br></pre></td></tr></table></figure></p>
-<p><br>以下會用publisher分別發送兩個訊息到交換器，並指定不同的RouteKEY</p>
-<h3 id="Publisher"><a href="#Publisher" class="headerlink" title="Publisher"></a>Publisher</h3><p>宣告兩個訊息並指定RouteKey分別為”ERROR”與”INFO”<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">channel.ExchangeDeclare(exchange: &quot;direct_logs&quot;, type: &quot;direct&quot;);</span><br><span class="line">var msg_error = $&quot;This is Error msg.&quot;;</span><br><span class="line">var msg_info = $&quot;This is Info msg&quot;;</span><br><span class="line"></span><br><span class="line">channel.BasicPublish(exchange: &quot;direct_logs&quot;,</span><br><span class="line">    routingKey: &quot;ERROR&quot;,</span><br><span class="line">    basicProperties: null,</span><br><span class="line">    body: Encoding.UTF8.GetBytes(msg_error));</span><br><span class="line">channel.BasicPublish(exchange: &quot;direct_logs&quot;,</span><br><span class="line">    routingKey: &quot;INFO&quot;,</span><br><span class="line">    basicProperties: null,</span><br><span class="line">    body: Encoding.UTF8.GetBytes(msg_info));</span><br></pre></td></tr></table></figure></p>
-<h3 id="Subscriber"><a href="#Subscriber" class="headerlink" title="Subscriber"></a>Subscriber</h3><p>這邊雖然只用了一個佇列但綁定了四個不同RouteKey，收到訊息後印出是指定哪個RouteKey與內容。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">channel.QueueBind(queue: queueName, exchange: &quot;direct_logs&quot;, routingKey: &quot;INFO&quot;);</span><br><span class="line">channel.QueueBind(queue: queueName, exchange: &quot;direct_logs&quot;, routingKey: &quot;WARNING&quot;);</span><br><span class="line">channel.QueueBind(queue: queueName, exchange: &quot;direct_logs&quot;, routingKey: &quot;ERROR&quot;);</span><br><span class="line">channel.QueueBind(queue: queueName, exchange: &quot;direct_logs&quot;, routingKey: &quot;FATAL&quot;);</span><br><span class="line"></span><br><span class="line">var consumer = new EventingBasicConsumer(channel);</span><br><span class="line">consumer.Received += (model, ea) =&gt;</span><br><span class="line">&#123;</span><br><span class="line">    var body = ea.Body;</span><br><span class="line">    var msg = Encoding.UTF8.GetString(body);</span><br><span class="line">    var routingKey = ea.RoutingKey;</span><br><span class="line">    Console.WriteLine($&quot;Receiving RoutingKey:&#123;routingKey&#125;, Msg:&#123;msg&#125;.&quot;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<p>最後分別執行兩支程式，結果如下圖：<br><img src="/images/2018-11-23-23-52-01.png" alt=""></p>
-<h3 id="程式範例檔"><a href="#程式範例檔" class="headerlink" title="程式範例檔"></a>程式範例檔</h3><p>完整的範例檔放在這 <a href="https://github.com/myctw/SampleCodes/tree/master/RabbitMQ/4.Routing" target="_blank" rel="noopener">範例</a>，有興趣的可以自行下載，此版本與之前文章不同，是用 .Net Core開發的。</p>
+        <p>最近在使用 docker-compose 加入 mongodb 時遇到一個地雷。由於近日來的挫折感，不免還是問一下專家，專家馬上說道：「對呀！應該要一樣的！」接著馬上解釋原因。是這樣啦～我真的有看過官方文件以及手上的書，也許我沒看得很仔細所以忽略掉吧！</p>
+<p>當初在debug時很認真搜尋網路，發現沒找到相關問題，有提到的只有一個網頁，我想這問題應該在本機開發或者只做demo都不會遇到，不過進到產品階段肯定會碰到。</p>
+<p>通常我們在本機開發都會用的yml設定如下：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">'3'</span></span><br><span class="line"></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line"><span class="attr">  mongo:</span>  </span><br><span class="line"><span class="attr">    image:</span> <span class="string">mongo</span></span><br><span class="line"><span class="attr">    container_name:</span> <span class="string">mongo_container</span></span><br><span class="line"><span class="attr">    ports:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">"27017:27017"</span></span><br></pre></td></tr></table></figure>
+<p>啟動後就能很開心的用GUI或cmd連進mongo進行開發。</p>
+<p>問題發生在..<br>開發階段時，我們將mongo綁定了url(當然在hostfile也加了)，如下<br><br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">'3'</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line"><span class="attr">    database:</span></span><br><span class="line"><span class="attr">        image:</span> <span class="string">mongo</span></span><br><span class="line"><span class="attr">        container_name:</span> <span class="string">Mongo_DkrCmps_Test</span></span><br><span class="line"><span class="attr">        ports:</span></span><br><span class="line"><span class="bullet">            -</span> <span class="string">"27117:27017"</span></span><br><span class="line"><span class="attr">        entrypoint:</span> <span class="string">[</span> <span class="string">"/usr/bin/mongod"</span><span class="string">,"--bind_ip",</span> <span class="string">"localhost,mongo-local-test.com"</span><span class="string">]</span></span><br></pre></td></tr></table></figure></p>
+<p>當很開心的啟動後，就發現用任何方式都無法連線到mongo囉！即使docker-compose ps 也可以看到他在listen的狀態，那麼問題是出在哪？</p>
+<h3 id="answer"><a href="#answer" class="headerlink" title="answer"></a>answer</h3><p>關鍵就是出在 yml 的 service 名稱，這個命名需要和你設定entrypoint 所bind的內容一樣，所以我們來調整一下..</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">'3'</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">    <span class="string">mongo-local-test.com:</span></span><br><span class="line"><span class="attr">        image:</span> <span class="string">mongo</span></span><br><span class="line"><span class="attr">        container_name:</span> <span class="string">Mongo_DkrCmps_Test</span></span><br><span class="line"><span class="attr">        ports:</span></span><br><span class="line"><span class="bullet">            -</span> <span class="string">"27117:27017"</span></span><br><span class="line"><span class="attr">        entrypoint:</span> <span class="string">[</span> <span class="string">"/usr/bin/mongod"</span><span class="string">,"--bind_ip",</span> <span class="string">"localhost,mongo-local-test.com"</span><span class="string">]</span></span><br></pre></td></tr></table></figure>
+<p>然後就可以連線了….<br>皆大歡喜～</p>
 
       
     </div>
@@ -408,11 +408,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/c/" rel="tag"># c#</a>
+            <a href="/tags/docker-compose/" rel="tag"># docker-compose</a>
           
-            <a href="/tags/rabbitmq/" rel="tag"># rabbitmq</a>
+            <a href="/tags/service/" rel="tag"># service</a>
           
-            <a href="/tags/routing/" rel="tag"># routing</a>
+            <a href="/tags/naming/" rel="tag"># naming</a>
           
         </div>
       
@@ -425,8 +425,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/23/RabbitMQ_2.HelloWorld/" rel="next" title="RabbitMQ queue">
-                <i class="fa fa-chevron-left"></i> RabbitMQ queue
+              <a href="/2019/04/13/open-in-code/" rel="next" title="macOS 好用的工具推薦 OpenInCode">
+                <i class="fa fa-chevron-left"></i> macOS 好用的工具推薦 OpenInCode
               </a>
             
           </div>
@@ -434,10 +434,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/11/27/RabbitMQ_3.Exchange/" rel="prev" title="RabbitMQ 的交換器(Exchange)">
-                RabbitMQ 的交換器(Exchange) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -603,7 +599,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#交換器-Exchange-的路由-Routing-功能"><span class="nav-number">1.</span> <span class="nav-text">交換器(Exchange)的路由(Routing)功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Publisher"><span class="nav-number">2.</span> <span class="nav-text">Publisher</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Subscriber"><span class="nav-number">3.</span> <span class="nav-text">Subscriber</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#程式範例檔"><span class="nav-number">4.</span> <span class="nav-text">程式範例檔</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#answer"><span class="nav-number">1.</span> <span class="nav-text">answer</span></a></li></ol></div>
             
 
           </div>
@@ -773,9 +769,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'https://myctw.github.io/2018/11/24/RabbitMQ_4.Routing/';
-          this.page.identifier = '2018/11/24/RabbitMQ_4.Routing/';
-          this.page.title = 'RabbitMQ Routing功能';
+          this.page.url = 'https://myctw.github.io/2019/04/13/dkr_cmps_note/';
+          this.page.identifier = '2019/04/13/dkr_cmps_note/';
+          this.page.title = 'Docker-compose 設定檔注意事項';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://myctw.disqus.com/embed.js';
