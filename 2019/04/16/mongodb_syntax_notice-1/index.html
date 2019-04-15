@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="c#,protobuf,bug,grpc,.NetCore,">
+  <meta name="keywords" content="mongodb,script,syntax,notice,">
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="今天在做一個需求時，使用 gRPC/protobuf 工具產生 .cs 檔案發現一個小bug，雖然不是很嚴重，不過還是記錄一下。 狀況 條件：.proto 檔案名稱帶有數字、數字後的第一個字母是英文且小寫 BUG：產生出來的 .cs 檔名，在數字後的第一個英文字母會強制變成大寫  例如今天建立一個檔案叫做 Number1test.proto 的檔案，經過 gRPC Tool 產生出來的 serv">
-<meta name="keywords" content="c#,protobuf,bug,grpc,.NetCore">
+<meta name="description" content="這邊提幾個基本的查詢容易犯得錯，之後再追加比較進階的部分。  只是要確認存在，讓DB只回覆 _id，不需要整個回覆  常見的 1234db.users.findOne(&amp;#123;    &apos;username&apos; : &apos;pattri&apos;    &apos;pwd&apos; : &apos;iampass123&apos;&amp;#125;) 其實只要回覆 _id，這樣可以提高傳輸效率 12345678910111213db.users.findO">
+<meta name="keywords" content="mongodb,script,syntax,notice">
 <meta property="og:type" content="article">
-<meta property="og:title" content="gRPC Tool 產生 .cs 檔案的小bug">
-<meta property="og:url" content="https://myctw.github.io/2019/04/11/gRPC_CSharp_bug/index.html">
+<meta property="og:title" content="MongoDB 語法注意事項 -1">
+<meta property="og:url" content="https://myctw.github.io/2019/04/16/mongodb_syntax_notice-1/index.html">
 <meta property="og:site_name" content="Forgotten Memo">
-<meta property="og:description" content="今天在做一個需求時，使用 gRPC/protobuf 工具產生 .cs 檔案發現一個小bug，雖然不是很嚴重，不過還是記錄一下。 狀況 條件：.proto 檔案名稱帶有數字、數字後的第一個字母是英文且小寫 BUG：產生出來的 .cs 檔名，在數字後的第一個英文字母會強制變成大寫  例如今天建立一個檔案叫做 Number1test.proto 的檔案，經過 gRPC Tool 產生出來的 serv">
+<meta property="og:description" content="這邊提幾個基本的查詢容易犯得錯，之後再追加比較進階的部分。  只是要確認存在，讓DB只回覆 _id，不需要整個回覆  常見的 1234db.users.findOne(&amp;#123;    &apos;username&apos; : &apos;pattri&apos;    &apos;pwd&apos; : &apos;iampass123&apos;&amp;#125;) 其實只要回覆 _id，這樣可以提高傳輸效率 12345678910111213db.users.findO">
 <meta property="og:locale" content="zh-tw">
-<meta property="og:updated_time" content="2019-04-10T16:21:57.350Z">
+<meta property="og:updated_time" content="2019-04-15T16:36:56.369Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="gRPC Tool 產生 .cs 檔案的小bug">
-<meta name="twitter:description" content="今天在做一個需求時，使用 gRPC/protobuf 工具產生 .cs 檔案發現一個小bug，雖然不是很嚴重，不過還是記錄一下。 狀況 條件：.proto 檔案名稱帶有數字、數字後的第一個字母是英文且小寫 BUG：產生出來的 .cs 檔名，在數字後的第一個英文字母會強制變成大寫  例如今天建立一個檔案叫做 Number1test.proto 的檔案，經過 gRPC Tool 產生出來的 serv">
+<meta name="twitter:title" content="MongoDB 語法注意事項 -1">
+<meta name="twitter:description" content="這邊提幾個基本的查詢容易犯得錯，之後再追加比較進階的部分。  只是要確認存在，讓DB只回覆 _id，不需要整個回覆  常見的 1234db.users.findOne(&amp;#123;    &apos;username&apos; : &apos;pattri&apos;    &apos;pwd&apos; : &apos;iampass123&apos;&amp;#125;) 其實只要回覆 _id，這樣可以提高傳輸效率 12345678910111213db.users.findO">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://myctw.github.io/2019/04/11/gRPC_CSharp_bug/">
+  <link rel="canonical" href="https://myctw.github.io/2019/04/16/mongodb_syntax_notice-1/">
 
 
 
 
 
-  <title>gRPC Tool 產生 .cs 檔案的小bug | Forgotten Memo</title>
+  <title>MongoDB 語法注意事項 -1 | Forgotten Memo</title>
   
 
 
@@ -282,7 +282,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://myctw.github.io/2019/04/11/gRPC_CSharp_bug/">
+    <link itemprop="mainEntityOfPage" href="https://myctw.github.io/2019/04/16/mongodb_syntax_notice-1/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Pattri Chou">
@@ -299,7 +299,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">gRPC Tool 產生 .cs 檔案的小bug</h1>
+          <h1 class="post-title" itemprop="name headline">MongoDB 語法注意事項 -1</h1>
         
 
         <div class="post-meta">
@@ -311,8 +311,8 @@
               
                 <span class="post-meta-item-text">發表於</span>
               
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2019-04-11T00:13:11+08:00">
-                2019-04-11
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2019-04-16T00:35:11+08:00">
+                2019-04-16
               </time>
             
 
@@ -334,8 +334,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/gRPC/" itemprop="url" rel="index">
-                    <span itemprop="name">gRPC</span>
+                  <a href="/categories/Database/" itemprop="url" rel="index">
+                    <span itemprop="name">Database</span>
                   </a>
                 </span>
 
@@ -352,8 +352,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/04/11/gRPC_CSharp_bug/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/04/11/gRPC_CSharp_bug/" itemprop="commentCount"></span>
+                <a href="/2019/04/16/mongodb_syntax_notice-1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/04/16/mongodb_syntax_notice-1/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -381,16 +381,26 @@
       
 
       
-        <p>今天在做一個需求時，使用 gRPC/protobuf 工具產生 .cs 檔案發現一個小bug，雖然不是很嚴重，不過還是記錄一下。</p>
-<h2 id="狀況"><a href="#狀況" class="headerlink" title="狀況"></a>狀況</h2><ul>
-<li>條件：.proto 檔案名稱帶有數字、數字後的第一個字母是英文且小寫</li>
-<li>BUG：產生出來的 .cs 檔名，在數字後的第一個英文字母會強制變成大寫</li>
+        <p>這邊提幾個基本的查詢容易犯得錯，之後再追加比較進階的部分。</p>
+<ul>
+<li><h4 id="只是要確認存在，讓DB只回覆-id，不需要整個回覆"><a href="#只是要確認存在，讓DB只回覆-id，不需要整個回覆" class="headerlink" title="只是要確認存在，讓DB只回覆 _id，不需要整個回覆"></a>只是要確認存在，讓DB只回覆 _id，不需要整個回覆</h4></li>
 </ul>
-<p>例如今天建立一個檔案叫做 <strong>Number1test.proto</strong> 的檔案，經過 gRPC Tool 產生出來的 service 檔案預期會是 <strong>Number1test.cs</strong>，但結果卻是 <strong>Number1Test.cs</strong>。</p>
-<p>注意到了嗎？在 1 後面的 t 應該會是小寫的，卻會變成大寫 T。</p>
-<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>強者我同事馬上上github找到這段 <a href="https://github.com/grpc/grpc/blob/master/src/csharp/Grpc.Tools/GeneratorServices.cs#L115" target="_blank" rel="noopener">source code</a> 並且發現 bug 囉！</p>
-<p>在善心人士修復之前就要特別注意這個部分</p>
-
+<p>常見的</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">db.users.findOne(&#123;</span><br><span class="line">    <span class="string">'username'</span> : <span class="string">'pattri'</span></span><br><span class="line">    <span class="string">'pwd'</span> : <span class="string">'iampass123'</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>其實只要回覆 _id，這樣可以提高傳輸效率</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">db.users.findOne(&#123;</span><br><span class="line">    <span class="string">'username'</span> : <span class="string">'pattri'</span></span><br><span class="line">    <span class="string">'pwd'</span> : <span class="string">'iampass123'</span></span><br><span class="line">&#125;, &#123; <span class="string">'_id'</span>:<span class="number">1</span> &#125; )</span><br><span class="line"><span class="string">``</span><span class="string">`  </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">- #### 重複用運算子搜索同一個欄位</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">`</span><span class="string">``</span>javascript</span><br><span class="line">db.users.find(&#123;</span><br><span class="line">    &#123; <span class="string">'age'</span>: &#123;<span class="string">'$gte'</span>: <span class="number">30</span>&#125; ,</span><br><span class="line">    &#123; <span class="string">'age'</span>: &#123;<span class="string">'$lte'</span>: <span class="number">40</span>&#125; ,</span><br><span class="line">&#125; )</span><br></pre></td></tr></table></figure>
+<p>正確的應該是</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">db.users.find(&#123;</span><br><span class="line">     <span class="string">'age'</span>: &#123;<span class="string">'$gte'</span>: <span class="number">30</span>, <span class="string">'$lte'</span>: <span class="number">40</span>&#125;</span><br><span class="line">&#125; )</span><br></pre></td></tr></table></figure>
+<ul>
+<li><h4 id="使用-nin-效率會比-in-來得高"><a href="#使用-nin-效率會比-in-來得高" class="headerlink" title="使用 \$nin 效率會比 \$in 來得高"></a>使用 \$nin 效率會比 \$in 來得高</h4></li>
+<li><h4 id="子查詢的順序是有差別的"><a href="#子查詢的順序是有差別的" class="headerlink" title="子查詢的順序是有差別的"></a>子查詢的順序是有差別的</h4><p>Sample:</p>
+</li>
+</ul>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"_id"</span> : ObjectId(<span class="string">"5cb4a9226820f1f878f93d82"</span>),</span><br><span class="line">    <span class="attr">"key"</span> : <span class="string">"key.1"</span>,</span><br><span class="line">    <span class="attr">"localization"</span> : [ </span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"langCode"</span> : <span class="string">"en-gb"</span>,</span><br><span class="line">            <span class="attr">"displayValue"</span> : <span class="string">"display_en-gb.1"</span></span><br><span class="line">        &#125;, </span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"langCode"</span> : <span class="string">"zh-tw"</span>,</span><br><span class="line">            <span class="attr">"displayValue"</span> : <span class="string">"display_zh-tw.1"</span></span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>若按順序搜尋 langCode 、 displayValue 的話，可以找到結果</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">db.col.find(&#123;</span><br><span class="line">    <span class="string">'localization'</span> :</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="string">'langCode'</span> : <span class="string">'en-gb'</span> , <span class="string">'displayValue'</span> : <span class="string">'display_en-gb.1'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>若<strong>沒有</strong>按順序搜尋，先查找 displayValue 再 langCode 則會<strong>找不到</strong>資料！！</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">db.col.find(&#123;</span><br><span class="line">    <span class="string">'localization'</span> :</span><br><span class="line">    &#123;</span><br><span class="line">         <span class="string">'displayValue'</span> : <span class="string">'display_en-gb.1'</span>, <span class="string">'langCode'</span> : <span class="string">'en-gb'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -407,15 +417,13 @@
       
         <div class="post-tags">
           
-            <a href="/tags/c/" rel="tag"># c#</a>
+            <a href="/tags/mongodb/" rel="tag"># mongodb</a>
           
-            <a href="/tags/protobuf/" rel="tag"># protobuf</a>
+            <a href="/tags/script/" rel="tag"># script</a>
           
-            <a href="/tags/bug/" rel="tag"># bug</a>
+            <a href="/tags/syntax/" rel="tag"># syntax</a>
           
-            <a href="/tags/grpc/" rel="tag"># grpc</a>
-          
-            <a href="/tags/NetCore/" rel="tag"># .NetCore</a>
+            <a href="/tags/notice/" rel="tag"># notice</a>
           
         </div>
       
@@ -428,8 +436,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/10/mongodb_1/" rel="next" title="macOS 安裝MongoDB">
-                <i class="fa fa-chevron-left"></i> macOS 安裝MongoDB
+              <a href="/2019/04/13/dkr_cmps_note/" rel="next" title="Docker-compose 設定檔注意事項">
+                <i class="fa fa-chevron-left"></i> Docker-compose 設定檔注意事項
               </a>
             
           </div>
@@ -437,10 +445,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/04/12/Docker-compose_port_expose/" rel="prev" title="Docker-compose內的port與expose差異">
-                Docker-compose內的port與expose差異 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -606,7 +610,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#狀況"><span class="nav-number">1.</span> <span class="nav-text">狀況</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原因"><span class="nav-number">2.</span> <span class="nav-text">原因</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#只是要確認存在，讓DB只回覆-id，不需要整個回覆"><span class="nav-number">1.</span> <span class="nav-text">只是要確認存在，讓DB只回覆 _id，不需要整個回覆</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用-nin-效率會比-in-來得高"><span class="nav-number">2.</span> <span class="nav-text">使用 \$nin 效率會比 \$in 來得高</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#子查詢的順序是有差別的"><span class="nav-number">3.</span> <span class="nav-text">子查詢的順序是有差別的</span></a></li></ol></div>
             
 
           </div>
@@ -776,9 +780,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'https://myctw.github.io/2019/04/11/gRPC_CSharp_bug/';
-          this.page.identifier = '2019/04/11/gRPC_CSharp_bug/';
-          this.page.title = 'gRPC Tool 產生 .cs 檔案的小bug';
+          this.page.url = 'https://myctw.github.io/2019/04/16/mongodb_syntax_notice-1/';
+          this.page.identifier = '2019/04/16/mongodb_syntax_notice-1/';
+          this.page.title = 'MongoDB 語法注意事項 -1';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://myctw.disqus.com/embed.js';
