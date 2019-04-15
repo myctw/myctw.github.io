@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next gemini use-motion" lang="">
+<html class="theme-next gemini use-motion" lang="zh-tw">
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -84,9 +84,9 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="Docker-compose 設定檔注意事項">
 <meta property="og:url" content="https://myctw.github.io/2019/04/13/dkr_cmps_note/index.html">
-<meta property="og:site_name" content="Forgotten Notes">
+<meta property="og:site_name" content="Forgotten Memo">
 <meta property="og:description" content="最近在使用 docker-compose 加入 mongodb 時遇到一個地雷。由於近日來的挫折感，不免還是問一下專家，專家馬上說道：「對呀！應該要一樣的！」接著馬上解釋原因。是這樣啦～我真的有看過官方文件以及手上的書，也許我沒看得很仔細所以忽略掉吧！ 當初在debug時很認真搜尋網路，發現沒找到相關問題，有提到的只有一個網頁，我想這問題應該在本機開發或者只做demo都不會遇到，不過">
-<meta property="og:locale" content="default">
+<meta property="og:locale" content="zh-tw">
 <meta property="og:updated_time" content="2019-04-13T13:35:10.883Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker-compose 設定檔注意事項">
@@ -106,7 +106,7 @@
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     duoshuo: {
       userId: '0',
-      author: 'Author'
+      author: '博主'
     },
     algolia: {
       applicationID: '',
@@ -126,7 +126,7 @@
 
 
 
-  <title>Docker-compose 設定檔注意事項 | Forgotten Notes</title>
+  <title>Docker-compose 設定檔注意事項 | Forgotten Memo</title>
   
 
 
@@ -147,7 +147,7 @@
 
 </head>
 
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-tw">
 
   
   
@@ -165,7 +165,7 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Forgotten Notes</span>
+        <span class="site-title">Forgotten Memo</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -195,7 +195,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
-            Home
+            首頁
           </a>
         </li>
       
@@ -205,7 +205,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
             
-            About
+            關於
           </a>
         </li>
       
@@ -215,7 +215,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
-            Tags
+            標籤
           </a>
         </li>
       
@@ -225,7 +225,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
             
-            Categories
+            分類
           </a>
         </li>
       
@@ -235,7 +235,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
-            Archives
+            歸檔
           </a>
         </li>
       
@@ -245,7 +245,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>
             
-            Sitemap
+            站點地圖
           </a>
         </li>
       
@@ -291,7 +291,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Forgotten Notes">
+      <meta itemprop="name" content="Forgotten Memo">
     </span>
 
     
@@ -309,9 +309,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">發表於</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-13T16:47:11+08:00">
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2019-04-13T16:47:11+08:00">
                 2019-04-13
               </time>
             
@@ -330,7 +330,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">分類於</span>
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
@@ -497,10 +497,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
+            文章目錄
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
+            本站概覽
           </li>
         </ul>
       
@@ -523,7 +523,7 @@
                 <a href="/archives/">
               
                   <span class="site-state-item-count">14</span>
-                  <span class="site-state-item-name">posts</span>
+                  <span class="site-state-item-name">文章</span>
                 </a>
               </div>
             
@@ -534,7 +534,7 @@
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
                   <span class="site-state-item-count">7</span>
-                  <span class="site-state-item-name">categories</span>
+                  <span class="site-state-item-name">分類</span>
                 </a>
               </div>
             
@@ -545,7 +545,7 @@
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
                   <span class="site-state-item-count">33</span>
-                  <span class="site-state-item-name">tags</span>
+                  <span class="site-state-item-name">標籤</span>
                 </a>
               </div>
             
@@ -629,7 +629,7 @@
 </div>
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 強力驅動</div>
 
 
 
@@ -637,7 +637,7 @@
 
 
 
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+  <div class="theme-info">主題 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
 
 
 

@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next gemini use-motion" lang="">
+<html class="theme-next gemini use-motion" lang="zh-tw">
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -84,9 +84,9 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="軟體架構之Ｃ4模型">
 <meta property="og:url" content="https://myctw.github.io/2019/03/19/Architecture_C4/index.html">
-<meta property="og:site_name" content="Forgotten Notes">
+<meta property="og:site_name" content="Forgotten Memo">
 <meta property="og:description" content="軟體架構圖是讓人理解系統非常重要的，而用於表現、體現軟體架構的圖有非常多種，這邊談到的是Ｃ4模型。 圖勝表、表勝文大家都知道圖的重要性，繪製一張好的圖需要很多次的來回討論與修改，儘管花費很多時間，一但完成能夠大幅縮短後人了解系統的時間。 好啊！那來畫ＵＭＬ吧UML並不是不好，而是有一些限制在，簡單列一下我的感受：  觀看高度不夠。如果是想讓人快速了解系統或是要跟老闆報告，這些圖都不太適合，通常需要">
-<meta property="og:locale" content="default">
+<meta property="og:locale" content="zh-tw">
 <meta property="og:image" content="https://myctw.github.io/images/c4_lv1.png">
 <meta property="og:image" content="https://myctw.github.io/images/c4_lv2.png">
 <meta property="og:image" content="https://myctw.github.io/images/c4_lv3.png">
@@ -111,7 +111,7 @@
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     duoshuo: {
       userId: '0',
-      author: 'Author'
+      author: '博主'
     },
     algolia: {
       applicationID: '',
@@ -131,7 +131,7 @@
 
 
 
-  <title>軟體架構之Ｃ4模型 | Forgotten Notes</title>
+  <title>軟體架構之Ｃ4模型 | Forgotten Memo</title>
   
 
 
@@ -152,7 +152,7 @@
 
 </head>
 
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-tw">
 
   
   
@@ -170,7 +170,7 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Forgotten Notes</span>
+        <span class="site-title">Forgotten Memo</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -200,7 +200,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
-            Home
+            首頁
           </a>
         </li>
       
@@ -210,7 +210,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
             
-            About
+            關於
           </a>
         </li>
       
@@ -220,7 +220,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
-            Tags
+            標籤
           </a>
         </li>
       
@@ -230,7 +230,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
             
-            Categories
+            分類
           </a>
         </li>
       
@@ -240,7 +240,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
-            Archives
+            歸檔
           </a>
         </li>
       
@@ -250,7 +250,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>
             
-            Sitemap
+            站點地圖
           </a>
         </li>
       
@@ -296,7 +296,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Forgotten Notes">
+      <meta itemprop="name" content="Forgotten Memo">
     </span>
 
     
@@ -314,9 +314,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">發表於</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-19T01:47:11+08:00">
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2019-03-19T01:47:11+08:00">
                 2019-03-19
               </time>
             
@@ -335,7 +335,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">分類於</span>
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
@@ -513,10 +513,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
+            文章目錄
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
+            本站概覽
           </li>
         </ul>
       
@@ -539,7 +539,7 @@
                 <a href="/archives/">
               
                   <span class="site-state-item-count">14</span>
-                  <span class="site-state-item-name">posts</span>
+                  <span class="site-state-item-name">文章</span>
                 </a>
               </div>
             
@@ -550,7 +550,7 @@
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
                   <span class="site-state-item-count">7</span>
-                  <span class="site-state-item-name">categories</span>
+                  <span class="site-state-item-name">分類</span>
                 </a>
               </div>
             
@@ -561,7 +561,7 @@
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
                   <span class="site-state-item-count">33</span>
-                  <span class="site-state-item-name">tags</span>
+                  <span class="site-state-item-name">標籤</span>
                 </a>
               </div>
             
@@ -645,7 +645,7 @@
 </div>
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 強力驅動</div>
 
 
 
@@ -653,7 +653,7 @@
 
 
 
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+  <div class="theme-info">主題 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
 
 
 
