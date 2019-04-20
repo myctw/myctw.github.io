@@ -125,7 +125,7 @@
 
 
 
-  <title>Pie Note - 紀錄與教學程式相關的筆記紀錄與教學程式相關的筆記 </title>
+  <title>Pie Note紀錄與教學程式相關的筆記 </title>
   
 
 
@@ -170,7 +170,7 @@
       </a>
     </div>
       
-        <h1 class="site-subtitle" itemprop="description">紀錄與教學程式相關的筆記</h1>
+        <h1 class="site-subtitle" itemprop="description"></h1>
       
   </div>
 
@@ -251,41 +251,9 @@
       
 
       
-        <li class="menu-item menu-item-search">
-          
-            <a href="javascript:;" class="popup-trigger">
-          
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
-            
-            Search
-          </a>
-        </li>
-      
     </ul>
   
 
-  
-    <div class="site-search">
-      
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
-      <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
-    </div>
-  </div>
-  <div id="local-search-result"></div>
-</div>
-
-
-
-    </div>
   
 </nav>
 
@@ -418,13 +386,16 @@
         
           
             <h4 id="Net-Core-2-0-之前"><a href="#Net-Core-2-0-之前" class="headerlink" title=".Net Core 2.0 之前"></a>.Net Core 2.0 之前</h4><p>在 .Net core 專案底下編譯出來的只有 dll 與 json 的設定檔，有時候一些情況下還是使用 .exe 來執行 console 專案會比較方便。</p>
-<p>.Net core 2.0 以前必須要在 csproj 裡面設定這個屬性，並且指定相對應的 os<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;PropertyGroup&gt;</span><br><span class="line">    &lt;RuntimeIdentifiers&gt;win10-x64&lt;/RuntimeIdentifiers&gt;</span><br><span class="line">&lt;/PropertyGroup&gt;</span><br></pre></td></tr></table></figure></p>
+<p>.Net core 2.0 以前必須要在 csproj 裡面設定這個屬性，並且指定相對應的 os</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;PropertyGroup&gt;</span><br><span class="line">    &lt;RuntimeIdentifiers&gt;win10-x64&lt;/RuntimeIdentifiers&gt;</span><br><span class="line">&lt;/PropertyGroup&gt;</span><br></pre></td></tr></table></figure>
 <p>上述就是建置出可在 win10 x64執行的 exe檔案。</p>
-<h4 id="Net-Core-2-0-之後-Terminal-Command"><a href="#Net-Core-2-0-之後-Terminal-Command" class="headerlink" title=".Net Core 2.0 之後 (Terminal Command)"></a>.Net Core 2.0 之後 (Terminal Command)</h4><p>當然也可以執行在terminal 執行輸入指令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dotnet publish -c Release -r win10-x64</span><br></pre></td></tr></table></figure></p>
+<h4 id="Net-Core-2-0-之後-Terminal-Command"><a href="#Net-Core-2-0-之後-Terminal-Command" class="headerlink" title=".Net Core 2.0 之後 (Terminal Command)"></a>.Net Core 2.0 之後 (Terminal Command)</h4><p>當然也可以執行在terminal 執行輸入指令</p>
+<figure class="highlight console"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dotnet publish -c Release -r win10-x64</span><br></pre></td></tr></table></figure>
 <p>-c 是建置的configuration，預設資料夾是 Debug<br>-r 是建置目標的 framework，就是本篇文章的目的</p>
 <h4 id="Platform-清單"><a href="#Platform-清單" class="headerlink" title="Platform 清單"></a>Platform 清單</h4><p>在官方教學文件中有所有 platform 的清單，有需要的可以到那邊查找。<br><a href="https://docs.microsoft.com/en-us/dotnet/core/rid-catalog" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/dotnet/core/rid-catalog</a></p>
-<h4 id="Net-Core-2-0-之後-Configuration"><a href="#Net-Core-2-0-之後-Configuration" class="headerlink" title=".Net Core 2.0 之後 (Configuration)"></a>.Net Core 2.0 之後 (Configuration)</h4><p>總不能要求我每次都下指令去產生吧！<br>所以2.0之後還是可以加在 csproj 內，會一並產生出兩種類型的編譯檔。<br>加上這段就可以了！（沒錯！一模一樣）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;RuntimeIdentifiers&gt;win10-x64&lt;/RuntimeIdentifiers&gt;</span><br></pre></td></tr></table></figure></p>
-<p><img src="/images/2019-01-13_1.png" alt=""><br><img src="/images/2019-01-13_2.png" alt=""></p>
+<h4 id="Net-Core-2-0-之後-Configuration"><a href="#Net-Core-2-0-之後-Configuration" class="headerlink" title=".Net Core 2.0 之後 (Configuration)"></a>.Net Core 2.0 之後 (Configuration)</h4><p>總不能要求我每次都下指令去產生吧！<br>所以2.0之後還是可以加在 csproj 內，會一並產生出兩種類型的編譯檔。<br>加上這段就可以了！（沒錯！一模一樣）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;RuntimeIdentifiers&gt;win10-x64&lt;/RuntimeIdentifiers&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="/images/2019-01-13_1.png" alt="alt"><br><img src="/images/2019-01-13_2.png" alt="alt"></p>
 
           
         
@@ -583,16 +554,17 @@
 <li><strong>Fanout</strong>: 顧名思義就是將此訊息分配到每一個佇列上，等於是複製了n次。若設定fanout的話會自動忽略 BindKey與RouteKey。</li>
 <li><p><strong>Topic</strong>: Topic是較常用也是靈活度最高的模式，有點像是.net的routing概念，只要符合規格的RouteKey就會被傳遞到正確的queue。<br>特殊符號分別是: * (<strong>一個</strong>任意字)與 # (<strong>零以上</strong>個任意字)。  </p>
 <p>Case1: </p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">BindKey: &quot;*I.am.*&quot;  </span><br><span class="line">I.am.boy -&gt; 符合  </span><br><span class="line">I.am.girl -&gt; 符合  </span><br><span class="line">I.amNot.girl -&gt; 不符合  </span><br><span class="line">I.am.boy.too -&gt;不符合</span><br></pre></td></tr></table></figure>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">BindKey: <span class="string">"*I.am.*"</span>  </span><br><span class="line">I.am.boy -&gt; 符合  </span><br><span class="line">I.am.girl -&gt; 符合  </span><br><span class="line">I.amNot.girl -&gt; 不符合  </span><br><span class="line">I.am.boy.too -&gt;不符合</span><br></pre></td></tr></table></figure>
 <p>Case2:  </p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">BindKey &quot;#.strong&quot;  </span><br><span class="line">He.is.strong -&gt; 符合  </span><br><span class="line">Not.strong -&gt; 符合  </span><br><span class="line">I.am.not.strong.neither -&gt; 不符合</span><br></pre></td></tr></table></figure>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">BindKey <span class="string">"#.strong"</span>  </span><br><span class="line">He.is.strong -&gt; 符合  </span><br><span class="line">Not.strong -&gt; 符合  </span><br><span class="line">I.am.not.strong.neither -&gt; 不符合</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>Headers</strong>: 從訊息中的header與BindKey做批配比較，並寫入queue中。這部分我也很少用，之後有特別研究再來補上怎麼使用。</p>
 <p>使用上的效能當然還是 fanout &gt; direct &gt; topic，但我認為除非在很極端的狀況下，否則比較這個的意義並不大，畢竟工具的使用還是以符合需求為主。<br>另一點要注意的是RouteKey長度限制為255 bytes。</p>
 </li>
 </ul>
-<h3 id="Fanout模式的演示"><a href="#Fanout模式的演示" class="headerlink" title="Fanout模式的演示"></a>Fanout模式的演示</h3><p>首先我們在宣告Exchange時將type指定為 “fanout”，當然在訂閱端也是需要的，程式碼一樣就不再貼上。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">channel.ExchangeDeclare(exchange: &quot;logs&quot;, type:&quot;fanout&quot;);</span><br></pre></td></tr></table></figure></p>
-<p>其他部分沒有改變，將專案建置好後，開啟兩個訂閱者程式，然後執行Sender.exe以fanout模式送出一個訊息，就可以看到兩個視窗幾乎同時收到該訊息，且進行處理。<br><img src="/images/rbq3exg.gif" alt=""></p>
+<h3 id="Fanout模式的演示"><a href="#Fanout模式的演示" class="headerlink" title="Fanout模式的演示"></a>Fanout模式的演示</h3><p>首先我們在宣告Exchange時將type指定為 “fanout”，當然在訂閱端也是需要的，程式碼一樣就不再貼上。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">channel.ExchangeDeclare(exchange: &quot;logs&quot;, type:&quot;fanout&quot;);</span><br></pre></td></tr></table></figure>
+<p>其他部分沒有改變，將專案建置好後，開啟兩個訂閱者程式，然後執行Sender.exe以fanout模式送出一個訊息，就可以看到兩個視窗幾乎同時收到該訊息，且進行處理。<br><img src="/images/rbq3exg.gif" alt="alt"></p>
 <h3 id="程式範例檔"><a href="#程式範例檔" class="headerlink" title="程式範例檔"></a>程式範例檔</h3><p>完整的範例檔放在這 <a href="https://github.com/myctw/SampleCodes/tree/master/RabbitMQ/3.Publish%2CSubscribe" target="_blank" rel="noopener">範例</a>，有興趣的可以自行下載。</p>
 
           
@@ -747,11 +719,15 @@
           
             <h3 id="交換器-Exchange-的路由-Routing-功能"><a href="#交換器-Exchange-的路由-Routing-功能" class="headerlink" title="交換器(Exchange)的路由(Routing)功能"></a>交換器(Exchange)的路由(Routing)功能</h3><p>現在我們已經更正確的使用交換器功能，而非將訊息直接寫入佇列，為什麼需要這樣做呢？因為RabbitMQ交換器擁有路由功能，當訊息進入交換器時，可以透過種類來分配到不同的佇列裡，以官網的例子就是LOG處理機制。  </p>
 <p>LOG的重要程度可大致分為 Debug, Info, Warning, Error, Fatal.<br>Warning以上要分配到 Queue1<br>Debug與Info 等級則要放到 Queue2</p>
-<p>這樣在宣告佇列時就可以綁定到該分配器，但指定不同QueneName, RouteKey. EX:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">channel.QueueBind(queue: queueName, exchange: &quot;direct_logs&quot;, routingKey: &quot;INFO&quot;);</span><br><span class="line">channel.QueueBind(queue: queueName, exchange: &quot;direct_logs&quot;, routingKey: &quot;WARNING&quot;);</span><br></pre></td></tr></table></figure></p>
-<p><br>以下會用publisher分別發送兩個訊息到交換器，並指定不同的RouteKEY</p>
-<h3 id="Publisher"><a href="#Publisher" class="headerlink" title="Publisher"></a>Publisher</h3><p>宣告兩個訊息並指定RouteKey分別為”ERROR”與”INFO”<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">channel.ExchangeDeclare(exchange: &quot;direct_logs&quot;, type: &quot;direct&quot;);</span><br><span class="line">var msg_error = $&quot;This is Error msg.&quot;;</span><br><span class="line">var msg_info = $&quot;This is Info msg&quot;;</span><br><span class="line"></span><br><span class="line">channel.BasicPublish(exchange: &quot;direct_logs&quot;,</span><br><span class="line">    routingKey: &quot;ERROR&quot;,</span><br><span class="line">    basicProperties: null,</span><br><span class="line">    body: Encoding.UTF8.GetBytes(msg_error));</span><br><span class="line">channel.BasicPublish(exchange: &quot;direct_logs&quot;,</span><br><span class="line">    routingKey: &quot;INFO&quot;,</span><br><span class="line">    basicProperties: null,</span><br><span class="line">    body: Encoding.UTF8.GetBytes(msg_info));</span><br></pre></td></tr></table></figure></p>
-<h3 id="Subscriber"><a href="#Subscriber" class="headerlink" title="Subscriber"></a>Subscriber</h3><p>這邊雖然只用了一個佇列但綁定了四個不同RouteKey，收到訊息後印出是指定哪個RouteKey與內容。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">channel.QueueBind(queue: queueName, exchange: &quot;direct_logs&quot;, routingKey: &quot;INFO&quot;);</span><br><span class="line">channel.QueueBind(queue: queueName, exchange: &quot;direct_logs&quot;, routingKey: &quot;WARNING&quot;);</span><br><span class="line">channel.QueueBind(queue: queueName, exchange: &quot;direct_logs&quot;, routingKey: &quot;ERROR&quot;);</span><br><span class="line">channel.QueueBind(queue: queueName, exchange: &quot;direct_logs&quot;, routingKey: &quot;FATAL&quot;);</span><br><span class="line"></span><br><span class="line">var consumer = new EventingBasicConsumer(channel);</span><br><span class="line">consumer.Received += (model, ea) =&gt;</span><br><span class="line">&#123;</span><br><span class="line">    var body = ea.Body;</span><br><span class="line">    var msg = Encoding.UTF8.GetString(body);</span><br><span class="line">    var routingKey = ea.RoutingKey;</span><br><span class="line">    Console.WriteLine($&quot;Receiving RoutingKey:&#123;routingKey&#125;, Msg:&#123;msg&#125;.&quot;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<p>最後分別執行兩支程式，結果如下圖：<br><img src="/images/2018-11-23-23-52-01.png" alt=""></p>
+<p>這樣在宣告佇列時就可以綁定到該分配器，但指定不同QueneName, RouteKey. EX:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">channel.QueueBind(queue: queueName, exchange: &quot;direct_logs&quot;, routingKey: &quot;INFO&quot;);</span><br><span class="line">channel.QueueBind(queue: queueName, exchange: &quot;direct_logs&quot;, routingKey: &quot;WARNING&quot;);</span><br></pre></td></tr></table></figure>
+<p></p>
+<p>以下會用publisher分別發送兩個訊息到交換器，並指定不同的RouteKEY</p>
+<h3 id="Publisher"><a href="#Publisher" class="headerlink" title="Publisher"></a>Publisher</h3><p>宣告兩個訊息並指定RouteKey分別為”ERROR”與”INFO”</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">channel.ExchangeDeclare(exchange: &quot;direct_logs&quot;, type: &quot;direct&quot;);</span><br><span class="line">var msg_error = $&quot;This is Error msg.&quot;;</span><br><span class="line">var msg_info = $&quot;This is Info msg&quot;;</span><br><span class="line"></span><br><span class="line">channel.BasicPublish(exchange: &quot;direct_logs&quot;,</span><br><span class="line">    routingKey: &quot;ERROR&quot;,</span><br><span class="line">    basicProperties: null,</span><br><span class="line">    body: Encoding.UTF8.GetBytes(msg_error));</span><br><span class="line">channel.BasicPublish(exchange: &quot;direct_logs&quot;,</span><br><span class="line">    routingKey: &quot;INFO&quot;,</span><br><span class="line">    basicProperties: null,</span><br><span class="line">    body: Encoding.UTF8.GetBytes(msg_info));</span><br></pre></td></tr></table></figure>
+<h3 id="Subscriber"><a href="#Subscriber" class="headerlink" title="Subscriber"></a>Subscriber</h3><p>這邊雖然只用了一個佇列但綁定了四個不同RouteKey，收到訊息後印出是指定哪個RouteKey與內容。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">channel.QueueBind(queue: queueName, exchange: &quot;direct_logs&quot;, routingKey: &quot;INFO&quot;);</span><br><span class="line">channel.QueueBind(queue: queueName, exchange: &quot;direct_logs&quot;, routingKey: &quot;WARNING&quot;);</span><br><span class="line">channel.QueueBind(queue: queueName, exchange: &quot;direct_logs&quot;, routingKey: &quot;ERROR&quot;);</span><br><span class="line">channel.QueueBind(queue: queueName, exchange: &quot;direct_logs&quot;, routingKey: &quot;FATAL&quot;);</span><br><span class="line"></span><br><span class="line">var consumer = new EventingBasicConsumer(channel);</span><br><span class="line">consumer.Received += (model, ea) =&gt;</span><br><span class="line">&#123;</span><br><span class="line">    var body = ea.Body;</span><br><span class="line">    var msg = Encoding.UTF8.GetString(body);</span><br><span class="line">    var routingKey = ea.RoutingKey;</span><br><span class="line">    Console.WriteLine($&quot;Receiving RoutingKey:&#123;routingKey&#125;, Msg:&#123;msg&#125;.&quot;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>最後分別執行兩支程式，結果如下圖：<br><img src="/images/2018-11-23-23-52-01.png" alt="alt"></p>
 <h3 id="程式範例檔"><a href="#程式範例檔" class="headerlink" title="程式範例檔"></a>程式範例檔</h3><p>完整的範例檔放在這 <a href="https://github.com/myctw/SampleCodes/tree/master/RabbitMQ/4.Routing" target="_blank" rel="noopener">範例</a>，有興趣的可以自行下載，此版本與之前文章不同，是用 .Net Core開發的。</p>
 
           
@@ -905,13 +881,15 @@
         
           
             <h1 id="佇列的功能"><a href="#佇列的功能" class="headerlink" title="佇列的功能"></a>佇列的功能</h1><p>當系統已經繁忙逐漸無法及時回應需求，或是需求本身需要一段時間處理，以及複雜的HTTP請求這些狀況都很適合搭配訊息佇列來做處理。<br>這邊用sleep來模擬處理很久的訊息。</p>
-<h2 id="Publisher-範例命名為Sender"><a href="#Publisher-範例命名為Sender" class="headerlink" title="Publisher (範例命名為Sender)"></a>Publisher (範例命名為Sender)</h2><p>基本上與<a href="https://github.com/myctw/SampleCodes/tree/master/RabbitMQ/1.Helloworld" target="_blank" rel="noopener">範例一</a>的內容一樣，就不多著墨。</p>
+<h2 id="Publisher-範例命名為Sender"><a href="#Publisher-範例命名為Sender" class="headerlink" title="Publisher (範例命名為Sender)"></a>Publisher (範例命名為Sender)</h2><p>基本上與<a href="https://github.com/myctw/SampleCodes/tree/master/RabbitMQ/1.Helloworld" target="_blank" rel="noopener">範例一</a>的內容一樣，就不多著墨。<br>\</p>
 <h2 id="Consumer-範例命名為Receiver"><a href="#Consumer-範例命名為Receiver" class="headerlink" title="Consumer (範例命名為Receiver)"></a>Consumer (範例命名為Receiver)</h2><p>為了模擬處理很久的訊息，在收到訊息後將內容逐一字元顯示。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">foreach (var i in message.ToCharArray())</span><br><span class="line">&#123;</span><br><span class="line">    Thread.Sleep(150);</span><br><span class="line">    Console.Write(&quot;&#123;0&#125;&quot;, i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>其他內容也與範例一是相同的，如果有不理解的可以回頭看<a href="https://myctw.github.io/2018/11/22/RabbitMQ_1/">第一篇</a>文章。</p>
 <p>為了更幫助理解，建議可以執行兩個 receiver.exe，再分別多次執行 sender.exe 這樣看以看多個訊息進入佇列後，每個 receiver 在繁忙中如何分配處理。</p>
 <h2 id="訊息處理確認機制-Acknowledgement"><a href="#訊息處理確認機制-Acknowledgement" class="headerlink" title="訊息處理確認機制(Acknowledgement)"></a>訊息處理確認機制(Acknowledgement)</h2><p>RabbitMQ提供每個訊息的回覆機制，啟用這個機制的話，會要求每個Consumer處理完訊息後要告知佇列，若沒有的話則佇列會視為訊息未正確被處理，並且立即由下一個Consumer來處理，直到正確收到回覆為止。</p>
-<h3 id="如何啟用"><a href="#如何啟用" class="headerlink" title="如何啟用?"></a>如何啟用?</h3><p>其實在範例中已經是啟用自動回覆機制，若要關閉自動回覆，則在這個地方將 autoack 參數設定為 false<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">channel.BasicConsume(queue: &quot;hello&quot;,</span><br><span class="line">    autoAck: false ,</span><br><span class="line">    consumer: consumer);</span><br></pre></td></tr></table></figure></p>
-<p>這邊一樣可以試試看開啟兩個 consumer 程式，然後僅執行一次 sender.exe。當第一個Consumer收到訊息且處理完畢後，將它關閉，接著可以看到第二個Consumer馬上收到相同訊息且開始處理。這就是設定了不自動回覆，導致佇列認為Consumer沒有正確處理訊息。<br>所以這邊要自己撰寫回覆佇列的程式。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Console.WriteLine(&quot;Msg handle finished, send acknowledgement now&quot;);</span><br><span class="line">channel.BasicAck(ea.DeliveryTag, false);</span><br></pre></td></tr></table></figure></p>
+<h3 id="如何啟用"><a href="#如何啟用" class="headerlink" title="如何啟用?"></a>如何啟用?</h3><p>其實在範例中已經是啟用自動回覆機制，若要關閉自動回覆，則在這個地方將 autoack 參數設定為 false</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">channel.BasicConsume(queue: &quot;hello&quot;,</span><br><span class="line">    autoAck: false ,</span><br><span class="line">    consumer: consumer);</span><br></pre></td></tr></table></figure>
+<p>這邊一樣可以試試看開啟兩個 consumer 程式，然後僅執行一次 sender.exe。當第一個Consumer收到訊息且處理完畢後，將它關閉，接著可以看到第二個Consumer馬上收到相同訊息且開始處理。這就是設定了不自動回覆，導致佇列認為Consumer沒有正確處理訊息。<br>所以這邊要自己撰寫回覆佇列的程式。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Console.WriteLine(&quot;Msg handle finished, send acknowledgement now&quot;);</span><br><span class="line">channel.BasicAck(ea.DeliveryTag, false);</span><br></pre></td></tr></table></figure>
 <p>如此一來同樣訊息就不會一直被視為未正確處理。</p>
 <h1 id="程式範例檔"><a href="#程式範例檔" class="headerlink" title="程式範例檔"></a>程式範例檔</h1><p>完整的範例檔放在這 <a href="https://github.com/myctw/SampleCodes/tree/master/RabbitMQ/2.WorkQueue" target="_blank" rel="noopener">範例</a>，有興趣的可以自行下載。</p>
 
@@ -1078,30 +1056,34 @@
 <li>提供各種插件(plugin)靈活運用</li>
 </ul>
 <p>細節會在日後的文章陸續揭露或探討，而安裝方法非常簡單，網路上也有很多範例就不在這邊贅述了。<br>本文所使用的程式語言是 .NET Framework C#</p>
-<h1 id="Hello-RabbitMQ"><a href="#Hello-RabbitMQ" class="headerlink" title="Hello RabbitMQ"></a>Hello RabbitMQ</h1><p>如果是.net core使用者須先建立專案，這邊以console模式當範例，依序建立兩個專案並進入專案加入RabbitMQ.Client package<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">dotnet new console -n Sender</span><br><span class="line">cd Sender/</span><br><span class="line">dotnet add package RabbitMQ.Client</span><br><span class="line">cd ..</span><br><span class="line">dotnet new console -n Receiver</span><br><span class="line">cd Receiver/</span><br><span class="line">dotnet add package RabbitMQ.Client</span><br></pre></td></tr></table></figure></p>
+<h1 id="Hello-RabbitMQ"><a href="#Hello-RabbitMQ" class="headerlink" title="Hello RabbitMQ"></a>Hello RabbitMQ</h1><p>如果是.net core使用者須先建立專案，這邊以console模式當範例，依序建立兩個專案並進入專案加入RabbitMQ.Client package</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">dotnet new console -n Sender</span><br><span class="line"><span class="built_in">cd</span> Sender/</span><br><span class="line">dotnet add package RabbitMQ.Client</span><br><span class="line"><span class="built_in">cd</span> ..</span><br><span class="line">dotnet new console -n Receiver</span><br><span class="line"><span class="built_in">cd</span> Receiver/</span><br><span class="line">dotnet add package RabbitMQ.Client</span><br></pre></td></tr></table></figure>
 <h2 id="撰寫Publisher-範例命名為Sender"><a href="#撰寫Publisher-範例命名為Sender" class="headerlink" title="撰寫Publisher (範例命名為Sender)"></a>撰寫Publisher (範例命名為Sender)</h2><ol>
-<li><p>建立連線的物件，hostname目前都是在本機所以localhost即，ＵserName與Ｐassword則需要另外建立。<br>若是剛安裝好，預設是guest/guest為唯一且admin帳號。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var factory = new ConnectionFactory() </span><br><span class="line">&#123; HostName = &quot;localhost&quot;, UserName = &quot;admin&quot;, Password = &quot;pass123&quot; &#125;;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>建立連線作用域</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">using (var connection = factory.CreateConnection())</span><br><span class="line">&#123;</span><br><span class="line">    using (var channel = connection.CreateModel())</span><br><span class="line">    &#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>宣告名稱為 <strong>hello</strong> 的佇列以存放訊息</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">channel.QueueDeclare(queue: &quot;hello&quot;,</span><br><span class="line">    durable: false,</span><br><span class="line">    exclusive: false,</span><br><span class="line">    autoDelete: false,</span><br><span class="line">    arguments: null</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>建立訊息</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var message = $&quot;Hello RabbitMQ. &#123;DateTime.Now.ToString(&quot;yyyy/MM/dd HH:mm:ss.fff&quot;)&#125;&quot;;</span><br><span class="line">var body = Encoding.UTF8.GetBytes(message);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>發布訊息到 hello 訊息佇列</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">channel.BasicPublish(exchange: &quot;&quot;,</span><br><span class="line">    routingKey: &quot;hello&quot;,</span><br><span class="line">    basicProperties: null,</span><br><span class="line">    body: body</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-</li>
+<li>建立連線的物件，hostname目前都是在本機所以localhost即，ＵserName與Ｐassword則需要另外建立。<br>若是剛安裝好，預設是guest/guest為唯一且admin帳號。</li>
 </ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var factory = new ConnectionFactory() </span><br><span class="line">&#123; HostName = &quot;localhost&quot;, UserName = &quot;admin&quot;, Password = &quot;pass123&quot; &#125;;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>建立連線作用域</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">using (var connection = factory.CreateConnection())</span><br><span class="line">&#123;</span><br><span class="line">    using (var channel = connection.CreateModel())</span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>宣告名稱為 <strong>hello</strong> 的佇列以存放訊息</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">channel.QueueDeclare(queue: &quot;hello&quot;,</span><br><span class="line">    durable: false,</span><br><span class="line">    exclusive: false,</span><br><span class="line">    autoDelete: false,</span><br><span class="line">    arguments: null</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>建立訊息</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var message = $&quot;Hello RabbitMQ. &#123;DateTime.Now.ToString(&quot;yyyy/MM/dd HH:mm:ss.fff&quot;)&#125;&quot;;</span><br><span class="line">var body = Encoding.UTF8.GetBytes(message);</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>發布訊息到 hello 訊息佇列</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">channel.BasicPublish(exchange: &quot;&quot;,</span><br><span class="line">    routingKey: &quot;hello&quot;,</span><br><span class="line">    basicProperties: null,</span><br><span class="line">    body: body</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 <p>到這邊就完成發布者發布訊息的功能了。</p>
 <h2 id="撰寫接收者程式-範例命名為Receiver"><a href="#撰寫接收者程式-範例命名為Receiver" class="headerlink" title="撰寫接收者程式 (範例命名為Receiver)"></a>撰寫接收者程式 (範例命名為Receiver)</h2><ol>
 <li>步驟 1,2,3 與發布者相同，都是建立連線物件與宣告佇列名稱</li>
-<li>建立委派接收到訊息的事件<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var consumer = new EventingBasicConsumer(channel);</span><br><span class="line">consumer.Received += (model, ea) =&gt;</span><br><span class="line">&#123;</span><br><span class="line">    var body = ea.Body;</span><br><span class="line">    var message = Encoding.UTF8.GetString(body);</span><br><span class="line">    Console.WriteLine(&quot;Received &#123;0&#125;&quot;, message);</span><br><span class="line">&#125;;</span><br><span class="line">channel.BasicConsume(queue: &quot;hello&quot;,</span><br><span class="line">                        autoAck: true,</span><br><span class="line">                        consumer: consumer);</span><br></pre></td></tr></table></figure>
-</li>
+<li>建立委派接收到訊息的事件</li>
 </ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var consumer = new EventingBasicConsumer(channel);</span><br><span class="line">consumer.Received += (model, ea) =&gt;</span><br><span class="line">&#123;</span><br><span class="line">    var body = ea.Body;</span><br><span class="line">    var message = Encoding.UTF8.GetString(body);</span><br><span class="line">    Console.WriteLine(&quot;Received &#123;0&#125;&quot;, message);</span><br><span class="line">&#125;;</span><br><span class="line">channel.BasicConsume(queue: &quot;hello&quot;,</span><br><span class="line">                        autoAck: true,</span><br><span class="line">                        consumer: consumer);</span><br></pre></td></tr></table></figure>
 <p>依序是將收到的內容先做UTF8編碼，接著印出訊息內容<br>最後的BasicConsume則是回覆給哪個訊息佇列、自動回覆、由那個接收者所回覆的。</p>
 <p>Hello RabbitMQ 程式基本上就完成了。</p>
 <h1 id="程式範例檔"><a href="#程式範例檔" class="headerlink" title="程式範例檔"></a>程式範例檔</h1><p>完整的範例檔放在這 <a href="https://github.com/myctw/SampleCodes/tree/master/RabbitMQ/1.Helloworld" target="_blank" rel="noopener">範例</a>，有興趣的可以自行下載。<br>裡面是一個方案，接收者與發佈者分別為兩個Console專案，編譯後可分別執行.exe檔案來查看結果，只要receiver沒有關閉，都能夠收到發布者的訊息。</p>
@@ -1445,323 +1427,6 @@
 
 
   
-
-  <script type="text/javascript">
-    // Popup Window;
-    var isfetched = false;
-    var isXml = true;
-    // Search DB path;
-    var search_path = "search.xml";
-    if (search_path.length === 0) {
-      search_path = "search.xml";
-    } else if (/json$/i.test(search_path)) {
-      isXml = false;
-    }
-    var path = "/" + search_path;
-    // monitor main search box;
-
-    var onPopupClose = function (e) {
-      $('.popup').hide();
-      $('#local-search-input').val('');
-      $('.search-result-list').remove();
-      $('#no-result').remove();
-      $(".local-search-pop-overlay").remove();
-      $('body').css('overflow', '');
-    }
-
-    function proceedsearch() {
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
-        .css('overflow', 'hidden');
-      $('.search-popup-overlay').click(onPopupClose);
-      $('.popup').toggle();
-      var $localSearchInput = $('#local-search-input');
-      $localSearchInput.attr("autocapitalize", "none");
-      $localSearchInput.attr("autocorrect", "off");
-      $localSearchInput.focus();
-    }
-
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-      'use strict';
-
-      // start loading animation
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
-          '<div id="search-loading-icon">' +
-          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
-          '</div>' +
-          '</div>')
-        .css('overflow', 'hidden');
-      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
-
-      $.ajax({
-        url: path,
-        dataType: isXml ? "xml" : "json",
-        async: true,
-        success: function(res) {
-          // get the contents from search data
-          isfetched = true;
-          $('.popup').detach().appendTo('.header-inner');
-          var datas = isXml ? $("entry", res).map(function() {
-            return {
-              title: $("title", this).text(),
-              content: $("content",this).text(),
-              url: $("url" , this).text()
-            };
-          }).get() : res;
-          var input = document.getElementById(search_id);
-          var resultContent = document.getElementById(content_id);
-          var inputEventFunction = function() {
-            var searchText = input.value.trim().toLowerCase();
-            var keywords = searchText.split(/[\s\-]+/);
-            if (keywords.length > 1) {
-              keywords.push(searchText);
-            }
-            var resultItems = [];
-            if (searchText.length > 0) {
-              // perform local searching
-              datas.forEach(function(data) {
-                var isMatch = false;
-                var hitCount = 0;
-                var searchTextCount = 0;
-                var title = data.title.trim();
-                var titleInLowerCase = title.toLowerCase();
-                var content = data.content.trim().replace(/<[^>]+>/g,"");
-                var contentInLowerCase = content.toLowerCase();
-                var articleUrl = decodeURIComponent(data.url);
-                var indexOfTitle = [];
-                var indexOfContent = [];
-                // only match articles with not empty titles
-                if(title != '') {
-                  keywords.forEach(function(keyword) {
-                    function getIndexByWord(word, text, caseSensitive) {
-                      var wordLen = word.length;
-                      if (wordLen === 0) {
-                        return [];
-                      }
-                      var startPosition = 0, position = [], index = [];
-                      if (!caseSensitive) {
-                        text = text.toLowerCase();
-                        word = word.toLowerCase();
-                      }
-                      while ((position = text.indexOf(word, startPosition)) > -1) {
-                        index.push({position: position, word: word});
-                        startPosition = position + wordLen;
-                      }
-                      return index;
-                    }
-
-                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
-                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
-                  });
-                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
-                    isMatch = true;
-                    hitCount = indexOfTitle.length + indexOfContent.length;
-                  }
-                }
-
-                // show search results
-
-                if (isMatch) {
-                  // sort index by position of keyword
-
-                  [indexOfTitle, indexOfContent].forEach(function (index) {
-                    index.sort(function (itemLeft, itemRight) {
-                      if (itemRight.position !== itemLeft.position) {
-                        return itemRight.position - itemLeft.position;
-                      } else {
-                        return itemLeft.word.length - itemRight.word.length;
-                      }
-                    });
-                  });
-
-                  // merge hits into slices
-
-                  function mergeIntoSlice(text, start, end, index) {
-                    var item = index[index.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    var hits = [];
-                    var searchTextCountInSlice = 0;
-                    while (position + word.length <= end && index.length != 0) {
-                      if (word === searchText) {
-                        searchTextCountInSlice++;
-                      }
-                      hits.push({position: position, length: word.length});
-                      var wordEnd = position + word.length;
-
-                      // move to next position of hit
-
-                      index.pop();
-                      while (index.length != 0) {
-                        item = index[index.length - 1];
-                        position = item.position;
-                        word = item.word;
-                        if (wordEnd > position) {
-                          index.pop();
-                        } else {
-                          break;
-                        }
-                      }
-                    }
-                    searchTextCount += searchTextCountInSlice;
-                    return {
-                      hits: hits,
-                      start: start,
-                      end: end,
-                      searchTextCount: searchTextCountInSlice
-                    };
-                  }
-
-                  var slicesOfTitle = [];
-                  if (indexOfTitle.length != 0) {
-                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
-                  }
-
-                  var slicesOfContent = [];
-                  while (indexOfContent.length != 0) {
-                    var item = indexOfContent[indexOfContent.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    // cut out 100 characters
-                    var start = position - 20;
-                    var end = position + 80;
-                    if(start < 0){
-                      start = 0;
-                    }
-                    if (end < position + word.length) {
-                      end = position + word.length;
-                    }
-                    if(end > content.length){
-                      end = content.length;
-                    }
-                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
-                  }
-
-                  // sort slices in content by search text's count and hits' count
-
-                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
-                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
-                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
-                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
-                      return sliceRight.hits.length - sliceLeft.hits.length;
-                    } else {
-                      return sliceLeft.start - sliceRight.start;
-                    }
-                  });
-
-                  // select top N slices in content
-
-                  var upperBound = parseInt('1');
-                  if (upperBound >= 0) {
-                    slicesOfContent = slicesOfContent.slice(0, upperBound);
-                  }
-
-                  // highlight title and content
-
-                  function highlightKeyword(text, slice) {
-                    var result = '';
-                    var prevEnd = slice.start;
-                    slice.hits.forEach(function (hit) {
-                      result += text.substring(prevEnd, hit.position);
-                      var end = hit.position + hit.length;
-                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
-                      prevEnd = end;
-                    });
-                    result += text.substring(prevEnd, slice.end);
-                    return result;
-                  }
-
-                  var resultItem = '';
-
-                  if (slicesOfTitle.length != 0) {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
-                  } else {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
-                  }
-
-                  slicesOfContent.forEach(function (slice) {
-                    resultItem += "<a href='" + articleUrl + "'>" +
-                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
-                      "...</p>" + "</a>";
-                  });
-
-                  resultItem += "</li>";
-                  resultItems.push({
-                    item: resultItem,
-                    searchTextCount: searchTextCount,
-                    hitCount: hitCount,
-                    id: resultItems.length
-                  });
-                }
-              })
-            };
-            if (keywords.length === 1 && keywords[0] === "") {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
-            } else if (resultItems.length === 0) {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
-            } else {
-              resultItems.sort(function (resultLeft, resultRight) {
-                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
-                  return resultRight.searchTextCount - resultLeft.searchTextCount;
-                } else if (resultLeft.hitCount !== resultRight.hitCount) {
-                  return resultRight.hitCount - resultLeft.hitCount;
-                } else {
-                  return resultRight.id - resultLeft.id;
-                }
-              });
-              var searchResultList = '<ul class=\"search-result-list\">';
-              resultItems.forEach(function (result) {
-                searchResultList += result.item;
-              })
-              searchResultList += "</ul>";
-              resultContent.innerHTML = searchResultList;
-            }
-          }
-
-          if ('auto' === 'auto') {
-            input.addEventListener('input', inputEventFunction);
-          } else {
-            $('.search-icon').click(inputEventFunction);
-            input.addEventListener('keypress', function (event) {
-              if (event.keyCode === 13) {
-                inputEventFunction();
-              }
-            });
-          }
-
-          // remove loading animation
-          $(".local-search-pop-overlay").remove();
-          $('body').css('overflow', '');
-
-          proceedsearch();
-        }
-      });
-    }
-
-    // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
-      e.stopPropagation();
-      if (isfetched === false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-    });
-
-    $('.popup-btn-close').click(onPopupClose);
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-    $(document).on('keyup', function (event) {
-      var shouldDismissSearchPopup = event.which === 27 &&
-        $('.search-popup').is(':visible');
-      if (shouldDismissSearchPopup) {
-        onPopupClose();
-      }
-    });
-  </script>
 
 
 
