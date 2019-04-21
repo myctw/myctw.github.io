@@ -100,7 +100,7 @@
     root: '/',
     scheme: 'Gemini',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -388,7 +388,7 @@
 </ul>
 <p>例如今天建立一個檔案叫做 <strong>Number1test.proto</strong> 的檔案，經過 gRPC Tool 產生出來的 service 檔案預期會是 <strong>Number1test.cs</strong>，但結果卻是 <strong>Number1Test.cs</strong>。</p>
 <p>注意到了嗎？在 1 後面的 t 應該會是小寫的，卻會變成大寫 T。</p>
-<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>強者我同事馬上上github找到這段 <a href="https://github.com/grpc/grpc/blob/master/src/csharp/Grpc.Tools/GeneratorServices.cs#L115" target="_blank" rel="noopener">source code</a> 並且發現 bug 囉！</p>
+<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>強者我同事馬上上github找到這段 <a href="https://github.com/grpc/grpc/blob/master/src/csharp/Grpc.Tools/GeneratorServices.cs#L115" rel="external nofollow noopener noreferrer" target="_blank">source code</a> 並且發現 bug 囉！</p>
 <p>在善心人士修復之前就要特別注意這個部分</p>
 
       
@@ -400,7 +400,11 @@
     
 
     
-
+    <div>
+    
+      <div style="text-align:center;color: #132996;font-size:16px;">------------ 本文結束 ------------</div>
+    
+    </div>
     
       <div>
         <ul class="post-copyright">
@@ -414,13 +418,12 @@
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice: </strong>
-    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow noopener noreferrer" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
   </li>
 </ul>
 
       </div>
     
-
     <footer class="post-footer">
       
         <div class="post-tags">
@@ -492,7 +495,7 @@
       <div id="disqus_thread">
         <noscript>
           Please enable JavaScript to view the
-          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+          <a href="https://disqus.com/?ref_noscript" rel="external nofollow noopener noreferrer" target="_blank">comments powered by Disqus.</a>
         </noscript>
       </div>
     </div>
@@ -583,19 +586,19 @@
             <div class="links-of-author motion-element">
                 
                   <span class="links-of-author-item">
-                    <a href="https://www.linkedin.com/in/mingyichou" target="_blank" title="linkedIn">
+                    <a href="https://www.linkedin.com/in/mingyichou" target="_blank" title="linkedIn" rel="external nofollow noopener noreferrer">
                       
                         <i class="fa fa-fw fa-linkedin"></i>linkedIn</a>
                   </span>
                 
                   <span class="links-of-author-item">
-                    <a href="mailto:eplis051@gmail.com" target="_blank" title="E-Mail">
+                    <a href="mailto:eplis051@gmail.com" target="_blank" title="E-Mail" rel="external nofollow noopener noreferrer">
                       
                         <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
                   </span>
                 
                   <span class="links-of-author-item">
-                    <a href="https://github.com/myctw/" target="_blank" title="GitHub">
+                    <a href="https://github.com/myctw/" target="_blank" title="GitHub" rel="external nofollow noopener noreferrer">
                       
                         <i class="fa fa-fw fa-github"></i>GitHub</a>
                   </span>
@@ -654,7 +657,7 @@
 </div>
 
 
-  <div class="powered-by">Powered by <a class="theme-link" rel="external nofollow" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Powered by <a class="theme-link" rel="external nofollow noopener noreferrer" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 
@@ -662,7 +665,7 @@
 
 
 
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next" rel="external nofollow">NexT.Gemini</a> v5.1.4</div>
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next" rel="external nofollow noopener noreferrer">NexT.Gemini</a> v5.1.4</div>
 
 
 
@@ -682,6 +685,8 @@
     
       <div class="back-to-top">
         <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
         
       </div>
     

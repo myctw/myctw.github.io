@@ -100,7 +100,7 @@
     root: '/',
     scheme: 'Gemini',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -382,7 +382,7 @@
 
       
         <h1 id="佇列的功能"><a href="#佇列的功能" class="headerlink" title="佇列的功能"></a>佇列的功能</h1><p>當系統已經繁忙逐漸無法及時回應需求，或是需求本身需要一段時間處理，以及複雜的HTTP請求這些狀況都很適合搭配訊息佇列來做處理。<br>這邊用sleep來模擬處理很久的訊息。</p>
-<h2 id="Publisher-範例命名為Sender"><a href="#Publisher-範例命名為Sender" class="headerlink" title="Publisher (範例命名為Sender)"></a>Publisher (範例命名為Sender)</h2><p>基本上與<a href="https://github.com/myctw/SampleCodes/tree/master/RabbitMQ/1.Helloworld" target="_blank" rel="noopener">範例一</a>的內容一樣，就不多著墨。<br>\</p>
+<h2 id="Publisher-範例命名為Sender"><a href="#Publisher-範例命名為Sender" class="headerlink" title="Publisher (範例命名為Sender)"></a>Publisher (範例命名為Sender)</h2><p>基本上與<a href="https://github.com/myctw/SampleCodes/tree/master/RabbitMQ/1.Helloworld" rel="external nofollow noopener noreferrer" target="_blank">範例一</a>的內容一樣，就不多著墨。<br>\</p>
 <h2 id="Consumer-範例命名為Receiver"><a href="#Consumer-範例命名為Receiver" class="headerlink" title="Consumer (範例命名為Receiver)"></a>Consumer (範例命名為Receiver)</h2><p>為了模擬處理很久的訊息，在收到訊息後將內容逐一字元顯示。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">foreach (var i in message.ToCharArray())</span><br><span class="line">&#123;</span><br><span class="line">    Thread.Sleep(150);</span><br><span class="line">    Console.Write(&quot;&#123;0&#125;&quot;, i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>其他內容也與範例一是相同的，如果有不理解的可以回頭看<a href="https://myctw.github.io/2018/11/22/RabbitMQ_1/">第一篇</a>文章。</p>
 <p>為了更幫助理解，建議可以執行兩個 receiver.exe，再分別多次執行 sender.exe 這樣看以看多個訊息進入佇列後，每個 receiver 在繁忙中如何分配處理。</p>
@@ -392,7 +392,7 @@
 <p>這邊一樣可以試試看開啟兩個 consumer 程式，然後僅執行一次 sender.exe。當第一個Consumer收到訊息且處理完畢後，將它關閉，接著可以看到第二個Consumer馬上收到相同訊息且開始處理。這就是設定了不自動回覆，導致佇列認為Consumer沒有正確處理訊息。<br>所以這邊要自己撰寫回覆佇列的程式。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Console.WriteLine(&quot;Msg handle finished, send acknowledgement now&quot;);</span><br><span class="line">channel.BasicAck(ea.DeliveryTag, false);</span><br></pre></td></tr></table></figure>
 <p>如此一來同樣訊息就不會一直被視為未正確處理。</p>
-<h1 id="程式範例檔"><a href="#程式範例檔" class="headerlink" title="程式範例檔"></a>程式範例檔</h1><p>完整的範例檔放在這 <a href="https://github.com/myctw/SampleCodes/tree/master/RabbitMQ/2.WorkQueue" target="_blank" rel="noopener">範例</a>，有興趣的可以自行下載。</p>
+<h1 id="程式範例檔"><a href="#程式範例檔" class="headerlink" title="程式範例檔"></a>程式範例檔</h1><p>完整的範例檔放在這 <a href="https://github.com/myctw/SampleCodes/tree/master/RabbitMQ/2.WorkQueue" rel="external nofollow noopener noreferrer" target="_blank">範例</a>，有興趣的可以自行下載。</p>
 
       
     </div>
@@ -403,7 +403,11 @@
     
 
     
-
+    <div>
+    
+      <div style="text-align:center;color: #132996;font-size:16px;">------------ 本文結束 ------------</div>
+    
+    </div>
     
       <div>
         <ul class="post-copyright">
@@ -417,13 +421,12 @@
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice: </strong>
-    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow noopener noreferrer" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
   </li>
 </ul>
 
       </div>
     
-
     <footer class="post-footer">
       
         <div class="post-tags">
@@ -491,7 +494,7 @@
       <div id="disqus_thread">
         <noscript>
           Please enable JavaScript to view the
-          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+          <a href="https://disqus.com/?ref_noscript" rel="external nofollow noopener noreferrer" target="_blank">comments powered by Disqus.</a>
         </noscript>
       </div>
     </div>
@@ -582,19 +585,19 @@
             <div class="links-of-author motion-element">
                 
                   <span class="links-of-author-item">
-                    <a href="https://www.linkedin.com/in/mingyichou" target="_blank" title="linkedIn">
+                    <a href="https://www.linkedin.com/in/mingyichou" target="_blank" title="linkedIn" rel="external nofollow noopener noreferrer">
                       
                         <i class="fa fa-fw fa-linkedin"></i>linkedIn</a>
                   </span>
                 
                   <span class="links-of-author-item">
-                    <a href="mailto:eplis051@gmail.com" target="_blank" title="E-Mail">
+                    <a href="mailto:eplis051@gmail.com" target="_blank" title="E-Mail" rel="external nofollow noopener noreferrer">
                       
                         <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
                   </span>
                 
                   <span class="links-of-author-item">
-                    <a href="https://github.com/myctw/" target="_blank" title="GitHub">
+                    <a href="https://github.com/myctw/" target="_blank" title="GitHub" rel="external nofollow noopener noreferrer">
                       
                         <i class="fa fa-fw fa-github"></i>GitHub</a>
                   </span>
@@ -653,7 +656,7 @@
 </div>
 
 
-  <div class="powered-by">Powered by <a class="theme-link" rel="external nofollow" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Powered by <a class="theme-link" rel="external nofollow noopener noreferrer" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 
@@ -661,7 +664,7 @@
 
 
 
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next" rel="external nofollow">NexT.Gemini</a> v5.1.4</div>
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next" rel="external nofollow noopener noreferrer">NexT.Gemini</a> v5.1.4</div>
 
 
 
@@ -681,6 +684,8 @@
     
       <div class="back-to-top">
         <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
         
       </div>
     

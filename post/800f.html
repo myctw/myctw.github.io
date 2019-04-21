@@ -102,7 +102,7 @@
     root: '/',
     scheme: 'Gemini',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -394,7 +394,7 @@
 <h3 id="Subscriber"><a href="#Subscriber" class="headerlink" title="Subscriber"></a>Subscriber</h3><p>這邊雖然只用了一個佇列但綁定了四個不同RouteKey，收到訊息後印出是指定哪個RouteKey與內容。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">channel.QueueBind(queue: queueName, exchange: &quot;direct_logs&quot;, routingKey: &quot;INFO&quot;);</span><br><span class="line">channel.QueueBind(queue: queueName, exchange: &quot;direct_logs&quot;, routingKey: &quot;WARNING&quot;);</span><br><span class="line">channel.QueueBind(queue: queueName, exchange: &quot;direct_logs&quot;, routingKey: &quot;ERROR&quot;);</span><br><span class="line">channel.QueueBind(queue: queueName, exchange: &quot;direct_logs&quot;, routingKey: &quot;FATAL&quot;);</span><br><span class="line"></span><br><span class="line">var consumer = new EventingBasicConsumer(channel);</span><br><span class="line">consumer.Received += (model, ea) =&gt;</span><br><span class="line">&#123;</span><br><span class="line">    var body = ea.Body;</span><br><span class="line">    var msg = Encoding.UTF8.GetString(body);</span><br><span class="line">    var routingKey = ea.RoutingKey;</span><br><span class="line">    Console.WriteLine($&quot;Receiving RoutingKey:&#123;routingKey&#125;, Msg:&#123;msg&#125;.&quot;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p>最後分別執行兩支程式，結果如下圖：<br><img src="/images/2018-11-23-23-52-01.png" alt="alt"></p>
-<h3 id="程式範例檔"><a href="#程式範例檔" class="headerlink" title="程式範例檔"></a>程式範例檔</h3><p>完整的範例檔放在這 <a href="https://github.com/myctw/SampleCodes/tree/master/RabbitMQ/4.Routing" target="_blank" rel="noopener">範例</a>，有興趣的可以自行下載，此版本與之前文章不同，是用 .Net Core開發的。</p>
+<h3 id="程式範例檔"><a href="#程式範例檔" class="headerlink" title="程式範例檔"></a>程式範例檔</h3><p>完整的範例檔放在這 <a href="https://github.com/myctw/SampleCodes/tree/master/RabbitMQ/4.Routing" rel="external nofollow noopener noreferrer" target="_blank">範例</a>，有興趣的可以自行下載，此版本與之前文章不同，是用 .Net Core開發的。</p>
 
       
     </div>
@@ -405,7 +405,11 @@
     
 
     
-
+    <div>
+    
+      <div style="text-align:center;color: #132996;font-size:16px;">------------ 本文結束 ------------</div>
+    
+    </div>
     
       <div>
         <ul class="post-copyright">
@@ -419,13 +423,12 @@
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice: </strong>
-    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow noopener noreferrer" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
   </li>
 </ul>
 
       </div>
     
-
     <footer class="post-footer">
       
         <div class="post-tags">
@@ -493,7 +496,7 @@
       <div id="disqus_thread">
         <noscript>
           Please enable JavaScript to view the
-          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+          <a href="https://disqus.com/?ref_noscript" rel="external nofollow noopener noreferrer" target="_blank">comments powered by Disqus.</a>
         </noscript>
       </div>
     </div>
@@ -584,19 +587,19 @@
             <div class="links-of-author motion-element">
                 
                   <span class="links-of-author-item">
-                    <a href="https://www.linkedin.com/in/mingyichou" target="_blank" title="linkedIn">
+                    <a href="https://www.linkedin.com/in/mingyichou" target="_blank" title="linkedIn" rel="external nofollow noopener noreferrer">
                       
                         <i class="fa fa-fw fa-linkedin"></i>linkedIn</a>
                   </span>
                 
                   <span class="links-of-author-item">
-                    <a href="mailto:eplis051@gmail.com" target="_blank" title="E-Mail">
+                    <a href="mailto:eplis051@gmail.com" target="_blank" title="E-Mail" rel="external nofollow noopener noreferrer">
                       
                         <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
                   </span>
                 
                   <span class="links-of-author-item">
-                    <a href="https://github.com/myctw/" target="_blank" title="GitHub">
+                    <a href="https://github.com/myctw/" target="_blank" title="GitHub" rel="external nofollow noopener noreferrer">
                       
                         <i class="fa fa-fw fa-github"></i>GitHub</a>
                   </span>
@@ -655,7 +658,7 @@
 </div>
 
 
-  <div class="powered-by">Powered by <a class="theme-link" rel="external nofollow" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Powered by <a class="theme-link" rel="external nofollow noopener noreferrer" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 
@@ -663,7 +666,7 @@
 
 
 
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next" rel="external nofollow">NexT.Gemini</a> v5.1.4</div>
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next" rel="external nofollow noopener noreferrer">NexT.Gemini</a> v5.1.4</div>
 
 
 
@@ -683,6 +686,8 @@
     
       <div class="back-to-top">
         <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
         
       </div>
     

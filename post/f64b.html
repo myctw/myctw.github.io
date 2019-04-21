@@ -103,7 +103,7 @@
     root: '/',
     scheme: 'Gemini',
     version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -385,7 +385,7 @@
 
       
         <p>macOS的使用者應該都使用過vs code，加上各種plugin做起事來更是如虎添翼。</p>
-<p>今天要介紹的工具是<a href="https://github.com/sozercan/OpenInCode" target="_blank" rel="noopener">Open In Code</a>，此程式的功能就是在Finder上增加一個”使用vs code開啟”的功能，讓你在使用Finder瀏覽時，隨時都能夠使用vs code開啟當前目錄，不需要再辛苦得再選定資料夾開啟。</p>
+<p>今天要介紹的工具是<a href="https://github.com/sozercan/OpenInCode" rel="external nofollow noopener noreferrer" target="_blank">Open In Code</a>，此程式的功能就是在Finder上增加一個”使用vs code開啟”的功能，讓你在使用Finder瀏覽時，隨時都能夠使用vs code開啟當前目錄，不需要再辛苦得再選定資料夾開啟。</p>
 <p>那馬上就使用Brew cask來安裝吧！</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew cask install open-in-code</span><br></pre></td></tr></table></figure>
 <p><img src="/images/openincode-1.jpg" alt="alt"></p>
@@ -406,7 +406,11 @@
     
 
     
-
+    <div>
+    
+      <div style="text-align:center;color: #132996;font-size:16px;">------------ 本文結束 ------------</div>
+    
+    </div>
     
       <div>
         <ul class="post-copyright">
@@ -420,13 +424,12 @@
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice: </strong>
-    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow noopener noreferrer" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
   </li>
 </ul>
 
       </div>
     
-
     <footer class="post-footer">
       
         <div class="post-tags">
@@ -494,7 +497,7 @@
       <div id="disqus_thread">
         <noscript>
           Please enable JavaScript to view the
-          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+          <a href="https://disqus.com/?ref_noscript" rel="external nofollow noopener noreferrer" target="_blank">comments powered by Disqus.</a>
         </noscript>
       </div>
     </div>
@@ -576,19 +579,19 @@
             <div class="links-of-author motion-element">
                 
                   <span class="links-of-author-item">
-                    <a href="https://www.linkedin.com/in/mingyichou" target="_blank" title="linkedIn">
+                    <a href="https://www.linkedin.com/in/mingyichou" target="_blank" title="linkedIn" rel="external nofollow noopener noreferrer">
                       
                         <i class="fa fa-fw fa-linkedin"></i>linkedIn</a>
                   </span>
                 
                   <span class="links-of-author-item">
-                    <a href="mailto:eplis051@gmail.com" target="_blank" title="E-Mail">
+                    <a href="mailto:eplis051@gmail.com" target="_blank" title="E-Mail" rel="external nofollow noopener noreferrer">
                       
                         <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
                   </span>
                 
                   <span class="links-of-author-item">
-                    <a href="https://github.com/myctw/" target="_blank" title="GitHub">
+                    <a href="https://github.com/myctw/" target="_blank" title="GitHub" rel="external nofollow noopener noreferrer">
                       
                         <i class="fa fa-fw fa-github"></i>GitHub</a>
                   </span>
@@ -631,7 +634,7 @@
 </div>
 
 
-  <div class="powered-by">Powered by <a class="theme-link" rel="external nofollow" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Powered by <a class="theme-link" rel="external nofollow noopener noreferrer" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 
@@ -639,7 +642,7 @@
 
 
 
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next" rel="external nofollow">NexT.Gemini</a> v5.1.4</div>
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next" rel="external nofollow noopener noreferrer">NexT.Gemini</a> v5.1.4</div>
 
 
 
@@ -659,6 +662,8 @@
     
       <div class="back-to-top">
         <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
         
       </div>
     
