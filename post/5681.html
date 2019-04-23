@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="C4,C4 model,Software Architecture,">
+  <meta name="keywords" content="c#,.net core,mongodb,macos,crud,">
 
 
 
@@ -79,23 +79,18 @@
 
 
 
-<meta name="description" content="軟體架構圖是讓人理解系統非常重要的，而用於表現、體現軟體架構的圖有非常多種，這邊談到的是Ｃ4模型。 圖勝表、表勝文大家都知道圖的重要性，繪製一張好的圖需要很多次的來回討論與修改，儘管花費很多時間，一但完成能夠大幅縮短後人了解系統的時間。 好啊！那來畫ＵＭＬ吧UML並不是不好，而是有一些限制在，簡單列一下我的感受：  觀看高度不夠。如果是想讓人快速了解系統或是要跟老闆報告，這些圖都不太適合，通常需要">
-<meta name="keywords" content="C4,C4 model,Software Architecture">
+<meta name="description" content="這篇文章主要是介紹以C#強型別使用Mongodb driver連線的CRUD語法，一些MongoDB的名詞就不會多著墨。 情境我們要建立一個 hellomongodb 的資料庫，裡面有 users 的 collection，存放 user 的相關資訊。以下範例都會使用非同步的方式，若有需要同步執行的，可以自行移除async看看，大致上都是這樣。 先打開shell模式建立DB與collection">
+<meta name="keywords" content="c#,.net core,mongodb,macos,crud">
 <meta property="og:type" content="article">
-<meta property="og:title" content="軟體架構之Ｃ4模型">
-<meta property="og:url" content="https://myctw.github.io/post/d11.html">
+<meta property="og:title" content="macOS 下使用 .Net Core 對 MongoDb 的CRUD">
+<meta property="og:url" content="https://myctw.github.io/post/5681.html">
 <meta property="og:site_name" content="Pie Note">
-<meta property="og:description" content="軟體架構圖是讓人理解系統非常重要的，而用於表現、體現軟體架構的圖有非常多種，這邊談到的是Ｃ4模型。 圖勝表、表勝文大家都知道圖的重要性，繪製一張好的圖需要很多次的來回討論與修改，儘管花費很多時間，一但完成能夠大幅縮短後人了解系統的時間。 好啊！那來畫ＵＭＬ吧UML並不是不好，而是有一些限制在，簡單列一下我的感受：  觀看高度不夠。如果是想讓人快速了解系統或是要跟老闆報告，這些圖都不太適合，通常需要">
+<meta property="og:description" content="這篇文章主要是介紹以C#強型別使用Mongodb driver連線的CRUD語法，一些MongoDB的名詞就不會多著墨。 情境我們要建立一個 hellomongodb 的資料庫，裡面有 users 的 collection，存放 user 的相關資訊。以下範例都會使用非同步的方式，若有需要同步執行的，可以自行移除async看看，大致上都是這樣。 先打開shell模式建立DB與collection">
 <meta property="og:locale" content="en-gb">
-<meta property="og:image" content="https://myctw.github.io/images/c4_lv1.png">
-<meta property="og:image" content="https://myctw.github.io/images/c4_lv2.png">
-<meta property="og:image" content="https://myctw.github.io/images/c4_lv3.png">
-<meta property="og:image" content="https://myctw.github.io/images/c4_lv4.png">
-<meta property="og:updated_time" content="2019-04-20T14:45:21.122Z">
+<meta property="og:updated_time" content="2019-04-23T16:37:49.349Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="軟體架構之Ｃ4模型">
-<meta name="twitter:description" content="軟體架構圖是讓人理解系統非常重要的，而用於表現、體現軟體架構的圖有非常多種，這邊談到的是Ｃ4模型。 圖勝表、表勝文大家都知道圖的重要性，繪製一張好的圖需要很多次的來回討論與修改，儘管花費很多時間，一但完成能夠大幅縮短後人了解系統的時間。 好啊！那來畫ＵＭＬ吧UML並不是不好，而是有一些限制在，簡單列一下我的感受：  觀看高度不夠。如果是想讓人快速了解系統或是要跟老闆報告，這些圖都不太適合，通常需要">
-<meta name="twitter:image" content="https://myctw.github.io/images/c4_lv1.png">
+<meta name="twitter:title" content="macOS 下使用 .Net Core 對 MongoDb 的CRUD">
+<meta name="twitter:description" content="這篇文章主要是介紹以C#強型別使用Mongodb driver連線的CRUD語法，一些MongoDB的名詞就不會多著墨。 情境我們要建立一個 hellomongodb 的資料庫，裡面有 users 的 collection，存放 user 的相關資訊。以下範例都會使用非同步的方式，若有需要同步執行的，可以自行移除async看看，大致上都是這樣。 先打開shell模式建立DB與collection">
 
 
 
@@ -125,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://myctw.github.io/post/d11.html">
+  <link rel="canonical" href="https://myctw.github.io/post/5681.html">
 
 
 
 
 
-  <title>軟體架構之Ｃ4模型 | Pie Note</title>
+  <title>macOS 下使用 .Net Core 對 MongoDb 的CRUD | Pie Note</title>
   
 
 
@@ -287,7 +282,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://myctw.github.io/post/d11.html">
+    <link itemprop="mainEntityOfPage" href="https://myctw.github.io/post/5681.html">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Pattri Chou">
@@ -304,7 +299,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">軟體架構之Ｃ4模型</h2>
+          <h2 class="post-title" itemprop="name headline">macOS 下使用 .Net Core 對 MongoDb 的CRUD</h2>
         
 
         <div class="post-meta">
@@ -316,8 +311,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-19T09:47:11+08:00">
-                2019-03-19
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-24T00:37:11Z">
+                2019-04-24
               </time>
             
 
@@ -339,8 +334,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/Software-Architecture/" itemprop="url" rel="index">
-                    <span itemprop="name">Software Architecture</span>
+                  <a href="/categories/Database/" itemprop="url" rel="index">
+                    <span itemprop="name">Database</span>
                   </a>
                 </span>
 
@@ -357,8 +352,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/post/d11.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="post/d11.html" itemprop="commentCount"></span>
+                <a href="/post/5681.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="post/5681.html" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -386,23 +381,19 @@
       
 
       
-        <p>軟體架構圖是讓人理解系統非常重要的，而用於表現、體現軟體架構的圖有非常多種，這邊談到的是Ｃ4模型。</p>
-<h2 id="圖勝表、表勝文"><a href="#圖勝表、表勝文" class="headerlink" title="圖勝表、表勝文"></a>圖勝表、表勝文</h2><p>大家都知道圖的重要性，繪製一張好的圖需要很多次的來回討論與修改，儘管花費很多時間，一但完成能夠大幅縮短後人了解系統的時間。</p>
-<h2 id="好啊！那來畫UML吧"><a href="#好啊！那來畫UML吧" class="headerlink" title="好啊！那來畫ＵＭＬ吧"></a>好啊！那來畫ＵＭＬ吧</h2><p>UML並不是不好，而是有一些限制在，簡單列一下我的感受：</p>
-<ul>
-<li>觀看高度不夠。如果是想讓人快速了解系統或是要跟老闆報告，這些圖都不太適合，通常需要其他圖片來輔助。</li>
-<li>外行看不懂。圖片畫出來就是要與人溝通的，如果門檻過高讓人看不懂無異於無字天書，如果你的對象是工程師，那我想應該不會有太大問題。</li>
-<li>你真的懂UML？UML包含了各種類型的圖，除非有認真學習過怎麼繪製，否則裡面的每個細節可能會被誤用，一但誤用，就是誤會的開始了..<br>例如循序圖的 Component/Entity是什麼？何時該用虛線何時該用實線…等等</li>
-<li>到底要多詳細？同樣一張圖片，無法有明確的規範到底該畫到多詳細，有的人認為寫出描述即可，有的人需要畫出實作的方法名稱</li>
-</ul>
-<p>說了一些點，本篇不是討論UML的，不過我依然認為他還是個對溝通有用的圖，如果真的有<strong>寫文件</strong>的話，甚至如果真的<strong>有人看</strong>的話。</p>
-<h2 id="C4-Model"><a href="#C4-Model" class="headerlink" title="C4 Model"></a>C4 Model</h2><p>最近接觸到<a href="https://c4model.com/#tooling" rel="external nofollow noopener noreferrer" target="_blank">C4 Model架構</a>，用來描述軟體架構的概念，當然相同的工具、做法有很多種，這邊就先寫一篇心得來記錄一下。<br>作者將架構圖的視野由高至低分為四個等級，第一等級是最上層也是最粗略的。</p>
-<p><strong>以下圖片街擷取自官網</strong></p>
-<h2 id="Level1-系統上下文圖-System-Context-Diagram"><a href="#Level1-系統上下文圖-System-Context-Diagram" class="headerlink" title="Level1: 系統上下文圖(System Context Diagram)"></a>Level1: 系統上下文圖(System Context Diagram)</h2><p><img src="/images/c4_lv1.png" alt="alt"><br>在這個階層主要是將各種使用者/角色需要使用的功能畫出來，並不會有技術名詞或實作的相關做法，可以想像成User story的做法，將使用者的需求簡易的描述出來，跟哪些系統有關聯，使用哪些系統達到什麼事情。<br>官網建議是把這次專案要開發的系統放在中間，以藍色的方塊來表示；灰色則是既有系統或非本專案需開發系統，再用虛線將系統界線畫出來。</p>
-<h2 id="Level2-容器圖-Container-Diagram"><a href="#Level2-容器圖-Container-Diagram" class="headerlink" title="Level2: 容器圖(Container Diagram)"></a>Level2: 容器圖(Container Diagram)</h2><p><img src="/images/c4_lv2.png" alt="alt"><br>這邊用的名詞容器，並非像Docker之類的container。<br>放大系統後的容器可以是網頁應用程式、桌面應用程式、Ａpp、資料庫等。在容器圖內可以看到各個應用程式（模組）間的相互溝通</p>
-<h2 id="Level3-元件圖-Component-Diagram"><a href="#Level3-元件圖-Component-Diagram" class="headerlink" title="Level3: 元件圖(Component Diagram)"></a>Level3: 元件圖(Component Diagram)</h2><p><img src="/images/c4_lv3.png" alt="alt"><br>第三階段的圖其實就是再放大Lv2的應用程式，將應用程式內容更深入地畫出每個元件。<br>我認為在這層彈性比較大，可以按類型或功能來分類每個component，例如範例是controller，也可以用service來分類，依照每個需求來去畫。</p>
-<h2 id="Level4-程式"><a href="#Level4-程式" class="headerlink" title="Level4: 程式"></a>Level4: 程式</h2><p><img src="/images/c4_lv4.png" alt="alt"><br>到了最下層，需要最詳細的流程就可以在這邊表示，特別是決策圖可以表示什麼樣的條件該走什麼路，無論是對設計者自行檢查、開發者流程、以及ＱＡ的驗收依據，都是相當重要的。</p>
-<p>在官網還提到了額外三種補充圖類型，分別是系統景觀圖（System Landscape Aarchcteure）、動態圖（Dynamic Diagram)以及部署圖（Deployment Diagram)，透過官網提供的範例，第一張偏向商業邏輯、第二張偏向開發的介面定義；第三章則是像維運面的，都分別有其功能，可以自由斟酌是否需要。</p>
+        <p>這篇文章主要是介紹以C#強型別使用Mongodb driver連線的CRUD語法，一些MongoDB的名詞就不會多著墨。</p>
+<h2 id="情境"><a href="#情境" class="headerlink" title="情境"></a>情境</h2><p>我們要建立一個 hellomongodb 的資料庫，裡面有 users 的 collection，存放 user 的相關資訊。<br>以下範例都會使用非同步的方式，若有需要同步執行的，可以自行移除async看看，大致上都是這樣。</p>
+<p>先打開shell模式建立DB與collection</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//切換至 hellomongodb 資料庫</span></span><br><span class="line">use hellomongodb</span><br><span class="line"><span class="comment">//建立名為 users 的 collection</span></span><br><span class="line">db.createCollection(<span class="string">"users"</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="建立連線"><a href="#建立連線" class="headerlink" title="建立連線"></a>建立連線</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const string MongoAddress = &quot;mongodb://localhost:27017&quot;;</span><br><span class="line">const string HelloDatabase = &quot;hellomongodb&quot;;</span><br><span class="line">const string UserCollection = &quot;users&quot;;</span><br><span class="line"></span><br><span class="line">var client  = new MongoClient(MongoAddress);</span><br><span class="line">var collection = client.GetDatabase(HelloDatabase).GetCollection&lt;UserEntity&gt;(UserCollection);</span><br></pre></td></tr></table></figure>
+<h2 id="Create"><a href="#Create" class="headerlink" title="Create"></a>Create</h2><p>剛開始肯定沒有資料的，所以我們會先建立幾筆資料做為測試</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">//建立一筆資料</span><br><span class="line">private static async void CreateUser()</span><br><span class="line">&#123;</span><br><span class="line">    await GetUsersCollection().InsertOneAsync(</span><br><span class="line">            new UserEntity&#123; Name = &quot;Shaka&quot;, Country = &quot;Unknown&quot;, City = &quot;Zodiac Temple&quot;&#125;</span><br><span class="line">    );</span><br><span class="line">&#125;</span><br><span class="line">//一次建立多筆資料</span><br><span class="line">private static async void CreateMultiUsers()</span><br><span class="line">&#123;</span><br><span class="line">    await GetUsersCollection().InsertManyAsync(new List&lt;UserEntity&gt;</span><br><span class="line">        &#123;</span><br><span class="line">            new UserEntity&#123; Name = &quot;Jack&quot;, Country = &quot;Taiwan&quot;, City = &quot;Taipei&quot;&#125;,</span><br><span class="line">            new UserEntity&#123; Name = &quot;Sion&quot;, Country = &quot;Unknown&quot;, City = &quot;Underworld&quot;&#125;,</span><br><span class="line">            new UserEntity&#123; Name = &quot;Saga&quot;, Country = &quot;Unknown&quot;, City = &quot;Zodiac Temple&quot;&#125;</span><br><span class="line">        &#125;</span><br><span class="line">    );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Read"><a href="#Read" class="headerlink" title="Read"></a>Read</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">private static async Task&lt;List&lt;UserEntity&gt;&gt; GetAllUsers()</span><br><span class="line">&#123;</span><br><span class="line">    var result = await GetUsersCollection().FindAsync(FilterDefinition&lt;UserEntity&gt;.Empty).Result.ToListAsync();</span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br><span class="line">//尋找 name 欄位等於參數的</span><br><span class="line">private static async Task&lt;List&lt;UserEntity&gt;&gt; GetUser(string name)</span><br><span class="line">&#123;</span><br><span class="line">    var filter = Builders&lt;UserEntity&gt;.Filter.Eq(&quot;name&quot;, name);</span><br><span class="line">    var result = await GetUsersCollection().FindAsync(filter).Result.ToListAsync();</span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Update"><a href="#Update" class="headerlink" title="Update"></a>Update</h2><p>這個範例是尋找名稱為 name 的使用者，將他的 city 欄位改為 newCity</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">private static async Task&lt;bool&gt; UpdateCity(string name, string newCity)</span><br><span class="line">&#123;</span><br><span class="line">    var filter = Builders&lt;UserEntity&gt;.Filter.Eq(&quot;name&quot;, name);</span><br><span class="line">    var update = Builders&lt;UserEntity&gt;.Update.Set(&quot;city&quot;, newCity);</span><br><span class="line">    var result = await GetUsersCollection().UpdateOneAsync(filter, update);</span><br><span class="line">    return result.IsAcknowledged;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Delete"><a href="#Delete" class="headerlink" title="Delete"></a>Delete</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">private static async Task&lt;bool&gt; DeleteAll()</span><br><span class="line">&#123;</span><br><span class="line">    var result = await GetUsersCollection().DeleteManyAsync(FilterDefinition&lt;UserEntity&gt;.Empty);</span><br><span class="line">    return result.IsAcknowledged;</span><br><span class="line">&#125;</span><br><span class="line">private static async Task&lt;bool&gt; DeleteOne(string name)</span><br><span class="line">&#123;</span><br><span class="line">    var filter = Builders&lt;UserEntity&gt;.Filter.Eq(&quot;name&quot;, name);</span><br><span class="line">    var result = await GetUsersCollection().DeleteOneAsync(filter);</span><br><span class="line">    return result.IsAcknowledged;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最基本的CRUD大致上就是這樣，之後再介紹進階的用法，例如projection或是upsert等。</p>
+<p>完整的範例專案在<a href="https://github.com/myctw/SampleCodes/tree/master/HelloWorld_MongoDb" rel="external nofollow noopener noreferrer" target="_blank">這邊</a>可以下載到。</p>
 
       
     </div>
@@ -427,7 +418,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>Post link:</strong>
-    <a href="https://myctw.github.io/post/d11.html" title="軟體架構之Ｃ4模型">https://myctw.github.io/post/d11.html</a>
+    <a href="https://myctw.github.io/post/5681.html" title="macOS 下使用 .Net Core 對 MongoDb 的CRUD">https://myctw.github.io/post/5681.html</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice: </strong>
@@ -441,11 +432,15 @@
       
         <div class="post-tags">
           
-            <a href="/tags/C4/" rel="tag"># C4</a>
+            <a href="/tags/c/" rel="tag"># c#</a>
           
-            <a href="/tags/C4-model/" rel="tag"># C4 model</a>
+            <a href="/tags/net-core/" rel="tag"># .net core</a>
           
-            <a href="/tags/Software-Architecture/" rel="tag"># Software Architecture</a>
+            <a href="/tags/mongodb/" rel="tag"># mongodb</a>
+          
+            <a href="/tags/macos/" rel="tag"># macos</a>
+          
+            <a href="/tags/crud/" rel="tag"># crud</a>
           
         </div>
       
@@ -458,8 +453,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/post/edcf.html" rel="next" title="C# 中 Checked 語法的功能">
-                <i class="fa fa-chevron-left"></i> C# 中 Checked 語法的功能
+              <a href="/post/801.html" rel="next" title="MongoDB 語法注意事項 -1">
+                <i class="fa fa-chevron-left"></i> MongoDB 語法注意事項 -1
               </a>
             
           </div>
@@ -467,10 +462,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/post/dbef.html" rel="prev" title="macOS 編輯自己的快速指令">
-                macOS 編輯自己的快速指令 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -636,7 +627,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#圖勝表、表勝文"><span class="nav-number">1.</span> <span class="nav-text">圖勝表、表勝文</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#好啊！那來畫UML吧"><span class="nav-number">2.</span> <span class="nav-text">好啊！那來畫ＵＭＬ吧</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C4-Model"><span class="nav-number">3.</span> <span class="nav-text">C4 Model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Level1-系統上下文圖-System-Context-Diagram"><span class="nav-number">4.</span> <span class="nav-text">Level1: 系統上下文圖(System Context Diagram)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Level2-容器圖-Container-Diagram"><span class="nav-number">5.</span> <span class="nav-text">Level2: 容器圖(Container Diagram)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Level3-元件圖-Component-Diagram"><span class="nav-number">6.</span> <span class="nav-text">Level3: 元件圖(Component Diagram)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Level4-程式"><span class="nav-number">7.</span> <span class="nav-text">Level4: 程式</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#情境"><span class="nav-number">1.</span> <span class="nav-text">情境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#建立連線"><span class="nav-number">2.</span> <span class="nav-text">建立連線</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Create"><span class="nav-number">3.</span> <span class="nav-text">Create</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Read"><span class="nav-number">4.</span> <span class="nav-text">Read</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Update"><span class="nav-number">5.</span> <span class="nav-text">Update</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Delete"><span class="nav-number">6.</span> <span class="nav-text">Delete</span></a></li></ol></div>
             
 
           </div>
@@ -808,9 +799,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'https://myctw.github.io/post/d11.html';
-          this.page.identifier = 'post/d11.html';
-          this.page.title = '軟體架構之Ｃ4模型';
+          this.page.url = 'https://myctw.github.io/post/5681.html';
+          this.page.identifier = 'post/5681.html';
+          this.page.title = 'macOS 下使用 .Net Core 對 MongoDb 的CRUD';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://myctw.disqus.com/embed.js';
