@@ -407,10 +407,12 @@
 <h2 id="測試基準"><a href="#測試基準" class="headerlink" title="測試基準"></a><strong>測試基準</strong></h2><p>很多效能調校都會拿原本的code來進行比較，這時候只需要在benchmark後面加上baseline設定即可。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[Benchmark(Baseline = true)]</span><br><span class="line">public List&lt;int&gt; SelectFirstMethod()</span><br><span class="line">&#123;&#125;</span><br><span class="line">[Benchmark]</span><br><span class="line">public List&lt;int&gt; WhereFirstMethod()</span><br><span class="line">&#123;&#125;</span><br></pre></td></tr></table></figure>
 <p>本篇文章完整的範例專案在<a href="https://github.com/myctw/SampleCodes/tree/master/HelloWorld_MongoDb" rel="external nofollow noopener noreferrer" target="_blank">這邊</a>可以下載到。</p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>1. <a href="https://github.com/dotnet/BenchmarkDotNet" rel="external nofollow noopener noreferrer" target="_blank">BenchmarkDotNet Github</a></p>
-<ol start="2">
-<li><a href="https://benchmarkdotnet.org/articles/overview.html" rel="external nofollow noopener noreferrer" target="_blank">Document OverView</a></li>
-</ol>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li><p><a href="https://github.com/dotnet/BenchmarkDotNet" rel="external nofollow noopener noreferrer" target="_blank">BenchmarkDotNet Github</a></p>
+</li>
+<li><p><a href="https://benchmarkdotnet.org/articles/overview.html" rel="external nofollow noopener noreferrer" target="_blank">Document OverView</a></p>
+</li>
+</ul>
 
           
         
@@ -575,11 +577,11 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">private static async Task&lt;bool&gt; UpdateCity(string name, string newCity)</span><br><span class="line">&#123;</span><br><span class="line">    var filter = Builders&lt;UserEntity&gt;.Filter.Eq(&quot;name&quot;, name);</span><br><span class="line">    var update = Builders&lt;UserEntity&gt;.Update.Set(&quot;city&quot;, newCity);</span><br><span class="line">    var result = await GetUsersCollection().UpdateOneAsync(filter, update);</span><br><span class="line">    return result.IsAcknowledged;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="Delete"><a href="#Delete" class="headerlink" title="Delete"></a>Delete</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">private static async Task&lt;bool&gt; DeleteAll()</span><br><span class="line">&#123;</span><br><span class="line">    var result = await GetUsersCollection().DeleteManyAsync(FilterDefinition&lt;UserEntity&gt;.Empty);</span><br><span class="line">    return result.IsAcknowledged;</span><br><span class="line">&#125;</span><br><span class="line">private static async Task&lt;bool&gt; DeleteOne(string name)</span><br><span class="line">&#123;</span><br><span class="line">    var filter = Builders&lt;UserEntity&gt;.Filter.Eq(&quot;name&quot;, name);</span><br><span class="line">    var result = await GetUsersCollection().DeleteOneAsync(filter);</span><br><span class="line">    return result.IsAcknowledged;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>最基本的CRUD大致上就是這樣，之後再介紹進階的用法，例如projection或是upsert等。</p>
-<p>本篇文章完整的範例專案在<a href="https://github.com/myctw/SampleCodes/tree/master/HelloWorld_MongoDb" rel="external nofollow noopener noreferrer" target="_blank">這邊</a>可以下載到。</p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>1. <a href="https://github.com/mongodb/mongo-csharp-driver" rel="external nofollow noopener noreferrer" target="_blank">C# Driver Github</a></p>
-<ol start="2">
+<p>本篇文章完整的範例專案在<a href="https://github.com/myctw/SampleCodes/tree/master/HelloWorld_MongoDb" rel="external nofollow noopener noreferrer" target="_blank">這邊</a>可以下載到。<br>本篇文章完整的範例專案在<a href="https://github.com/myctw/SampleCodes/tree/master/HelloWorld_MongoDb" rel="external nofollow noopener noreferrer" target="_blank">這邊</a>可以下載到。</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li><a href="https://github.com/mongodb/mongo-csharp-driver" rel="external nofollow noopener noreferrer" target="_blank">C# Driver Github</a></li>
 <li><a href="http://mongodb.github.io/mongo-csharp-driver/2.7/apidocs/html/R_Project_CSharpDriverDocs.htm" rel="external nofollow noopener noreferrer" target="_blank">API Document</a><br>各種method用法可以在這裡查到，不過有些內容已經過時了。</li>
-</ol>
+</ul>
 
           
         

@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Pie Note">
 <meta property="og:description" content="這篇文章主要是介紹以C#強型別使用Mongodb driver連線的CRUD語法，一些MongoDB的名詞就不會多著墨。 情境我們要建立一個 hellomongodb 的資料庫，裡面有 users 的 collection，存放 user 的相關資訊。以下範例都會使用非同步的方式，若有需要同步執行的，可以自行移除async看看，大致上都是這樣。 先打開shell模式建立DB與collection">
 <meta property="og:locale" content="en-gb">
-<meta property="og:updated_time" content="2019-04-23T16:47:03.287Z">
+<meta property="og:updated_time" content="2019-05-05T17:08:58.267Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="macOS 下使用 .Net Core 對 MongoDb 的CRUD">
 <meta name="twitter:description" content="這篇文章主要是介紹以C#強型別使用Mongodb driver連線的CRUD語法，一些MongoDB的名詞就不會多著墨。 情境我們要建立一個 hellomongodb 的資料庫，裡面有 users 的 collection，存放 user 的相關資訊。以下範例都會使用非同步的方式，若有需要同步執行的，可以自行移除async看看，大致上都是這樣。 先打開shell模式建立DB與collection">
@@ -311,7 +311,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-24T00:37:11Z">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-24T08:37:11+08:00">
                 2019-04-24
               </time>
             
@@ -393,11 +393,11 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">private static async Task&lt;bool&gt; UpdateCity(string name, string newCity)</span><br><span class="line">&#123;</span><br><span class="line">    var filter = Builders&lt;UserEntity&gt;.Filter.Eq(&quot;name&quot;, name);</span><br><span class="line">    var update = Builders&lt;UserEntity&gt;.Update.Set(&quot;city&quot;, newCity);</span><br><span class="line">    var result = await GetUsersCollection().UpdateOneAsync(filter, update);</span><br><span class="line">    return result.IsAcknowledged;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="Delete"><a href="#Delete" class="headerlink" title="Delete"></a>Delete</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">private static async Task&lt;bool&gt; DeleteAll()</span><br><span class="line">&#123;</span><br><span class="line">    var result = await GetUsersCollection().DeleteManyAsync(FilterDefinition&lt;UserEntity&gt;.Empty);</span><br><span class="line">    return result.IsAcknowledged;</span><br><span class="line">&#125;</span><br><span class="line">private static async Task&lt;bool&gt; DeleteOne(string name)</span><br><span class="line">&#123;</span><br><span class="line">    var filter = Builders&lt;UserEntity&gt;.Filter.Eq(&quot;name&quot;, name);</span><br><span class="line">    var result = await GetUsersCollection().DeleteOneAsync(filter);</span><br><span class="line">    return result.IsAcknowledged;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>最基本的CRUD大致上就是這樣，之後再介紹進階的用法，例如projection或是upsert等。</p>
-<p>本篇文章完整的範例專案在<a href="https://github.com/myctw/SampleCodes/tree/master/HelloWorld_MongoDb" rel="external nofollow noopener noreferrer" target="_blank">這邊</a>可以下載到。</p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>1. <a href="https://github.com/mongodb/mongo-csharp-driver" rel="external nofollow noopener noreferrer" target="_blank">C# Driver Github</a></p>
-<ol start="2">
+<p>本篇文章完整的範例專案在<a href="https://github.com/myctw/SampleCodes/tree/master/HelloWorld_MongoDb" rel="external nofollow noopener noreferrer" target="_blank">這邊</a>可以下載到。<br>本篇文章完整的範例專案在<a href="https://github.com/myctw/SampleCodes/tree/master/HelloWorld_MongoDb" rel="external nofollow noopener noreferrer" target="_blank">這邊</a>可以下載到。</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li><a href="https://github.com/mongodb/mongo-csharp-driver" rel="external nofollow noopener noreferrer" target="_blank">C# Driver Github</a></li>
 <li><a href="http://mongodb.github.io/mongo-csharp-driver/2.7/apidocs/html/R_Project_CSharpDriverDocs.htm" rel="external nofollow noopener noreferrer" target="_blank">API Document</a><br>各種method用法可以在這裡查到，不過有些內容已經過時了。</li>
-</ol>
+</ul>
 
       
     </div>

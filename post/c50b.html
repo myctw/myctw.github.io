@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="c#,.net core,benchmarkdotnet,benchmark,">
+  <meta name="keywords" content="benchmarkdotnet,benchmark,c#,.net core,">
 
 
 
@@ -80,14 +80,14 @@
 
 
 <meta name="description" content="「欸這功能效能很差，每次用都速度很慢。」這是一個很常見的「感覺」形容。每個人對於速度的快慢定義不同，有些人覺得這速度很ＯＫ，而有些人覺得效能真的太差。 在工作上我們需要盡量避免這樣的形容詞，除了不夠精確之外，還需要花費更多、額外的時間來校正雙方的度量尺，這時候就需要一個公正、客觀的數據來協助探討是否這個功能真的很慢。 今天介紹的工具就是免費、開源的 BenchmarkDotNet這個工具能">
-<meta name="keywords" content="c#,.net core,benchmarkdotnet,benchmark">
+<meta name="keywords" content="benchmarkdotnet,benchmark,c#,.net core">
 <meta property="og:type" content="article">
 <meta property="og:title" content="效能評估工具 BenchmarkDotNet">
 <meta property="og:url" content="https://myctw.github.io/post/c50b.html">
 <meta property="og:site_name" content="Pie Note">
 <meta property="og:description" content="「欸這功能效能很差，每次用都速度很慢。」這是一個很常見的「感覺」形容。每個人對於速度的快慢定義不同，有些人覺得這速度很ＯＫ，而有些人覺得效能真的太差。 在工作上我們需要盡量避免這樣的形容詞，除了不夠精確之外，還需要花費更多、額外的時間來校正雙方的度量尺，這時候就需要一個公正、客觀的數據來協助探討是否這個功能真的很慢。 今天介紹的工具就是免費、開源的 BenchmarkDotNet這個工具能">
 <meta property="og:locale" content="en-gb">
-<meta property="og:updated_time" content="2019-05-05T16:42:50.467Z">
+<meta property="og:updated_time" content="2019-05-05T17:08:40.112Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="效能評估工具 BenchmarkDotNet">
 <meta name="twitter:description" content="「欸這功能效能很差，每次用都速度很慢。」這是一個很常見的「感覺」形容。每個人對於速度的快慢定義不同，有些人覺得這速度很ＯＫ，而有些人覺得效能真的太差。 在工作上我們需要盡量避免這樣的形容詞，除了不夠精確之外，還需要花費更多、額外的時間來校正雙方的度量尺，這時候就需要一個公正、客觀的數據來協助探討是否這個功能真的很慢。 今天介紹的工具就是免費、開源的 BenchmarkDotNet這個工具能">
@@ -311,7 +311,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-05T00:37:11Z">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-05T08:37:11+08:00">
                 2019-05-05
               </time>
             
@@ -403,10 +403,12 @@
 <h2 id="測試基準"><a href="#測試基準" class="headerlink" title="測試基準"></a><strong>測試基準</strong></h2><p>很多效能調校都會拿原本的code來進行比較，這時候只需要在benchmark後面加上baseline設定即可。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[Benchmark(Baseline = true)]</span><br><span class="line">public List&lt;int&gt; SelectFirstMethod()</span><br><span class="line">&#123;&#125;</span><br><span class="line">[Benchmark]</span><br><span class="line">public List&lt;int&gt; WhereFirstMethod()</span><br><span class="line">&#123;&#125;</span><br></pre></td></tr></table></figure>
 <p>本篇文章完整的範例專案在<a href="https://github.com/myctw/SampleCodes/tree/master/HelloWorld_MongoDb" rel="external nofollow noopener noreferrer" target="_blank">這邊</a>可以下載到。</p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>1. <a href="https://github.com/dotnet/BenchmarkDotNet" rel="external nofollow noopener noreferrer" target="_blank">BenchmarkDotNet Github</a></p>
-<ol start="2">
-<li><a href="https://benchmarkdotnet.org/articles/overview.html" rel="external nofollow noopener noreferrer" target="_blank">Document OverView</a></li>
-</ol>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li><p><a href="https://github.com/dotnet/BenchmarkDotNet" rel="external nofollow noopener noreferrer" target="_blank">BenchmarkDotNet Github</a></p>
+</li>
+<li><p><a href="https://benchmarkdotnet.org/articles/overview.html" rel="external nofollow noopener noreferrer" target="_blank">Document OverView</a></p>
+</li>
+</ul>
 
       
     </div>
@@ -445,13 +447,13 @@
       
         <div class="post-tags">
           
-            <a href="/tags/c/" rel="tag"># c#</a>
-          
-            <a href="/tags/net-core/" rel="tag"># .net core</a>
-          
             <a href="/tags/benchmarkdotnet/" rel="tag"># benchmarkdotnet</a>
           
             <a href="/tags/benchmark/" rel="tag"># benchmark</a>
+          
+            <a href="/tags/c/" rel="tag"># c#</a>
+          
+            <a href="/tags/net-core/" rel="tag"># .net core</a>
           
         </div>
       
