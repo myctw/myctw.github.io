@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="c#,protobuf,bug,grpc,.NetCore,">
+  <meta name="keywords" content="c#,.net core,benchmarkdotnet,benchmark,">
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="今天在做一個需求時，使用 gRPC/protobuf 工具產生 .cs 檔案發現一個小bug，雖然不是很嚴重，不過還是記錄一下。 狀況 條件：.proto 檔案名稱帶有數字、數字後的第一個字母是英文且小寫 BUG：產生出來的 .cs 檔名，在數字後的第一個英文字母會強制變成大寫  例如今天建立一個檔案叫做 Number1test.proto 的檔案，經過 gRPC Tool 產生出來的 serv">
-<meta name="keywords" content="c#,protobuf,bug,grpc,.NetCore">
+<meta name="description" content="「欸這功能效能很差，每次用都速度很慢。」這是一個很常見的「感覺」形容。每個人對於速度的快慢定義不同，有些人覺得這速度很ＯＫ，而有些人覺得效能真的太差。 在工作上我們需要盡量避免這樣的形容詞，除了不夠精確之外，還需要花費更多、額外的時間來校正雙方的度量尺，這時候就需要一個公正、客觀的數據來協助探討是否這個功能真的很慢。 今天介紹的工具就是免費、開源的 BenchmarkDotNet這個工具能">
+<meta name="keywords" content="c#,.net core,benchmarkdotnet,benchmark">
 <meta property="og:type" content="article">
-<meta property="og:title" content="gRPC Tool 產生 .cs 檔案的小bug">
-<meta property="og:url" content="https://myctw.github.io/post/2af7.html">
+<meta property="og:title" content="效能評估工具 BenchmarkDotNet">
+<meta property="og:url" content="https://myctw.github.io/post/c50b.html">
 <meta property="og:site_name" content="Pie Note">
-<meta property="og:description" content="今天在做一個需求時，使用 gRPC/protobuf 工具產生 .cs 檔案發現一個小bug，雖然不是很嚴重，不過還是記錄一下。 狀況 條件：.proto 檔案名稱帶有數字、數字後的第一個字母是英文且小寫 BUG：產生出來的 .cs 檔名，在數字後的第一個英文字母會強制變成大寫  例如今天建立一個檔案叫做 Number1test.proto 的檔案，經過 gRPC Tool 產生出來的 serv">
+<meta property="og:description" content="「欸這功能效能很差，每次用都速度很慢。」這是一個很常見的「感覺」形容。每個人對於速度的快慢定義不同，有些人覺得這速度很ＯＫ，而有些人覺得效能真的太差。 在工作上我們需要盡量避免這樣的形容詞，除了不夠精確之外，還需要花費更多、額外的時間來校正雙方的度量尺，這時候就需要一個公正、客觀的數據來協助探討是否這個功能真的很慢。 今天介紹的工具就是免費、開源的 BenchmarkDotNet這個工具能">
 <meta property="og:locale" content="en-gb">
-<meta property="og:updated_time" content="2019-04-20T14:48:48.578Z">
+<meta property="og:updated_time" content="2019-05-05T16:42:50.467Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="gRPC Tool 產生 .cs 檔案的小bug">
-<meta name="twitter:description" content="今天在做一個需求時，使用 gRPC/protobuf 工具產生 .cs 檔案發現一個小bug，雖然不是很嚴重，不過還是記錄一下。 狀況 條件：.proto 檔案名稱帶有數字、數字後的第一個字母是英文且小寫 BUG：產生出來的 .cs 檔名，在數字後的第一個英文字母會強制變成大寫  例如今天建立一個檔案叫做 Number1test.proto 的檔案，經過 gRPC Tool 產生出來的 serv">
+<meta name="twitter:title" content="效能評估工具 BenchmarkDotNet">
+<meta name="twitter:description" content="「欸這功能效能很差，每次用都速度很慢。」這是一個很常見的「感覺」形容。每個人對於速度的快慢定義不同，有些人覺得這速度很ＯＫ，而有些人覺得效能真的太差。 在工作上我們需要盡量避免這樣的形容詞，除了不夠精確之外，還需要花費更多、額外的時間來校正雙方的度量尺，這時候就需要一個公正、客觀的數據來協助探討是否這個功能真的很慢。 今天介紹的工具就是免費、開源的 BenchmarkDotNet這個工具能">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://myctw.github.io/post/2af7.html">
+  <link rel="canonical" href="https://myctw.github.io/post/c50b.html">
 
 
 
 
 
-  <title>gRPC Tool 產生 .cs 檔案的小bug | Pie Note</title>
+  <title>效能評估工具 BenchmarkDotNet | Pie Note</title>
   
 
 
@@ -282,7 +282,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://myctw.github.io/post/2af7.html">
+    <link itemprop="mainEntityOfPage" href="https://myctw.github.io/post/c50b.html">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Pattri Chou">
@@ -299,7 +299,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">gRPC Tool 產生 .cs 檔案的小bug</h2>
+          <h2 class="post-title" itemprop="name headline">效能評估工具 BenchmarkDotNet</h2>
         
 
         <div class="post-meta">
@@ -311,8 +311,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-11T08:13:11+08:00">
-                2019-04-11
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-05T00:37:11Z">
+                2019-05-05
               </time>
             
 
@@ -334,8 +334,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/gRPC/" itemprop="url" rel="index">
-                    <span itemprop="name">gRPC</span>
+                  <a href="/categories/Tool/" itemprop="url" rel="index">
+                    <span itemprop="name">Tool</span>
                   </a>
                 </span>
 
@@ -352,8 +352,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/post/2af7.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="post/2af7.html" itemprop="commentCount"></span>
+                <a href="/post/c50b.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="post/c50b.html" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -381,15 +381,32 @@
       
 
       
-        <p>今天在做一個需求時，使用 gRPC/protobuf 工具產生 .cs 檔案發現一個小bug，雖然不是很嚴重，不過還是記錄一下。</p>
-<h2 id="狀況"><a href="#狀況" class="headerlink" title="狀況"></a>狀況</h2><ul>
-<li>條件：.proto 檔案名稱帶有數字、數字後的第一個字母是英文且小寫</li>
-<li>BUG：產生出來的 .cs 檔名，在數字後的第一個英文字母會強制變成大寫</li>
-</ul>
-<p>例如今天建立一個檔案叫做 <strong>Number1test.proto</strong> 的檔案，經過 gRPC Tool 產生出來的 service 檔案預期會是 <strong>Number1test.cs</strong>，但結果卻是 <strong>Number1Test.cs</strong>。</p>
-<p>注意到了嗎？在 1 後面的 t 應該會是小寫的，卻會變成大寫 T。</p>
-<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>強者我同事馬上上github找到這段 <a href="https://github.com/grpc/grpc/blob/master/src/csharp/Grpc.Tools/GeneratorServices.cs#L115" rel="external nofollow noopener noreferrer" target="_blank">source code</a> 並且發現 bug 囉！</p>
-<p>在善心人士修復之前就要特別注意這個部分</p>
+        <p>「欸這功能效能很差，每次用都速度很慢。」<br>這是一個很常見的「感覺」形容。每個人對於速度的快慢定義不同，有些人覺得這速度很ＯＫ，而有些人覺得效能真的太差。</p>
+<p>在工作上我們需要盡量避免這樣的形容詞，除了不夠精確之外，還需要花費更多、額外的時間來校正雙方的度量尺，這時候就需要一個公正、客觀的數據來協助探討是否這個功能真的很慢。</p>
+<p>今天介紹的工具就是免費、開源的 <a href="https://github.com/dotnet/BenchmarkDotNet" rel="external nofollow noopener noreferrer" target="_blank">BenchmarkDotNet</a><br>這個工具能夠協助你快速完成速度的測試，不需要再像以前一樣寫滿StopWatch、手動整理跑完的數據，最後再把計時用的程式碼還原。<br>透過這個工具，只需要短短幾個步驟就可以取得對照的結果。</p>
+<p>首先需要下載、安裝這個套件。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Install-Package BenchmarkDotNet</span><br></pre></td></tr></table></figure>
+<p>在本文為了我們建立一個Console專案，然後將要進行的測試內容寫在另一個新開的類別裡面。最基本的使用方式就是將測試目標函式給予 [Benchmark]Attribute即可如下。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public class BenchmarkSampleTestClass</span><br><span class="line">&#123;</span><br><span class="line">    [Benchmark]</span><br><span class="line">    public void TestMethod1()</span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line">    [Benchmark]</span><br><span class="line">    public void TestMethod2()</span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在 main 方法就可以直接呼叫該class進行benchmark評測。<br><strong>務必在進行benchmark時使用 Release 建置。</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class Program</span><br><span class="line">&#123;</span><br><span class="line">    static void Main(string[] args)</span><br><span class="line">    &#123;</span><br><span class="line">        var summary = BenchmarkRunner.Run&lt;BenchmarkSampleTestClass&gt;();</span><br><span class="line">        Console.ReadLine();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>接著在terminal就可以看到花費時間的比較表。</p>
+<h2 id="實際範例"><a href="#實際範例" class="headerlink" title="實際範例"></a>實際範例</h2><p>LINQ在開發上經常會使用到，跟任何工具一樣，使用不當的時候反而會降低其效果，這邊就選一個新手常犯的錯誤：關於 Select 與 Where 的使用時機。</p>
+<p>在這個測試類別宣告的時候，建構子會建構一個list存放10000個User物件，我們寫出兩個method分別為SelectFirstMethod與WhereFirstMethod，顧名思義就是先使用select與先使用where的差別。<br>目的很簡單就是找到一個條件的所有物件的ID，轉成list回傳。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">public class BenchmarkSampleTestClass</span><br><span class="line">&#123;</span><br><span class="line">    private readonly List&lt;User&gt; _data = new List&lt;User&gt;();</span><br><span class="line">    public BenchmarkSampleTestClass()</span><br><span class="line">    &#123;</span><br><span class="line">        PrepareTestObjects();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    [Benchmark]</span><br><span class="line">    public List&lt;int&gt; SelectFirstMethod()</span><br><span class="line">    &#123;</span><br><span class="line">        return _data.Select(x =&gt; x.Id).Where(x =&gt; x &gt; 90).ToList();</span><br><span class="line">    &#125;</span><br><span class="line">    [Benchmark]</span><br><span class="line">    public List&lt;int&gt; WhereFirstMethod()</span><br><span class="line">    &#123;</span><br><span class="line">        return _data.Where(y =&gt; y.Id &gt; 90).Select(y =&gt; y.Id).ToList();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private void PrepareTestObjects()</span><br><span class="line">    &#123;</span><br><span class="line">        for (var itr = 0 ; itr &lt;10000 ; itr++)</span><br><span class="line">        &#123;</span><br><span class="line">            _data.Add(new User(itr));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>設置好Release build就可以直接執行，等待結果。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">|            Method |      Mean |    Error |   StdDev |</span><br><span class="line">|------------------ |----------:|---------:|---------:|</span><br><span class="line">| SelectFirstMethod | 178.78 us | 3.494 us | 5.837 us |</span><br><span class="line">|  WhereFirstMethod |  66.22 us | 1.423 us | 2.416 us |</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// ***** BenchmarkRunner: End *****</span><br><span class="line">// ** Remained 0 benchmark(s) to run **</span><br><span class="line">Run time: 00:01:01 (61.66 sec), executed benchmarks: 2</span><br><span class="line"></span><br><span class="line">Global total time: 00:01:07 (67.01 sec), executed benchmarks: 2</span><br></pre></td></tr></table></figure>
+<p>從上面的表格可以得知平均時間的快慢; 當然這個套件還有提供更多功能與資訊，這些都可以參考官方網站的內容。<br>有了這個工具以後會節省更多時間去爭論誰快誰慢的問題，畢竟有數據佐證最直接、客觀公正。</p>
+<p>這些結果除了在terminal可以看到外，在專案也會建立一個folder，以專案名稱加上 .Artifacts 命名，存放結果的 .log 檔以及預設提供的 csv, html 與 md 檔。</p>
+<h2 id="不同執行平台"><a href="#不同執行平台" class="headerlink" title="不同執行平台"></a><strong>不同執行平台</strong></h2><p>這個工具可以幫你測試在不同runtime下(NET Framework, .NET Core, Mono and CoreRT.)的表現如何，只需要在class上加上這些attribute。<br>[ClrJob, MonoJob, CoreJob, CoreRtJob]</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[ClrJob, MonoJob, CoreJob, CoreRtJob]</span><br><span class="line">public class BenchmarkSampleTestClass</span><br></pre></td></tr></table></figure>
+<h2 id="測試基準"><a href="#測試基準" class="headerlink" title="測試基準"></a><strong>測試基準</strong></h2><p>很多效能調校都會拿原本的code來進行比較，這時候只需要在benchmark後面加上baseline設定即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[Benchmark(Baseline = true)]</span><br><span class="line">public List&lt;int&gt; SelectFirstMethod()</span><br><span class="line">&#123;&#125;</span><br><span class="line">[Benchmark]</span><br><span class="line">public List&lt;int&gt; WhereFirstMethod()</span><br><span class="line">&#123;&#125;</span><br></pre></td></tr></table></figure>
+<p>本篇文章完整的範例專案在<a href="https://github.com/myctw/SampleCodes/tree/master/HelloWorld_MongoDb" rel="external nofollow noopener noreferrer" target="_blank">這邊</a>可以下載到。</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>1. <a href="https://github.com/dotnet/BenchmarkDotNet" rel="external nofollow noopener noreferrer" target="_blank">BenchmarkDotNet Github</a></p>
+<ol start="2">
+<li><a href="https://benchmarkdotnet.org/articles/overview.html" rel="external nofollow noopener noreferrer" target="_blank">Document OverView</a></li>
+</ol>
 
       
     </div>
@@ -414,7 +431,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>Post link:</strong>
-    <a href="https://myctw.github.io/post/2af7.html" title="gRPC Tool 產生 .cs 檔案的小bug">https://myctw.github.io/post/2af7.html</a>
+    <a href="https://myctw.github.io/post/c50b.html" title="效能評估工具 BenchmarkDotNet">https://myctw.github.io/post/c50b.html</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice: </strong>
@@ -430,13 +447,11 @@
           
             <a href="/tags/c/" rel="tag"># c#</a>
           
-            <a href="/tags/protobuf/" rel="tag"># protobuf</a>
+            <a href="/tags/net-core/" rel="tag"># .net core</a>
           
-            <a href="/tags/bug/" rel="tag"># bug</a>
+            <a href="/tags/benchmarkdotnet/" rel="tag"># benchmarkdotnet</a>
           
-            <a href="/tags/grpc/" rel="tag"># grpc</a>
-          
-            <a href="/tags/NetCore/" rel="tag"># .NetCore</a>
+            <a href="/tags/benchmark/" rel="tag"># benchmark</a>
           
         </div>
       
@@ -449,8 +464,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/post/28be.html" rel="next" title="macOS 安裝MongoDB">
-                <i class="fa fa-chevron-left"></i> macOS 安裝MongoDB
+              <a href="/post/5681.html" rel="next" title="macOS 下使用 .Net Core 對 MongoDb 的CRUD">
+                <i class="fa fa-chevron-left"></i> macOS 下使用 .Net Core 對 MongoDb 的CRUD
               </a>
             
           </div>
@@ -458,10 +473,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/post/df5.html" rel="prev" title="Docker-compose內的port與expose差異">
-                Docker-compose內的port與expose差異 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -627,7 +638,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#狀況"><span class="nav-number">1.</span> <span class="nav-text">狀況</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原因"><span class="nav-number">2.</span> <span class="nav-text">原因</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#實際範例"><span class="nav-number">1.</span> <span class="nav-text">實際範例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#不同執行平台"><span class="nav-number">2.</span> <span class="nav-text">不同執行平台</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#測試基準"><span class="nav-number">3.</span> <span class="nav-text">測試基準</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">4.</span> <span class="nav-text">Reference</span></a></li></ol></div>
             
 
           </div>
@@ -799,9 +810,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'https://myctw.github.io/post/2af7.html';
-          this.page.identifier = 'post/2af7.html';
-          this.page.title = 'gRPC Tool 產生 .cs 檔案的小bug';
+          this.page.url = 'https://myctw.github.io/post/c50b.html';
+          this.page.identifier = 'post/c50b.html';
+          this.page.title = '效能評估工具 BenchmarkDotNet';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://myctw.disqus.com/embed.js';
