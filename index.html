@@ -282,6 +282,182 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://myctw.github.io/post/906d.html">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Pattri Chou">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/I.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Pie Note">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/post/906d.html" itemprop="url">使用Nuget API查詢Package版本</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-20T23:20:11Z">
+                2019-05-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/c/" itemprop="url" rel="index">
+                    <span itemprop="name">c#</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/post/906d.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="post/906d.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>最近需要做一個小工具去整理出指定資料夾所有使用的第三方套件版本，同時去查詢nuget最新版本號。<br>拆解步驟大概就是兩個</p>
+<ul>
+<li>掃出使用套件清單</li>
+<li>以這個清單查尋nuget最新版本</li>
+</ul>
+<p>透過以下語法找出所有 .csproj 檔名的檔案，並找到第三方套件的內容。<br>我們找一個 csproj 範例如下：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;Project Sdk=<span class="string">"Microsoft.NET.Sdk"</span>&gt;</span><br><span class="line">    &lt;ItemGroup&gt;</span><br><span class="line">      &lt;PackageReference Include=<span class="string">"Newtonsoft.Json"</span> Version=<span class="string">"12.0.2"</span> /&gt;</span><br><span class="line">    &lt;/ItemGroup&gt;</span><br><span class="line">&lt;/Project&gt;</span><br></pre></td></tr></table></figure>
+<p>透過以下語法找到檔案並解析內容：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//找出所有 .csproj 檔案</span></span><br><span class="line"><span class="keyword">var</span> allFiles = Directory.GetFiles(arg, <span class="string">"*.csproj"</span>, SearchOption.AllDirectories);</span><br><span class="line"><span class="comment">//依序以 XDocument 載入並解析出第三方套件的名稱與版本號</span></span><br><span class="line"><span class="keyword">foreach</span> (<span class="keyword">var</span> file <span class="keyword">in</span> allFiles)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">var</span> projDefinition = XDocument.Load(file);</span><br><span class="line">    <span class="keyword">var</span> elements = projDefinition.Element(<span class="string">"Project"</span>)?.Element(<span class="string">"ItemGroup"</span>)?.Elements(<span class="string">"PackageReference"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (elements == <span class="literal">null</span>)</span><br><span class="line">        <span class="keyword">continue</span>;</span><br><span class="line">    <span class="keyword">if</span> (!elements.Any())</span><br><span class="line">        <span class="keyword">continue</span>;</span><br><span class="line">    <span class="keyword">var</span> pkgRefs = elements.ToDictionary(x =&gt; x.Attribute(<span class="string">"Include"</span>)?.Value, x =&gt; x.Attribute(<span class="string">"Version"</span>)?.Value);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>剩下的功能就是查詢 Nuget 取得版本號碼。<br>由於大部分人的使用都是直接使用 IDE 或 VS 的 package management console 來安裝，幾乎沒有使用 api 去呼叫的需求，這類型的資訊在網路上很少;若是哪天要整理的內容變很多時，手動就感覺特別的沒有效率。 <del>我絕對不會承認官方文件看好久還是看不懂</del></p>
+<p>透過 Package 名稱去查詢版本號碼其實並不太難，在 v3 api 中格式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://api.nuget.org/v3-flatcontainer/&#123;PackageName&#125;/index.json</span><br></pre></td></tr></table></figure>
+<p>只要把{PackageName}替換成套件名稱即可。而 Nuget 會回傳一個 json 格式資料，我們以查詢 Newtonsoft.Json 套件為例。<br>Url example:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://api.nuget.org/v3-flatcontainer/Newtonsoft.Json/index.json</span><br></pre></td></tr></table></figure>
+<p>為了精簡版面，省去中間版本號內容，結果如下：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"versions"</span>: [</span><br><span class="line">    <span class="string">"3.5.8"</span>,</span><br><span class="line">    <span class="string">"4.0.1"</span>,</span><br><span class="line">    <span class="string">"12.0.2-beta2"</span>,</span><br><span class="line">    <span class="string">"12.0.2-beta3"</span>,</span><br><span class="line">    <span class="string">"12.0.2"</span></span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>寫到這邊其實就結束了，可以透過迴圈與 HttpClient 去呼叫 Nuget 取得這樣結果; 他也幫你排好順序，其實直接取用 .Last() 即可。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">async</span> Task&lt;<span class="keyword">string</span>&gt; <span class="title">GetResultAsync</span>(<span class="params"><span class="keyword">string</span> url</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">var</span> result = <span class="string">""</span>;</span><br><span class="line">    <span class="keyword">try</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">var</span> httpClient = <span class="keyword">new</span> HttpClient();</span><br><span class="line">        <span class="keyword">var</span> response = <span class="keyword">await</span> httpClient.GetAsync(url);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (response != <span class="literal">null</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (response.IsSuccessStatusCode)</span><br><span class="line">            &#123;</span><br><span class="line">                result = <span class="keyword">await</span> response.Content.ReadAsStringAsync();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">catch</span> (Exception ex)</span><br><span class="line">    &#123;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li><p><a href="https://docs.microsoft.com/en-us/nuget/api/overview" rel="external nofollow noopener noreferrer" target="_blank">Nuget API Document</a></p>
+</li>
+<li><p><a href="https://docs.microsoft.com/zh-tw/nuget/api/service-index" rel="external nofollow noopener noreferrer" target="_blank">Nuget API Service</a></p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+    <div>
+    
+    </div>
+    
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://myctw.github.io/post/c50b.html">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1820,175 +1996,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://myctw.github.io/post/d11.html">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Pattri Chou">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/I.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Pie Note">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/post/d11.html" itemprop="url">軟體架構之Ｃ4模型</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-19T01:47:11Z">
-                2019-03-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/Software-Architecture/" itemprop="url" rel="index">
-                    <span itemprop="name">Software Architecture</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/post/d11.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="post/d11.html" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>軟體架構圖是讓人理解系統非常重要的，而用於表現、體現軟體架構的圖有非常多種，這邊談到的是Ｃ4模型。</p>
-<h2 id="圖勝表、表勝文"><a href="#圖勝表、表勝文" class="headerlink" title="圖勝表、表勝文"></a>圖勝表、表勝文</h2><p>大家都知道圖的重要性，繪製一張好的圖需要很多次的來回討論與修改，儘管花費很多時間，一但完成能夠大幅縮短後人了解系統的時間。</p>
-<h2 id="好啊！那來畫UML吧"><a href="#好啊！那來畫UML吧" class="headerlink" title="好啊！那來畫ＵＭＬ吧"></a>好啊！那來畫ＵＭＬ吧</h2><p>UML並不是不好，而是有一些限制在，簡單列一下我的感受：</p>
-<ul>
-<li>觀看高度不夠。如果是想讓人快速了解系統或是要跟老闆報告，這些圖都不太適合，通常需要其他圖片來輔助。</li>
-<li>外行看不懂。圖片畫出來就是要與人溝通的，如果門檻過高讓人看不懂無異於無字天書，如果你的對象是工程師，那我想應該不會有太大問題。</li>
-<li>你真的懂UML？UML包含了各種類型的圖，除非有認真學習過怎麼繪製，否則裡面的每個細節可能會被誤用，一但誤用，就是誤會的開始了..<br>例如循序圖的 Component/Entity是什麼？何時該用虛線何時該用實線…等等</li>
-<li>到底要多詳細？同樣一張圖片，無法有明確的規範到底該畫到多詳細，有的人認為寫出描述即可，有的人需要畫出實作的方法名稱</li>
-</ul>
-<p>說了一些點，本篇不是討論UML的，不過我依然認為他還是個對溝通有用的圖，如果真的有<strong>寫文件</strong>的話，甚至如果真的<strong>有人看</strong>的話。</p>
-<h2 id="C4-Model"><a href="#C4-Model" class="headerlink" title="C4 Model"></a>C4 Model</h2><p>最近接觸到<a href="https://c4model.com/#tooling" rel="external nofollow noopener noreferrer" target="_blank">C4 Model架構</a>，用來描述軟體架構的概念，當然相同的工具、做法有很多種，這邊就先寫一篇心得來記錄一下。<br>作者將架構圖的視野由高至低分為四個等級，第一等級是最上層也是最粗略的。</p>
-<p><strong>以下圖片街擷取自官網</strong></p>
-<h2 id="Level1-系統上下文圖-System-Context-Diagram"><a href="#Level1-系統上下文圖-System-Context-Diagram" class="headerlink" title="Level1: 系統上下文圖(System Context Diagram)"></a>Level1: 系統上下文圖(System Context Diagram)</h2><p><img src="/images/c4_lv1.png" alt="alt"><br>在這個階層主要是將各種使用者/角色需要使用的功能畫出來，並不會有技術名詞或實作的相關做法，可以想像成User story的做法，將使用者的需求簡易的描述出來，跟哪些系統有關聯，使用哪些系統達到什麼事情。<br>官網建議是把這次專案要開發的系統放在中間，以藍色的方塊來表示；灰色則是既有系統或非本專案需開發系統，再用虛線將系統界線畫出來。</p>
-<h2 id="Level2-容器圖-Container-Diagram"><a href="#Level2-容器圖-Container-Diagram" class="headerlink" title="Level2: 容器圖(Container Diagram)"></a>Level2: 容器圖(Container Diagram)</h2><p><img src="/images/c4_lv2.png" alt="alt"><br>這邊用的名詞容器，並非像Docker之類的container。<br>放大系統後的容器可以是網頁應用程式、桌面應用程式、Ａpp、資料庫等。在容器圖內可以看到各個應用程式（模組）間的相互溝通</p>
-<h2 id="Level3-元件圖-Component-Diagram"><a href="#Level3-元件圖-Component-Diagram" class="headerlink" title="Level3: 元件圖(Component Diagram)"></a>Level3: 元件圖(Component Diagram)</h2><p><img src="/images/c4_lv3.png" alt="alt"><br>第三階段的圖其實就是再放大Lv2的應用程式，將應用程式內容更深入地畫出每個元件。<br>我認為在這層彈性比較大，可以按類型或功能來分類每個component，例如範例是controller，也可以用service來分類，依照每個需求來去畫。</p>
-<h2 id="Level4-程式"><a href="#Level4-程式" class="headerlink" title="Level4: 程式"></a>Level4: 程式</h2><p><img src="/images/c4_lv4.png" alt="alt"><br>到了最下層，需要最詳細的流程就可以在這邊表示，特別是決策圖可以表示什麼樣的條件該走什麼路，無論是對設計者自行檢查、開發者流程、以及ＱＡ的驗收依據，都是相當重要的。</p>
-<p>在官網還提到了額外三種補充圖類型，分別是系統景觀圖（System Landscape Aarchcteure）、動態圖（Dynamic Diagram)以及部署圖（Deployment Diagram)，透過官網提供的範例，第一張偏向商業邏輯、第二張偏向開發的介面定義；第三章則是像維運面的，都分別有其功能，可以自由斟酌是否需要。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-    <div>
-    
-    </div>
-    
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2041,7 +2048,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -2052,7 +2059,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -2063,7 +2070,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">39</span>
+                  <span class="site-state-item-count">43</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
